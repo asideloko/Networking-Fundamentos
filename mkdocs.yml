@@ -1,0 +1,105 @@
+site_name: NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico
+site_description: Obra técnica de Guillermo Castillo · SecOpsMX
+site_author: Guillermo Castillo
+# Pon aquí la URL pública cuando publiques (ej. https://usuario.github.io/Networking/)
+site_url: ""
+use_directory_urls: true
+
+docs_dir: docs
+site_dir: site
+dev_addr: 127.0.0.1:8000
+
+# Los PNG de respaldo no se publican (los SVG son los gráficos definitivos)
+exclude_docs: |
+  media/png/
+
+theme:
+  name: readthedocs
+  language: es
+  navigation_depth: 3
+  collapse_navigation: false
+  titles_only: false
+  sticky_navigation: true
+  # El tema carga highlight.js desde un CDN con fondo claro: choca con el bloque oscuro de extra.css
+  highlightjs: false
+
+plugins:
+  - search:
+      lang: es
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: false
+      auto_caption: false
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - def_list
+  - footnotes
+  - toc:
+      permalink: true
+      title: En esta página
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+
+extra_css:
+  - assets/css/extra.css
+
+extra_javascript:
+  - assets/js/extra.js
+
+nav:
+  - Inicio: index.md
+  - Temas:
+      - "01 · Fundamentos de redes y comunicación": temas/tema_01.md
+      - "02 · Transmisión de datos y capa física": temas/tema_02.md
+      - "03 · Componentes de una red": temas/tema_03.md
+      - "04 · Direccionamiento IP y subredes": temas/tema_04.md
+      - "05 · Conmutación y segmentación de red": temas/tema_05.md
+      - "06 · Enrutamiento y conectividad de red": temas/tema_06.md
+      - "07 · Protocolos y servicios de red": temas/tema_07.md
+      - "08 · Seguridad en redes": temas/tema_08.md
+      - "09 · VPN y tunelización": temas/tema_09.md
+      - "10 · Infraestructura WAN y core": temas/tema_10.md
+      - "11 · Arquitectura de red empresarial": temas/tema_11.md
+      - "12 · Arquitecturas modernas de red": temas/tema_12.md
+      - "13 · Monitoreo y diagnóstico de redes": temas/tema_13.md
+      - "14 · Herramientas Linux": temas/tema_14.md
+      - "15 · Implementación práctica integral": temas/tema_15.md
+  - Conclusión: conclusion.md
+  - Glosario: glosario.md
+  - Acrónimos: acronimos.md
+  - Anexos gráficos:
+      - Introducción: anexos/index.md
+      - Anexo I: anexos/anexo_I.md
+      - Anexo II: anexos/anexo_II.md
+      - Anexo III: anexos/anexo_III.md
+      - Anexo IV: anexos/anexo_IV.md
+      - Anexo V: anexos/anexo_V.md
+      - Anexo VI: anexos/anexo_VI.md
+      - Anexo VII: anexos/anexo_VII.md
+      - Anexo VIII: anexos/anexo_VIII.md
+      - Anexo IX: anexos/anexo_IX.md
+      - Anexo X: anexos/anexo_X.md
+      - Anexo XI: anexos/anexo_XI.md
+      - Anexo XII: anexos/anexo_XII.md
+  - Bibliografía: bibliografía.md
+  - Complementos:
+      - Sistema de diagramas: complementos/sistema-de-diagramas.md
+      - Derechos de autor y licencia: complementos/derechos-de-autor.md
+      
