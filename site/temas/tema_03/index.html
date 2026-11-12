@@ -1,0 +1,1912 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="author" content="Guillermo Castillo">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>03 · Componentes de una red - NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link href="../../assets/css/extra.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "03 \u00b7 Componentes de una red";
+        var mkdocs_page_input_path = "temas/tema_03.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]--> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Inicio</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../..#fundamentos-arquitecturas-y-despliegue-practico">Fundamentos, Arquitecturas y Despliegue Práctico.</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Temas</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_01/">01 · Fundamentos de redes y comunicación</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#11-concepto-de-red-de-computadoras">1.1 CONCEPTO DE RED DE COMPUTADORAS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#12-evolucion-de-las-redes">1.2 EVOLUCIÓN DE LAS REDES</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#13-arquitecturas-cliente-servidor-y-distribuidas">1.3 ARQUITECTURAS CLIENTE-SERVIDOR Y DISTRIBUIDAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#arquitectura-cliente-servidor">Arquitectura cliente-servidor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#arquitecturas-distribuidas">Arquitecturas distribuidas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#14-flujo-de-datos">1.4 FLUJO DE DATOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#recorrido-de-los-datos">Recorrido de los datos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#modelos-de-comunicacion">Modelos de comunicación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#15-encapsulacion">1.5 ENCAPSULACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#proceso-de-encapsulacion">Proceso de encapsulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#desencapsulacion">Desencapsulación</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_02/">02 · Transmisión de datos y capa física</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#21-el-bit-como-unidad-minima-de-informacion">2.1 EL BIT COMO UNIDAD MÍNIMA DE INFORMACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#digitalizacion-de-la-informacion">Digitalización de la información</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#estandarizacion-de-la-transmision">Estandarización de la transmisión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#medicion-del-rendimiento-de-la-red">Medición del rendimiento de la red</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#22-senales-digitales-y-analogicas">2.2 SEÑALES DIGITALES Y ANALÓGICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#senal-digital">Señal digital</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#senal-analogica">Señal analógica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#modulacion">Modulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#demodulacion">Demodulación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#23-codificacion-y-modulacion-de-senales">2.3 CODIFICACIÓN Y MODULACIÓN DE SEÑALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#bit-y-simbolo">Bit y símbolo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#codificacion">Codificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#modulacion_1">Modulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#qam">QAM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ofdm">OFDM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#multiplexacion">Multiplexación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#24-ruido-y-degradacion-de-la-senal">2.4 RUIDO Y DEGRADACIÓN DE LA SEÑAL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ruido-impulsivo">Ruido impulsivo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#distorsion">Distorsión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#interferencia">Interferencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ruido-termico-o-ruido-blanco">Ruido térmico (o ruido blanco)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#atenuacion">Atenuación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#dispersion">Dispersión</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#25-ancho-de-banda-y-capacidad-de-transmision">2.5 ANCHO DE BANDA Y CAPACIDAD DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ancho-de-banda-analogico-hz">Ancho de banda analógico (Hz)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#capacidad-de-canal-bs">Capacidad de canal (b/s)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#teorema-de-shannon-hartley">Teorema de Shannon-Hartley</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#capacidad-teorica-y-rendimiento-real">Capacidad teórica y rendimiento real</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#rendimiento">Rendimiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#latencia">Latencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#jitter">Jitter</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#26-medios-de-transmision-guiados">2.6 MEDIOS DE TRANSMISIÓN GUIADOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#cable-de-par-trenzado">Cable de par trenzado</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#cable-coaxial">Cable coaxial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#fibra-optica">Fibra óptica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#27-medios-de-transmision-no-guiados">2.7 MEDIOS DE TRANSMISIÓN NO GUIADOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#infrarrojo">Infrarrojo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#tecnologias-inalambricas-para-iot">Tecnologías inalámbricas para IoT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#radiofrecuencia">Radiofrecuencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#microondas">Microondas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#28-espectro-electromagnetico-en-redes">2.8 ESPECTRO ELECTROMAGNÉTICO EN REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#frecuencias-bajas-3-khz30-mhz-vlf-lf-mf-y-hf">Frecuencias bajas (3 kHz–30 MHz; VLF, LF, MF y HF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#frecuencias-medias-30-mhz3-ghz-vhf-y-uhf">Frecuencias medias (30 MHz–3 GHz; VHF y UHF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#frecuencias-altas-3-ghz30-ghz-shf">Frecuencias altas (3 GHz–30 GHz; SHF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ondas-milimetricas-30-ghz300-ghz-ehf">Ondas milimétricas (30 GHz–300 GHz; EHF)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#29-frecuencias-de-operacion">2.9 FRECUENCIAS DE OPERACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#banda-de-24-ghz">Banda de 2.4 GHz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#banda-de-5-ghz">Banda de 5 GHz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#banda-de-6-ghz">Banda de 6 GHz</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#210-calculo-basico-de-tiempos-de-transmision">2.10 CÁLCULO BÁSICO DE TIEMPOS DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#conversion-de-unidades">Conversión de unidades</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">03 · Componentes de una red</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#31-dispositivos-finales">3.1 DISPOSITIVOS FINALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#caracteristicas-principales">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#computadoras-personales-y-estaciones-de-trabajo">Computadoras personales y estaciones de trabajo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#servidores">Servidores</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dispositivos-moviles">Dispositivos móviles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#impresoras-de-red">Impresoras de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dispositivos-iot">Dispositivos IoT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#32-dispositivos-intermedios">3.2 DISPOSITIVOS INTERMEDIOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#switches-conmutadores">Switches (conmutadores)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#enrutadores-routers">Enrutadores (routers)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#puntos-de-acceso-inalambrico">Puntos de acceso inalámbrico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#firewalls">Firewalls</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#balanceadores-de-carga">Balanceadores de carga</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dispositivos-adicionales-en-redes-modernas">Dispositivos adicionales en redes modernas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#33-interfaces-de-red-nic">3.3 INTERFACES DE RED (NIC)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#control-de-acceso-al-medio">Control de acceso al medio</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#gestion-de-tramas">Gestión de tramas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conversion-de-datos-digitales-a-senales">Conversión de datos digitales a señales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#identificacion-unica">Identificación única</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interfaces-cableadas">Interfaces cableadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interfaces-inalambricas">Interfaces inalámbricas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interfaces-especializadas">Interfaces especializadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optimizaciones-de-nic-modernas">Optimizaciones de NIC modernas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#34-unidad-maxima-de-transmision">3.4 UNIDAD MÁXIMA DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ethernet">Ethernet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pppoe-utilizado-en-conexiones-dsl">PPPoE (utilizado en conexiones DSL)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#redes-con-vlan-ieee-8021q">Redes con VLAN (IEEE 802.1Q)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#enlaces-con-jumbo-frames">Enlaces con jumbo frames</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fragmentacion-del-paquete-ip">Fragmentación del paquete IP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mensajes-icmp-para-descubrimiento-de-mtu">Mensajes ICMP para descubrimiento de MTU</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#capa-de-enlace">Capa de enlace</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#35-infraestructura-fisica">3.5 INFRAESTRUCTURA FÍSICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#racks-y-gabinetes">Racks y gabinetes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cables-de-red">Cables de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conectores-y-terminaciones">Conectores y terminaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#canalizaciones-y-sistemas-de-cableado-estructurado">Canalizaciones y sistemas de cableado estructurado</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#paneles-de-parcheo-patch-panels">Paneles de parcheo (patch panels)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#factores-de-diseno">Factores de diseño</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#estandares-de-cableado-estructurado">Estándares de cableado estructurado</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#36-comunicacion-en-la-red">3.6 COMUNICACIÓN EN LA RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#flujo-de-comunicacion-en-una-red-de-datos">Flujo de comunicación en una red de datos</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_04/">04 · Direccionamiento IP y subredes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#41-ipv4-estructura-de-32-bits">4.1 IPv4 ESTRUCTURA DE 32 BITS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#parte-de-red">Parte de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#parte-de-host">Parte de host</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#42-binario-y-decimal">4.2 BINARIO Y DECIMAL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#43-subnetting-y-segmentacion-logica">4.3 SUBNETTING Y SEGMENTACIÓN LÓGICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#objetivos-de-la-segmentacion-logica">Objetivos de la segmentación lógica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#proceso-del-subnetting">Proceso del subnetting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#44-cidr-y-vlsm">4.4 CIDR Y VLSM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#mascara-de-subred-de-longitud-variable">Máscara de subred de longitud variable</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#reduccion-del-desperdicio-de-direcciones">Reducción del desperdicio de direcciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#mayor-complejidad-de-planificacion">Mayor complejidad de planificación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#45-ipv6-estructura-de-128-bits">4.5 IPv6 ESTRUCTURA DE 128 BITS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#prefijo-de-enrutamiento-global">Prefijo de enrutamiento global</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#identificador-de-subred">Identificador de subred</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#identificador-de-interfaz">Identificador de interfaz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#caracteristicas-principales-de-ipv6">Características principales de IPv6</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#46-notacion-hexadecimal-ipv6">4.6 NOTACIÓN HEXADECIMAL IPv6</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#reglas-basicas-de-la-notacion">Reglas básicas de la notación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#47-autoconfiguracion-ipv6">4.7 AUTOCONFIGURACIÓN IPv6</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#autoconfiguracion-sin-estado-slaac">Autoconfiguración sin estado (SLAAC)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#dhcpv6">DHCPv6</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#48-relacion-redes-subredes-host">4.8 RELACIÓN REDES-SUBREDES-HOST</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#red-principal">Red principal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#subred">Subred</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#host">Host</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#formulas-clave">Fórmulas clave</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#beneficios-de-la-organizacion-jerarquica">Beneficios de la organización jerárquica</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_05/">05 · Conmutación y segmentación de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#51-switching-y-direcciones-mac">5.1 SWITCHING Y DIRECCIONES MAC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#mac">MAC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#switching">Switching</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#caracteristicas-tecnicas-del-switching">Características técnicas del switching</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#proceso-del-switching">Proceso del Switching</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#52-vlan">5.2 VLAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#caracteristicas-de-las-vlan">Características de las VLAN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tipos-de-vlan-segun-su-proposito">Tipos de VLAN según su propósito</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#53-trunking-ieee-8021q">5.3 TRUNKING IEEE 802.1Q</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tpid">TPID</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tci">TCI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#vlan-pruning">VLAN pruning</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#54-stp-rstp-y-mstp">5.4 STP, RSTP Y MSTP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#eleccion-del-switch-raiz">Elección del switch raíz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#determinacion-del-puerto-raiz">Determinación del puerto raíz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#seleccion-de-puertos-designados">Selección de puertos designados</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#bloqueo-de-los-puertos-restantes">Bloqueo de los puertos restantes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#estados-y-timers-de-stp-ieee-8021d">Estados y Timers de STP (IEEE 802.1D)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tiempo-de-convergencia-de-stp">Tiempo de convergencia de STP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#rstp">RSTP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#55-dominios-de-broadcast">5.5 DOMINIOS DE BROADCAST</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#caracteristicas-de-los-dominios-de-broadcast">Características de los dominios de broadcast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#segmentacion-de-dominios-de-broadcast">Segmentación de dominios de broadcast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#dominios-de-broadcast-y-de-colision">Dominios de broadcast y de colisión</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_06/">06 · Enrutamiento y conectividad de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#61-principios-de-enrutamiento">6.1 PRINCIPIOS DE ENRUTAMIENTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#conceptos-fundamentales-en-el-enrutamiento">Conceptos fundamentales en el enrutamiento</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#62-rutas-estaticas">6.2 RUTAS ESTÁTICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#sintaxis-tipica-de-una-ruta-estatica">Sintaxis típica de una ruta estática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-las-rutas-configuradas">Verificación de las rutas configuradas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#rutas-estaticas-hacia-una-interfaz-de-tunel">Rutas estáticas hacia una interfaz de túnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#caracteristicas-de-las-rutas-estaticas">Características de las rutas estáticas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ruta-por-defecto-estatica">Ruta por defecto estática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ruta-estatica-flotante">Ruta estática flotante</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#63-rutas-dinamicas">6.3 RUTAS DINÁMICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#clasificacion-segun-su-alcance">Clasificación según su alcance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#segun-su-forma-de-operar">Según su forma de operar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ventajas-del-enrutamiento-dinamico">Ventajas del enrutamiento dinámico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#64-ospf">6.4 OSPF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#metrica">Métrica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#funcionamiento-basado-en-areas">Funcionamiento basado en áreas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#convergencia">Convergencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#estados-de-adyacencia">Estados de adyacencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#multiacceso-dr-y-bdr">Multiacceso, DR y BDR</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#autenticacion">Autenticación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-ospf">Verificación de OSPF</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#65-bgp">6.5 BGP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-sesiones-bgp">Verificación de sesiones BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#caracteristicas-fundamentales-de-bgp">Características fundamentales de BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#uso-tipico-de-bgp">Uso típico de BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificar-rutas-bgp">Verificar rutas BGP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#66-tabla-de-enrutamiento">6.6 TABLA DE ENRUTAMIENTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#proceso-de-busqueda">Proceso de búsqueda</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ver-la-tabla-de-enrutamiento">Ver la tabla de enrutamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#formas-de-poblar-la-tabla">Formas de poblar la tabla</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#67-gateway">6.7 GATEWAY</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#funcionamiento">Funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-conectividad-a-traves-del-gateway">Verificación de conectividad a través del gateway</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#68-gre">6.8 GRE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#caracteristicas-tecnicas">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#funcionamiento-de-un-tunel-gre">Funcionamiento de un túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#creacion-de-un-tunel-gre">Creación de un túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-del-tunel-gre">Verificación del túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ajuste-del-mss-en-linux">Ajuste del MSS en Linux</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#multiples-tuneles-gre">Múltiples túneles GRE</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_07/">07 · Protocolos y servicios de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#71-tcpudp">7.1 TCP/UDP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#tcp">TCP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#udp">UDP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#72-mss">7.2 MSS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#73-http-https-ftp-y-smtp">7.3 HTTP, HTTPS, FTP Y SMTP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#http">HTTP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#https">HTTPS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#ftp">FTP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#smtp">SMTP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#74-dns">7.4 DNS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-de-una-resolucion-dns-tipica">Funcionamiento de una resolución DNS típica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#75-dhcp">7.5 DHCP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#metodos-de-asignacion">Métodos de asignación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#dhcp-para-ipv6">DHCP para IPv6</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-detallado">Funcionamiento detallado</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#76-natpat">7.6 NAT/PAT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#tipos-de-nat">Tipos de NAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-de-pat">Funcionamiento de PAT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#77-igmp">7.7 IGMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#direcciones-multicast">Direcciones multicast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-basico">Funcionamiento básico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#versiones-de-igmp">Versiones de IGMP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#78-inspeccion-igmp">7.8 INSPECCIÓN IGMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-del-igmp-snooping">Funcionamiento del IGMP snooping</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_08/">08 · Seguridad en redes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#81-principios-de-seguridad-triada-cia">8.1 PRINCIPIOS DE SEGURIDAD (TRÍADA CIA)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#confidencialidad">Confidencialidad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#integridad">Integridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#disponibilidad">Disponibilidad</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#82-firewalls">8.2 FIREWALLS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#firewalls-de-filtrado-de-paquetes-estaticos">Firewalls de filtrado de paquetes (estáticos)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#firewalls-stateful-con-inspeccion-de-estado">Firewalls stateful (con inspección de estado)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#firewalls-de-capa-de-aplicacion-proxy">Firewalls de capa de aplicación (proxy)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#ngfw">NGFW</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#83-dmz">8.3 DMZ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#arquitectura-tipica-de-una-dmz-con-un-solo-firewall-tres-piernas">Arquitectura típica de una DMZ con un solo firewall (tres «piernas»)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#reglas-comunes">Reglas comunes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#variantes-de-dmz">Variantes de DMZ</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#84-acl">8.4 ACL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#tipos-de-acl">Tipos de ACL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#consideraciones-de-diseno-de-acl">Consideraciones de diseño de ACL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#aplicacion-de-acl">Aplicación de ACL</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#85-criptografia">8.5 CRIPTOGRAFÍA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#tls">TLS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#funcionamiento-resumido-de-una-sesion-tls">Funcionamiento resumido de una sesión TLS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#ssh">SSH</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#usos-tipicos">Usos típicos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#86-ipsec">8.6 IPSEC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#componentes-de-ipsec">Componentes de IPsec</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#intercambios-de-ikev2-para-establecer-las-sa">Intercambios de IKEv2 para establecer las SA</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#87-amenazas-de-red">8.7 AMENAZAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#clasificacion-de-amenazas-segun-su-naturaleza">Clasificación de amenazas según su naturaleza</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#88-seguridad-en-capas">8.8 SEGURIDAD EN CAPAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#capas-tipicas-en-una-red-empresarial">Capas típicas en una red empresarial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#ventajas-del-modelo">Ventajas del modelo</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_09/">09 · VPN y tunelización</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#91-gre-en-contexto-vpn">9.1 GRE EN CONTEXTO VPN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#92-ipsec">9.2 IPSEC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#componentes-de-ipsec">Componentes de IPsec</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#modo-transporte">Modo transporte</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#modo-tunel">Modo túnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#primera-etapa">Primera etapa</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#segunda-etapa">Segunda etapa</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#93-ssl-vpn">9.3 SSL VPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#portal-ssl-vpn">Portal SSL VPN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#tunel-ssl-vpn">Túnel SSL VPN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#caracteristicas-tecnicas">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones">Limitaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas">Ventajas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#94-openvpn">9.4 OPENVPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#modos-de-operacion">Modos de operación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#protocolos-de-transporte">Protocolos de transporte</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#95-wireguard">9.5 WIREGUARD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#caracteristicas-tecnicas_1">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas_1">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones_1">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#96-vpn-sitio-a-sitio">9.6 VPN SITIO A SITIO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#componentes-principales">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas_2">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones_2">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#97-vpn-de-acceso-remoto">9.7 VPN DE ACCESO REMOTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#componentes-principales_1">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#control-del-flujo-de-trafico">Control del flujo de tráfico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas_3">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones_3">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#98-comparacion-entre-ipsec-y-ssl-vpn">9.8 COMPARACIÓN ENTRE IPSEC Y SSL VPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#capa-de-operacion">Capa de operación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#facilidad-de-despliegue">Facilidad de despliegue</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#rendimiento">Rendimiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#casos-de-uso-habituales">Casos de uso habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#comparacion-general">Comparación general</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_10/">10 · Infraestructura WAN y core</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#101-mpls">10.1 MPLS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#componentes-principales">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#operaciones-basicas">Operaciones básicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#protocolos-asociados">Protocolos asociados</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#servicios-ventajas-y-limitaciones">Servicios, ventajas y limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#102-sd-wan">10.2 SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#caracteristicas-principales">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#componentes-de-una-arquitectura-sd-wan">Componentes de una arquitectura SD-WAN</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#103-mpls-y-sd-wan">10.3 MPLS Y SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#modelo-operativo">Modelo operativo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#transporte">Transporte</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#calidad-de-servicio">Calidad de servicio</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#costos">Costos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#visibilidad-y-gestion">Visibilidad y gestión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#casos-de-uso">Casos de uso</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#104-backbone-de-red">10.4 BACKBONE DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#topologias-habituales">Topologías habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#caracteristicas-principales_1">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#componentes-del-backbone">Componentes del backbone</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#tecnologias-utilizadas">Tecnologías utilizadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#tecnologias-de-transporte">Tecnologías de transporte</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#105-peering">10.5 PEERING</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#tipos-de-peering">Tipos de peering</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#requisitos-habituales">Requisitos habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#relacion-entre-peering-y-transito">Relación entre peering y tránsito</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#106-migracion-de-mpls-hacia-sd-wan">10.6 MIGRACIÓN DE MPLS HACIA SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#objetivos-habituales-de-la-migracion">Objetivos habituales de la migración</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-1-evaluacion-y-planificacion">Fase 1. Evaluación y planificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-2-implementacion-hibrida">Fase 2. Implementación híbrida</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-3-migracion-gradual-de-aplicaciones">Fase 3. Migración gradual de aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-4-optimizacion-y-consolidacion">Fase 4. Optimización y consolidación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-5-operacion-continua">Fase 5. Operación continua</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#desafios-habituales">Desafíos habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#arquitectura-hibrida-de-referencia">Arquitectura híbrida de referencia</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_11/">11 · Arquitectura de red empresarial</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#111-topologias-de-red">11.1 TOPOLOGÍAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-estrella">Topología en estrella</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-bus">Topología en bus</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-anillo">Topología en anillo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-malla">Topología en malla</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-arbol">Topología en árbol</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-logica">Topología lógica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#112-diagramas-de-red">11.2 DIAGRAMAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-fisico">Diagrama físico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-logico">Diagrama lógico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-de-arquitectura-jerarquica">Diagrama de arquitectura jerárquica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-de-flujo-de-datos">Diagrama de flujo de datos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#herramientas-de-diagramacion">Herramientas de diagramación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#113-modelo-jerarquico">11.3 MODELO JERÁRQUICO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#capa-de-acceso">Capa de acceso</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#capa-de-distribucion">Capa de distribución</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#capa-de-nucleo">Capa de núcleo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#beneficios-del-modelo-jerarquico">Beneficios del modelo jerárquico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#variantes-arquitectonicas">Variantes arquitectónicas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#114-alta-disponibilidad">11.4 ALTA DISPONIBILIDAD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#mtbf-mean-time-between-failures">MTBF (Mean Time Between Failures)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#mttr-mean-time-to-repair">MTTR (Mean Time To Repair)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#principios-de-diseno">Principios de diseño</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#alta-disponibilidad-y-continuidad-operativa">Alta disponibilidad y continuidad operativa</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#115-redundancia">11.5 REDUNDANCIA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#redundancia-de-dispositivos">Redundancia de dispositivos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#otros-niveles-de-redundancia">Otros niveles de redundancia</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#116-segmentacion-corporativa">11.6 SEGMENTACIÓN CORPORATIVA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#metodos-de-segmentacion">Métodos de segmentación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#beneficios-principales">Beneficios principales</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#117-dmz">11.7 DMZ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#objetivos-de-una-dmz">Objetivos de una DMZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#arquitectura-tipica">Arquitectura típica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#modelos-de-implementacion">Modelos de implementación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#controles-de-seguridad-recomendados">Controles de seguridad recomendados</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_12/">12 · Arquitecturas modernas de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#121-cloud-networking">12.1 CLOUD NETWORKING</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#122-zero-trust">12.2 ZERO TRUST</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#123-ztna">12.3 ZTNA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#124-sase">12.4 SASE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_12/#principales-beneficios">Principales beneficios</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_12/#limitaciones">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#125-microsegmentacion">12.5 MICROSEGMENTACIÓN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#126-modernizacion-de-redes">12.6 MODERNIZACIÓN DE REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_12/#telemetria-avanzada">Telemetría avanzada</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_12/#herramientas-de-automatizacion-modernas">Herramientas de automatización modernas</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_13/">13 · Monitoreo y diagnóstico de redes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#131-ping-traceroute-y-nslookup">13.1 PING, TRACEROUTE Y NSLOOKUP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#ping">Ping</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#traceroute-tracert-en-windows">Traceroute (tracert en Windows)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#nslookup">nslookup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#aplicaciones-de-diagnostico">Aplicaciones de diagnóstico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#132-mtr">13.2 MTR</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#funcionamiento">Funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#interpretacion">Interpretación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#ventaja-principal">Ventaja principal</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#133-wireshark">13.3 WIRESHARK</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#capacidades">Capacidades</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#aplicaciones">Aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#limitaciones">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#134-tcpdump">13.4 TCPDUMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#opciones">Opciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#135-iperf">13.5 IPERF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#parametros">Parámetros</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#metricas">Métricas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#aplicaciones_1">Aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#limitacion">Limitación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#136-siem">13.6 SIEM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#funcionalidades">Funcionalidades</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#ejemplos-de-correlacion">Ejemplos de correlación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#limitaciones_1">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_14/">14 · Herramientas Linux</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#141-ip-iproute2">14.1 IP / IPROUTE2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#subcomandos-principales">Subcomandos principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ventajas-de-iproute2">Ventajas de iproute2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ejemplos-practicos">Ejemplos prácticos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#142-ss-netstat">14.2 SS / NETSTAT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#uso-practico-de-ss">Uso práctico de ss</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#informacion-disponible-mediante-ss">Información disponible mediante ss</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ventajas-de-ss">Ventajas de ss</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#143-routing-en-linux">14.3 ROUTING EN LINUX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#habilitacion-de-ip-forwarding">Habilitación de IP forwarding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#router-linux-basico-con-nat">Router Linux básico con NAT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#144-nftables-iptables">14.4 NFTABLES / IPTABLES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#iptables">IPTABLES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#nftables">NFTABLES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#comparacion-entre-iptables-y-nftables">Comparación entre iptables y nftables</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#aplicaciones-habituales">Aplicaciones habituales</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#145-diagnostico-de-red-en-linux">14.5 DIAGNÓSTICO DE RED EN LINUX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ethtool">ETHTOOL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#netcat">NETCAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#metodologia-de-diagnostico">Metodología de Diagnóstico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#flujo-recomendado-de-troubleshooting">Flujo recomendado de troubleshooting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#146-simulacion-de-redes-gns3-eve-ng">14.6 SIMULACIÓN DE REDES GNS3 / EVE-NG</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#gns3">GNS3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#eve-ng">EVE-NG</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#casos-de-uso-profesionales">Casos de uso profesionales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#seleccion-de-plataforma">Selección de plataforma</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_15/">15 · Implementación práctica integral</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#151-configuracion-de-red-basica">15.1 CONFIGURACIÓN DE RED BÁSICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#identificacion-de-interfaces">Identificación de interfaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-de-una-direccion-ipv4">Configuración de una dirección IPv4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-de-la-puerta-de-enlace">Configuración de la puerta de enlace</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#tabla-de-vecinos">Tabla de vecinos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-progresiva">Verificación progresiva</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#captura-del-trafico">Captura del tráfico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#resolucion-de-nombres">Resolución de nombres</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#152-subnetting-aplicado-vlsm">15.2 SUBNETTING APLICADO — VLSM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-a">Segmento A</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-b">Segmento B</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-c">Segmento C</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-d">Segmento D</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-matematica">Verificación matemática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-con-linux">Verificación con Linux</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#153-vlan-redes-locales-virtuales">15.3 VLAN REDES LOCALES VIRTUALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#creacion-de-una-subinterfaz-vlan">Creación de una subinterfaz VLAN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#puerto-trunk">Puerto trunk</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-mediante-captura">Verificación mediante captura</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#routing-entre-vlan">Routing entre VLAN</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#154-routing-entre-redes">15.4 ROUTING ENTRE REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#rutas-estaticas">Rutas estáticas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#activacion-del-forwarding">Activación del forwarding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#prueba-del-camino">Prueba del camino</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#routing-dinamico-con-ospf">Routing dinámico con OSPF</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#diagnostico-de-routing">Diagnóstico de routing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#155-firewall-nftables">15.5 FIREWALL — NFTABLES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#firewall-basico">Firewall básico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#nat">NAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion">Verificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#principio-de-diagnostico">Principio de diagnóstico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#156-red-parcial-integrada-dhcp">15.6 RED PARCIAL INTEGRADA — DHCP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-conceptual">Configuración conceptual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#proceso-dora">Proceso DORA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-del-cliente">Verificación del cliente</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#diagnostico">Diagnóstico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#integracion">Integración</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#157-red-empresarial-completa">15.7 RED EMPRESARIAL COMPLETA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#principio-de-funcionamiento">Principio de funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-conceptual_1">Configuración conceptual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#prueba-de-failover">Prueba de failover</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#consideraciones-operativas">Consideraciones operativas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#158-troubleshooting-real">15.8 TROUBLESHOOTING REAL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-1">CASO DE ESTUDIO 1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-2">CASO DE ESTUDIO 2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-3">CASO DE ESTUDIO 3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-4">CASO DE ESTUDIO 4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-5">CASO DE ESTUDIO 5</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#validacion-final-del-laboratorio">VALIDACIÓN FINAL DEL LABORATORIO</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#metodologia-aplicada-en-los-casos-de-estudio">Metodología aplicada en los casos de estudio</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../conclusion/">Conclusión</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glosario/">Glosario</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../acronimos/">Acrónimos</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Anexos gráficos</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/">Introducción</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_I/">Anexo I</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_II/">Anexo II</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_III/">Anexo III</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_IV/">Anexo IV</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_V/">Anexo V</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_VI/">Anexo VI</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_VII/">Anexo VII</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_VIII/">Anexo VIII</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_IX/">Anexo IX</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_X/">Anexo X</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_XI/">Anexo XI</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_XII/">Anexo XII</a>
+    <ul>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../bibliograf%C3%ADa/">Bibliografía</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#libros-y-publicaciones-tecnicas">Libros y publicaciones técnicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#estandares-y-documentacion-tecnica">Estándares y documentación técnica</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#internet-engineering-task-force-ietf">Internet Engineering Task Force (IETF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#ieee">IEEE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#linux-y-herramientas-de-administracion-de-redes">Linux y herramientas de administración de redes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#seguridad-informatica-y-buenas-practicas">Seguridad informática y buenas prácticas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#fuentes-historicas-y-academicas">Fuentes históricas y académicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#recursos-complementarios">Recursos complementarios</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Complementos</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../complementos/sistema-de-diagramas/">Sistema de diagramas</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../complementos/derechos-de-autor/">Derechos de autor y licencia</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#derechos-de-autor-y-licencia">Derechos de autor y licencia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#atribucion">Atribución</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#alcance-de-la-licencia">Alcance de la licencia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#contenido-tecnico-y-conocimientos-generales">Contenido técnico y conocimientos generales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#materiales-de-terceros">Materiales de terceros</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#contenido-grafico-y-elementos-visuales">Contenido gráfico y elementos visuales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#tipografias-software-y-herramientas">Tipografías, software y herramientas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#inteligencia-artificial-y-proceso-de-elaboracion">Inteligencia artificial y proceso de elaboración</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#codigo-comandos-configuraciones-y-ejemplos-tecnicos">Código, comandos, configuraciones y ejemplos técnicos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#estandares-y-especificaciones-tecnicas">Estándares y especificaciones técnicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#autoria-y-procedencia-de-los-contenidos">Autoría y procedencia de los contenidos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#limitaciones-y-excepciones-legales">Limitaciones y excepciones legales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#responsabilidad-sobre-la-informacion-tecnica">Responsabilidad sobre la información técnica</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#sobre-este-aviso">Sobre este aviso</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#identificacion-de-la-edicion">Identificación de la edición</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Temas</li>
+      <li class="breadcrumb-item active">03 · Componentes de una red</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p class="tema-num">TEMA 03</p>
+
+<h1 id="componentes-de-una-red">COMPONENTES DE UNA RED<a class="headerlink" href="#componentes-de-una-red" title="Permanent link">¶</a></h1>
+<p>El funcionamiento de una red de computadoras no se limita a la transmisión de datos a través de medios físicos: depende de la interacción coordinada de múltiples elementos que permiten generar, procesar, dirigir y entregar la información.</p>
+<p>La encapsulación del Tema 1 y la transmisión del Tema 2 se materializan en equipos concretos. Este tema presenta los componentes que producen, transportan y reciben las tramas, y cómo sus características, por ejemplo la MTU, condicionan lo que ocurre en las capas superiores. Estos elementos, denominados componentes de red, son la base operativa sobre la cual se establece la comunicación entre sistemas.</p>
+<p>Desde una perspectiva estructural, los componentes de red se clasifican según su función dentro del proceso de comunicación, distinguiéndose entre dispositivos que generan o consumen información, dispositivos que la transportan o gestionan y los elementos físicos que permiten su interconexión. La Figura 3.1 presenta el mapa de las secciones del tema y la Tabla 3.1 resume la clasificación.</p>
+<div class="diagram" id="figura-3-01" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g403" viewBox="0 0 1200 412" role="img" aria-labelledby="g403-title">
+<title id="g403-title">Mapa del Tema 3</title>
+<defs></defs>
+<g id="g403-c" transform="translate(20 20)"><rect x="0" y="0" width="370.67" height="158" rx="6" fill="#fbe6e6" stroke="#d40000" stroke-width="2"></rect>
+<line x1="0" y1="34" x2="370.67" y2="34" stroke="#d40000" stroke-width="1.5"></line>
+<text x="185.33" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">3.1 Dispositivos finales</text>
+<g transform="translate(185.33 78.64) scale(0.7)" data-lib="pc"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#fbe6e6" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g>
+<text x="185.33" y="139" font-size="10.9pt" font-weight="400" fill="#7f1d1d" text-anchor="middle">Origen y destino de la información</text>
+<rect x="394.67" y="0" width="370.67" height="158" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<line x1="394.67" y1="34" x2="765.33" y2="34" stroke="#009254" stroke-width="1.5"></line>
+<text x="580" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">3.2 Dispositivos intermedios</text>
+<g transform="translate(580 78.64) scale(0.7)" data-lib="switch"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#009254" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-24" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-4" cy="-15" r="2.5" fill="#009254"></circle><circle cx="16" cy="-15" r="2.5" fill="#009254"></circle><circle cx="36" cy="-15" r="2.5" fill="#009254"></circle></g>
+<text x="580" y="139" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">Reenvío y dirección del tráfico</text>
+<rect x="789.33" y="0" width="370.67" height="158" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="789.33" y1="34" x2="1160" y2="34" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="974.67" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">3.3 Interfaces de red (NIC)</text>
+<g transform="translate(974.67 78.64) scale(0.7)" data-lib="plug"><rect x="-14" y="-6" width="28" height="30" rx="3" fill="#e6ecfa" stroke="#003ecc" stroke-width="3"></rect><path d="M-9 -6 V-18 M0 -6 V-18 M9 -6 V-18" stroke="#003ecc" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="974.67" y="139" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Conexión entre el equipo y la red</text>
+<rect x="0" y="182" width="370.67" height="158" rx="6" fill="#fcebe6" stroke="#dd3a00" stroke-width="2"></rect>
+<line x1="0" y1="216" x2="370.67" y2="216" stroke="#dd3a00" stroke-width="1.5"></line>
+<text x="185.33" y="205" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">3.4 Unidad máxima de transmisión (MTU)</text>
+<g transform="translate(185.33 260.64) scale(0.7)" data-lib="packet"><rect x="-38" y="-20" width="76" height="40" rx="4" fill="#ffffff" stroke="#dd3a00" stroke-width="3"></rect><rect x="-38" y="-20" width="26" height="40" fill="#f6cebf" stroke="#dd3a00" stroke-width="3"></rect><path d="M-4 -6h30M-4 6h20" stroke="#dd3a00" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="185.33" y="321" font-size="10.9pt" font-weight="400" fill="#7c2d12" text-anchor="middle">Tamaño máximo de la unidad de datos</text>
+<rect x="394.67" y="182" width="370.67" height="158" rx="6" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2"></rect>
+<line x1="394.67" y1="216" x2="765.33" y2="216" stroke="#7c3aed" stroke-width="1.5"></line>
+<text x="580" y="205" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">3.5 Infraestructura física</text>
+<g transform="translate(580 260.64) scale(0.7)" data-lib="cable"><path d="M-40 0 C-26 -30 -14 -30 0 0 S26 30 40 0" fill="none" stroke="#7c3aed" stroke-width="4" stroke-linecap="round"></path></g>
+<text x="580" y="321" font-size="10.9pt" font-weight="400" fill="#5b21b6" text-anchor="middle">Elementos físicos de interconexión</text>
+<rect x="789.33" y="182" width="370.67" height="158" rx="6" fill="#ebedf0" stroke="#364e6c" stroke-width="2"></rect>
+<line x1="789.33" y1="216" x2="1160" y2="216" stroke="#364e6c" stroke-width="1.5"></line>
+<text x="974.67" y="205" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">3.6 Comunicación en la red</text>
+<g transform="translate(974.67 260.64) scale(0.7)" data-lib="fork"><g fill="none" stroke="#364e6c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-30 0 H-6 L20 -18 M-6 0 L20 18"></path><path d="M12 -26 L22 -18 L12 -10 M12 10 L22 18 L12 26"></path></g><circle cx="-30" cy="0" r="5" fill="#364e6c"></circle></g>
+<text x="974.67" y="321" font-size="10.9pt" font-weight="400" fill="#1e3a5f" text-anchor="middle">Cómo interactúan los componentes</text></g><text x="600" y="394" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 3.1. Mapa del Tema 3.</text></svg>
+</div>
+
+<h2 id="31-dispositivos-finales">3.1 DISPOSITIVOS FINALES<a class="headerlink" href="#31-dispositivos-finales" title="Permanent link">¶</a></h2>
+<p>En toda red existen elementos cuya función principal consiste en actuar como origen o destino de la información.</p>
+<p>Estos dispositivos representan los extremos del proceso de comunicación y son utilizados directamente por usuarios o aplicaciones. Constituyen el propósito de la red: el intercambio de información entre entidades finales.</p>
+<p>Los dispositivos finales abarcan equipos muy distintos entre sí: la Figura 3.2 los agrupa por tipo y la Tabla 3.1 sitúa cada categoría de componentes (finales, intermedios, interfaces e infraestructura) dentro del proceso de comunicación.</p>
+<div class="diagram tabla-svg" id="tabla-3-1" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 343" role="img" aria-labelledby="t13-title"><title id="t13-title">Tabla 3.1. Clasificación de los componentes de red.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="92.0" y="20.0" dominant-baseline="central" text-anchor="middle">Categoría</text>
+<text class="tb-ht" x="520.1" y="20.0" dominant-baseline="central" text-anchor="middle">Función</text>
+<text class="tb-ht" x="1028.1" y="20.0" dominant-baseline="central" text-anchor="middle">Ejemplos</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="72.1" dominant-baseline="central">Dispositivos finales</text>
+<text class="tb-tx" x="196.0" y="60.8" dominant-baseline="central">Generan, envían, reciben o procesan información para utilizar aplicaciones y</text>
+<text class="tb-tx" x="196.0" y="83.5" dominant-baseline="central">servicios.</text>
+<text class="tb-tx" x="868.2" y="60.8" dominant-baseline="central">Computadoras, servidores, teléfonos,</text>
+<text class="tb-tx" x="868.2" y="83.5" dominant-baseline="central">impresoras y dispositivos IoT.</text>
+<rect class="tb-to" x="0" y="104.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="124.2" dominant-baseline="central">Dispositivos</text>
+<text class="tb-tx tb-b" x="12.0" y="147.0" dominant-baseline="central">intermedios</text>
+<text class="tb-tx" x="196.0" y="124.2" dominant-baseline="central">Conectan segmentos y procesan o reenvían tráfico según las funciones de cada</text>
+<text class="tb-tx" x="196.0" y="147.0" dominant-baseline="central">equipo.</text>
+<text class="tb-tx" x="868.2" y="124.2" dominant-baseline="central">Switches, routers, puntos de acceso y</text>
+<text class="tb-tx" x="868.2" y="147.0" dominant-baseline="central">firewalls.</text>
+<rect class="tb-te" x="0" y="167.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="199.1" dominant-baseline="central">Interfaces de red</text>
+<text class="tb-tx" x="196.0" y="187.8" dominant-baseline="central">Proporcionan la conexión entre un dispositivo y el medio de transmisión;</text>
+<text class="tb-tx" x="196.0" y="210.5" dominant-baseline="central">implementan las funciones correspondientes a la tecnología de red utilizada.</text>
+<text class="tb-tx" x="868.2" y="199.1" dominant-baseline="central">NIC Ethernet y adaptadores Wi-Fi.</text>
+<rect class="tb-to" x="0" y="231.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="251.2" dominant-baseline="central">Infraestructura</text>
+<text class="tb-tx tb-b" x="12.0" y="274.0" dominant-baseline="central">física</text>
+<text class="tb-tx" x="196.0" y="262.6" dominant-baseline="central">Proporciona el soporte físico para la interconexión y transmisión de señales.</text>
+<text class="tb-tx" x="868.2" y="251.2" dominant-baseline="central">Cables, conectores, transceptores,</text>
+<text class="tb-tx" x="868.2" y="274.0" dominant-baseline="central">paneles de parcheo y racks.</text>
+<text class="tb-cap" x="600.0" y="320.8" text-anchor="middle">Tabla 3.1. Clasificación de los componentes de red.</text></svg>
+</div>
+
+<p>En el contexto de las arquitecturas <em>Zero Trust</em> (Tema 12), el término <em>endpoint</em> se emplea habitualmente para referirse a los dispositivos finales que solicitan acceso a los recursos, como ocurre en NIST SP 800-207 (<em>Zero Trust Architecture</em>) y en las guías <em>Zero Trust</em> de CISA.</p>
+<h3 id="caracteristicas-principales">Características principales<a class="headerlink" href="#caracteristicas-principales" title="Permanent link">¶</a></h3>
+<p>Un dispositivo final (también denominado <em>host</em> o sistema final) es cualquier equipo capaz de generar, enviar, recibir o procesar datos dentro de una red.</p>
+<p>Entre sus características principales se encuentran la capacidad para ejecutar aplicaciones de usuario, la generación y consumo de tráfico de red, la interacción directa con el usuario y la asociación a una o varias direcciones IP.</p>
+<p>Estos dispositivos operan en los extremos del flujo de datos, encapsulando o desencapsulando la información conforme a los protocolos utilizados, y pueden operar con distintos sistemas operativos y pilas de protocolos.</p>
+<p>La estandarización de TCP/IP facilita la interoperabilidad, independientemente del fabricante o de la plataforma.</p>
+<p>Dentro de esta categoría se incluyen los siguientes tipos de equipos:</p>
+<div class="diagram" id="figura-3-02" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g406" viewBox="0 0 1200 216.821" role="img" aria-labelledby="g406-title">
+<title id="g406-title">Tipos de dispositivos finales</title>
+<defs><marker id="g406m" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#364e6c"></polygon></marker><marker id="g406n" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#364e6c"></polygon></marker></defs>
+<g id="g406-c" transform="translate(21.536 21.536) scale(1.024)"><rect x="0" y="0" width="210" height="140" rx="5.86" fill="#fbe6e6" stroke="#d40000" stroke-width="1.953"></rect>
+<line x1="0" y1="34" x2="210" y2="34" stroke="#d40000" stroke-width="1.465"></line>
+<text x="105" y="23" font-size="13.672pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Computadoras</text>
+<rect x="230" y="0" width="210" height="140" rx="5.86" fill="#e6ecfa" stroke="#003ecc" stroke-width="1.953"></rect>
+<line x1="230" y1="34" x2="440" y2="34" stroke="#003ecc" stroke-width="1.465"></line>
+<text x="335" y="23" font-size="13.672pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Servidores</text>
+<rect x="460" y="0" width="210" height="140" rx="5.86" fill="#e6f4ee" stroke="#009254" stroke-width="1.953"></rect>
+<line x1="460" y1="34" x2="670" y2="34" stroke="#009254" stroke-width="1.465"></line>
+<text x="565" y="23" font-size="13.672pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Móviles</text>
+<g transform="translate(565 91) scale(1.7) translate(-565 -91)"><rect x="551" y="69" width="28" height="44" fill="#ffffff" stroke="#009254" stroke-width="1.5"></rect><rect x="555" y="75" width="20" height="28" fill="#bfe4d4" stroke="#009254" stroke-width="1"></rect><circle cx="565" cy="108" r="2.5" fill="#009254" stroke="#009254" stroke-width="1.5"></circle></g>
+<rect x="690" y="0" width="210" height="140" rx="5.86" fill="#fcebe6" stroke="#dd3a00" stroke-width="1.953"></rect>
+<line x1="690" y1="34" x2="900" y2="34" stroke="#dd3a00" stroke-width="1.465"></line>
+<text x="795" y="23" font-size="13.672pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Impresoras de red</text>
+<g transform="translate(795 91) scale(1.7) translate(-795 -91)"><rect x="777" y="69" width="36" height="16" fill="#ffffff" stroke="#dd3a00" stroke-width="1.5"></rect><rect x="767" y="85" width="56" height="22" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.5"></rect><rect x="777" y="99" width="36" height="14" fill="#ffffff" stroke="#dd3a00" stroke-width="1.5"></rect><line x1="783" y1="104" x2="807" y2="104" stroke="#dd3a00" stroke-width="1"></line></g>
+<rect x="920" y="0" width="210" height="140" rx="5.86" fill="#f2ebfd" stroke="#7c3aed" stroke-width="1.953"></rect>
+<line x1="920" y1="34" x2="1130" y2="34" stroke="#7c3aed" stroke-width="1.465"></line>
+<text x="1025" y="23" font-size="13.672pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Dispositivos IoT</text>
+<g transform="translate(1025 91) scale(1.7) translate(-1025 -91)"><circle cx="1025" cy="91" r="7" fill="#7c3aed" stroke="#7c3aed" stroke-width="1.5"></circle><path d="M -14 -10 A 17 17 0 0 0 -14 10" fill="none" stroke="#7c3aed" stroke-width="2" transform="translate(1025 91)"></path><path d="M 14 -10 A 17 17 0 0 1 14 10" fill="none" stroke="#7c3aed" stroke-width="2" transform="translate(1025 91)"></path><path d="M -22 -16 A 27 27 0 0 0 -22 16" fill="none" stroke="#7c3aed" stroke-width="2" transform="translate(1025 91)"></path><path d="M 22 -16 A 27 27 0 0 1 22 16" fill="none" stroke="#7c3aed" stroke-width="2" transform="translate(1025 91)"></path></g>
+<g transform="translate(105 94.907) scale(0.977)" data-lib="pc"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#fbe6e6" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g><g transform="translate(335 89.755) scale(0.83)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#003ecc"></circle><path d="M-34 -27.5h34" stroke="#003ecc" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#003ecc"></circle><path d="M-34 1.5h34" stroke="#003ecc" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#003ecc"></circle><path d="M-34 30.5h34" stroke="#003ecc" stroke-width="3" stroke-linecap="round"></path></g></g><text x="600" y="198.981" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 3.2. Tipos de dispositivos finales.</text></svg>
+</div>
+
+<h3 id="computadoras-personales-y-estaciones-de-trabajo">Computadoras personales y estaciones de trabajo<a class="headerlink" href="#computadoras-personales-y-estaciones-de-trabajo" title="Permanent link">¶</a></h3>
+<p>Equipos de propósito general utilizados por los usuarios finales para acceder a los servicios de la red.</p>
+<h3 id="servidores">Servidores<a class="headerlink" href="#servidores" title="Permanent link">¶</a></h3>
+<p>Sistemas dedicados a proporcionar servicios específicos, como almacenamiento de archivos, bases de datos, correo electrónico o aplicaciones web.</p>
+<h3 id="dispositivos-moviles">Dispositivos móviles<a class="headerlink" href="#dispositivos-moviles" title="Permanent link">¶</a></h3>
+<p>Teléfonos inteligentes, tabletas y otros dispositivos portátiles que se conectan mediante redes inalámbricas.</p>
+<h3 id="impresoras-de-red">Impresoras de red<a class="headerlink" href="#impresoras-de-red" title="Permanent link">¶</a></h3>
+<p>Periféricos que reciben trabajos de impresión a través de la red.</p>
+<h3 id="dispositivos-iot">Dispositivos IoT<a class="headerlink" href="#dispositivos-iot" title="Permanent link">¶</a></h3>
+<p>Sensores, actuadores y dispositivos embebidos que intercambian datos con otros sistemas.</p>
+<h2 id="32-dispositivos-intermedios">3.2 DISPOSITIVOS INTERMEDIOS<a class="headerlink" href="#32-dispositivos-intermedios" title="Permanent link">¶</a></h2>
+<p>A diferencia de los dispositivos finales, los dispositivos intermedios no generan ni consumen directamente datos de aplicación de los usuarios (aunque sí intercambian tráfico de control, como el de los protocolos de enrutamiento).</p>
+<p>Su función es transportar, controlar y direccionar los datos; en última instancia, hacer posible que la información llegue del origen al destino a través de la infraestructura disponible, tomando decisiones de reenvío en cada salto de la red. La Figura 3.3 presenta los tipos de dispositivos intermedios que se describen a continuación.</p>
+<div class="diagram" id="figura-3-03" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g407" viewBox="0 0 1200 560.673" role="img" aria-labelledby="g407-title">
+<title id="g407-title">Dispositivos intermedios</title>
+<defs><marker id="g407m" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#364e6c"></polygon></marker><marker id="g407n" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#364e6c"></polygon></marker></defs>
+<g id="g407-c" transform="translate(21.807 21.807) scale(1.205)"><rect x="0" y="0" width="300" height="190" rx="4.981" fill="#e6ecfa" stroke="#003ecc" stroke-width="2.075"></rect>
+<line x1="0" y1="34" x2="300" y2="34" stroke="#003ecc" stroke-width="1.66"></line>
+<text x="150" y="23" font-size="14.108pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Switch (capa 2)</text>
+<rect x="14" y="150" width="272" height="28" rx="4.981" fill="#bfcff2" stroke="#003ecc" stroke-width="1.66"></rect>
+<text x="150" y="170.002" font-size="9.959pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Reenvía tramas por MAC</text>
+<rect x="330" y="0" width="300" height="190" rx="4.981" fill="#e6f4ee" stroke="#009254" stroke-width="2.075"></rect>
+<line x1="330" y1="34" x2="630" y2="34" stroke="#009254" stroke-width="1.66"></line>
+<text x="480" y="23" font-size="14.108pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Router (capa 3)</text>
+<rect x="344" y="150" width="272" height="28" rx="4.981" fill="#bfe4d4" stroke="#009254" stroke-width="1.66"></rect>
+<text x="480" y="170.002" font-size="9.959pt" font-weight="700" fill="#065f46" text-anchor="middle">Reenvía paquetes por IP</text>
+<rect x="660" y="0" width="300" height="190" rx="4.981" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2.075"></rect>
+<line x1="660" y1="34" x2="960" y2="34" stroke="#7c3aed" stroke-width="1.66"></line>
+<text x="810" y="23" font-size="14.108pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Punto de acceso</text>
+<g transform="translate(810 92) scale(1.7) translate(-810 -92)"><path d="M -5.6 2.4 A 8 8 0 0 1 5.6 2.4" fill="none" stroke="#7c3aed" stroke-width="2" transform="translate(810 92)"></path><path d="M -11.2 -3.2 A 16 16 0 0 1 11.2 -3.2" fill="none" stroke="#7c3aed" stroke-width="2" transform="translate(810 92)"></path><path d="M -16.8 -8.8 A 24 24 0 0 1 16.8 -8.8" fill="none" stroke="#7c3aed" stroke-width="2" transform="translate(810 92)"></path><circle cx="810" cy="100" r="3" fill="#7c3aed" stroke="#7c3aed" stroke-width="1.5"></circle><rect x="796" y="106" width="28" height="8" fill="#decefa" stroke="#7c3aed" stroke-width="1"></rect></g>
+<rect x="674" y="150" width="272" height="28" rx="4.981" fill="#decefa" stroke="#7c3aed" stroke-width="1.66"></rect>
+<text x="810" y="170.002" font-size="9.959pt" font-weight="700" fill="#5b21b6" text-anchor="middle">Une Wi-Fi y cableado</text>
+<rect x="0" y="214" width="300" height="190" rx="4.981" fill="#fbe6e6" stroke="#d40000" stroke-width="2.075"></rect>
+<line x1="0" y1="248" x2="300" y2="248" stroke="#d40000" stroke-width="1.66"></line>
+<text x="150" y="237" font-size="14.108pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Firewall</text>
+<g transform="translate(150 306) scale(1.7) translate(-150 -306)"><path d="M 0 -22 L 20 -14 L 20 2 C 20 14 0 22 0 22 C 0 22 -20 14 -20 2 L -20 -14 Z" fill="#d40000" stroke="#d40000" stroke-width="2" transform="translate(150 306)"></path><line x1="142" y1="306" x2="148" y2="313" stroke="#d40000" stroke-width="2"></line><line x1="148" y1="313" x2="159" y2="299" stroke="#d40000" stroke-width="2"></line></g>
+<rect x="14" y="364" width="272" height="28" rx="4.981" fill="#f4bfbf" stroke="#d40000" stroke-width="1.66"></rect>
+<text x="150" y="384.002" font-size="9.959pt" font-weight="700" fill="#7f1d1d" text-anchor="middle">Filtra según reglas</text>
+<rect x="330" y="214" width="300" height="190" rx="4.981" fill="#fcebe6" stroke="#dd3a00" stroke-width="2.075"></rect>
+<line x1="330" y1="248" x2="630" y2="248" stroke="#dd3a00" stroke-width="1.66"></line>
+<text x="480" y="237" font-size="14.108pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Balanceador de carga</text>
+<g transform="translate(480 306) scale(1.7) translate(-480 -306)"><line x1="454" y1="306" x2="474" y2="306" stroke="#dd3a00" stroke-width="2"></line><line x1="474" y1="306" x2="502" y2="292" stroke="#dd3a00" stroke-width="2"></line><line x1="474" y1="306" x2="502" y2="306" stroke="#dd3a00" stroke-width="2"></line><line x1="474" y1="306" x2="502" y2="320" stroke="#dd3a00" stroke-width="2"></line><circle cx="454" cy="306" r="3" fill="#dd3a00" stroke="#dd3a00" stroke-width="1.5"></circle></g>
+<rect x="344" y="364" width="272" height="28" rx="4.981" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.66"></rect>
+<text x="480" y="384.002" font-size="9.959pt" font-weight="700" fill="#7c2d12" text-anchor="middle">Distribuye el tráfico</text>
+<rect x="660" y="214" width="300" height="190" rx="4.981" fill="#ebedf0" stroke="#364e6c" stroke-width="2.075"></rect>
+<line x1="660" y1="248" x2="960" y2="248" stroke="#364e6c" stroke-width="1.66"></line>
+<text x="810" y="237" font-size="14.108pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Proxy inverso / WAF</text>
+<g transform="translate(810 306) scale(1.7) translate(-810 -306)"><path d="M 0 -22 L 20 -14 L 20 2 C 20 14 0 22 0 22 C 0 22 -20 14 -20 2 L -20 -14 Z" fill="#364e6c" stroke="#364e6c" stroke-width="2" transform="translate(810 306)"></path><line x1="802" y1="306" x2="808" y2="313" stroke="#364e6c" stroke-width="2"></line><line x1="808" y1="313" x2="819" y2="299" stroke="#364e6c" stroke-width="2"></line></g>
+<rect x="674" y="364" width="272" height="28" rx="4.981" fill="#cdd3da" stroke="#364e6c" stroke-width="1.66"></rect>
+<text x="810" y="384.002" font-size="9.959pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Capa 7 · HTTP/HTTPS</text>
+<g transform="translate(150 92) scale(0.83)" data-lib="switch"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#003ecc"></circle><circle cx="-24" cy="-15" r="2.5" fill="#003ecc"></circle><circle cx="-4" cy="-15" r="2.5" fill="#003ecc"></circle><circle cx="16" cy="-15" r="2.5" fill="#003ecc"></circle><circle cx="36" cy="-15" r="2.5" fill="#003ecc"></circle></g><g transform="translate(480 92) scale(0.83)" data-lib="router"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#009254" stroke-width="3"></rect><g fill="none" stroke="#009254" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M-36 -8H30M20 -17l10 9-10 9"></path><path d="M36 12H-30M-20 3l-10 9 10 9"></path></g></g></g><text x="600" y="542.833" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 3.3. Dispositivos intermedios.</text></svg>
+</div>
+
+<p>Un dispositivo intermedio gestiona el tránsito de datos entre dispositivos y redes mediante funciones como el reenvío de tramas o paquetes, la selección de rutas, el filtrado y la segmentación lógica.</p>
+<p>No todos los dispositivos intermedios realizan todas estas funciones, ni todos garantizan por sí mismos la entrega correcta de los datos.</p>
+<p>Entre sus funciones están el reenvío entre segmentos de red, la selección de rutas mediante protocolos de enrutamiento, el filtrado según políticas de seguridad y la segmentación de dominios de difusión (<em>broadcast</em>) y de colisión.</p>
+<p>También pueden realizar control de acceso y registro de eventos. Entre los dispositivos intermedios más representativos se encuentran:</p>
+<h3 id="switches-conmutadores">Switches (conmutadores)<a class="headerlink" href="#switches-conmutadores" title="Permanent link">¶</a></h3>
+<p>Operan principalmente en la capa de enlace de datos (capa 2) utilizando direcciones MAC.</p>
+<p>Los <em>switches</em> multicapa (<em>multilayer switches</em>) incorporan funcionalidades de capa 3, permitiendo el enrutamiento entre VLAN sin necesidad de un <em>router</em> externo.</p>
+<h3 id="enrutadores-routers">Enrutadores (routers)<a class="headerlink" href="#enrutadores-routers" title="Permanent link">¶</a></h3>
+<p>Operan en la capa de red (capa 3) y dirigen paquetes entre redes diferentes mediante tablas de enrutamiento.</p>
+<h3 id="puntos-de-acceso-inalambrico">Puntos de acceso inalámbrico<a class="headerlink" href="#puntos-de-acceso-inalambrico" title="Permanent link">¶</a></h3>
+<p>Permiten la conexión de dispositivos finales a la red cableada mediante Wi-Fi, actuando como puentes entre el medio inalámbrico y el medio cableado.</p>
+<h3 id="firewalls">Firewalls<a class="headerlink" href="#firewalls" title="Permanent link">¶</a></h3>
+<p>Dispositivos de seguridad que inspeccionan y filtran el tráfico de acuerdo con reglas previamente definidas. Generalmente se ubican en los límites de la red.</p>
+<h3 id="balanceadores-de-carga">Balanceadores de carga<a class="headerlink" href="#balanceadores-de-carga" title="Permanent link">¶</a></h3>
+<p>Distribuyen el tráfico entre múltiples servidores para optimizar el rendimiento y la disponibilidad del servicio.</p>
+<h3 id="dispositivos-adicionales-en-redes-modernas">Dispositivos adicionales en redes modernas<a class="headerlink" href="#dispositivos-adicionales-en-redes-modernas" title="Permanent link">¶</a></h3>
+<h4 id="firewalls-de-aplicaciones-web">Firewalls de aplicaciones web<a class="headerlink" href="#firewalls-de-aplicaciones-web" title="Permanent link">¶</a></h4>
+<p>Inspeccionan y filtran el tráfico utilizando reglas específicas para protocolos y aplicaciones web.</p>
+<h4 id="proxies-inversos">Proxies inversos<a class="headerlink" href="#proxies-inversos" title="Permanent link">¶</a></h4>
+<p>Reciben las solicitudes de los clientes y las distribuyen entre múltiples servidores de <em>backend</em>.</p>
+<h4 id="balanceadores-de-carga-de-capa-4-y-capa-7">Balanceadores de carga de capa 4 y capa 7<a class="headerlink" href="#balanceadores-de-carga-de-capa-4-y-capa-7" title="Permanent link">¶</a></h4>
+<p>Distribuyen conexiones entre servidores utilizando información de transporte (TCP/UDP) o de aplicación (HTTP/HTTPS), según el nivel en el que operan.</p>
+<h4 id="proxies-capa-7">Proxies (capa 7)<a class="headerlink" href="#proxies-capa-7" title="Permanent link">¶</a></h4>
+<p>Filtran y redirigen tráfico HTTP y HTTPS.</p>
+<h2 id="33-interfaces-de-red-nic">3.3 INTERFACES DE RED (NIC)<a class="headerlink" href="#33-interfaces-de-red-nic" title="Permanent link">¶</a></h2>
+<p>Para que un dispositivo pueda conectarse a un medio de transmisión y participar en una red, requiere un componente de <em>hardware</em> y <em>software</em> encargado de realizar la conversión entre los datos internos del sistema y las señales físicas del medio.</p>
+<p>Este componente recibe el nombre de interfaz de red o NIC (<em>Network Interface Card</em>); actúa como intermediario entre el bus del sistema (por ejemplo, PCIe) y el medio físico (cable de par trenzado, fibra óptica o aire).</p>
+<p>Una NIC implementa funciones de la capa física y de parte de la capa de enlace de datos, lo que permite que un equipo se conecte a un medio de transmisión específico. La Figura 3.4 resume sus funciones principales: control de acceso al medio, gestión de tramas, conversión de datos digitales a señales e identificación única. A continuación se describe cada una.</p>
+<h3 id="control-de-acceso-al-medio">Control de acceso al medio<a class="headerlink" href="#control-de-acceso-al-medio" title="Permanent link">¶</a></h3>
+<p>Implementa los mecanismos necesarios para regular el acceso al canal de comunicación.</p>
+<p>En Ethernet clásico se utilizaba CSMA/CD (<em>Carrier Sense Multiple Access with Collision Detection</em>), mientras que en redes inalámbricas se emplea CSMA/CA (<em>Carrier Sense Multiple Access with Collision Avoidance</em>).</p>
+<div class="diagram" id="figura-3-04" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g408" viewBox="0 0 1200 262.82" role="img" aria-labelledby="g408-title">
+<title id="g408-title">Funciones de la interfaz de red (NIC)</title>
+<defs><marker id="g408m" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#364e6c"></polygon></marker><marker id="g408n" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#364e6c"></polygon></marker></defs>
+<g id="g408-c" transform="translate(21.668 21.668) scale(1.112)"><rect x="0" y="0" width="210" height="170" rx="5.395" fill="#ebedf0" stroke="#364e6c" stroke-width="1.798"></rect>
+<line x1="0" y1="34" x2="210" y2="34" stroke="#364e6c" stroke-width="1.349"></line>
+<text x="105" y="34" font-size="12.59pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Equipo</text>
+<rect x="15" y="126" width="180" height="30" rx="5.395" fill="#cdd3da" stroke="#364e6c" stroke-width="1.349"></rect>
+<text x="105" y="147.002" font-size="9.442pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Bus del sistema (PCIe)</text>
+<rect x="300" y="0" width="440" height="170" rx="5.395" fill="#e6ecfa" stroke="#003ecc" stroke-width="1.798"></rect>
+<line x1="300" y1="34" x2="740" y2="34" stroke="#003ecc" stroke-width="1.349"></line>
+<text x="520" y="23" font-size="12.59pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">NIC</text>
+<rect x="318" y="52" width="196" height="36" rx="5.395" fill="#bfcff2" stroke="#003ecc" stroke-width="1.349"></rect>
+<text x="416" y="76.0025" font-size="9.442pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Tramas · MAC · FCS</text>
+<rect x="524" y="52" width="196" height="36" rx="5.395" fill="#bfcff2" stroke="#003ecc" stroke-width="1.349"></rect>
+<text x="622" y="76.0025" font-size="9.442pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Acceso al medio</text>
+<rect x="318" y="102" width="196" height="36" rx="5.395" fill="#bfcff2" stroke="#003ecc" stroke-width="1.349"></rect>
+<text x="416" y="126.002" font-size="9.442pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Bits y señales</text>
+<rect x="524" y="102" width="196" height="36" rx="5.395" fill="#bfcff2" stroke="#003ecc" stroke-width="1.349"></rect>
+<text x="622" y="126.002" font-size="9.442pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Offloading</text>
+<rect x="830" y="0" width="210" height="170" rx="5.395" fill="#e6f4ee" stroke="#009254" stroke-width="1.798"></rect>
+<line x1="830" y1="34" x2="1040" y2="34" stroke="#009254" stroke-width="1.349"></line>
+<text x="935" y="28" font-size="12.59pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Medio físico</text>
+<path d="M -32 0 C -20 -22 -8 -22 0 0 C 8 22 20 22 32 0" fill="none" stroke="#009254" stroke-width="2.697" transform="translate(935 86)"></path>
+<rect x="845" y="126" width="180" height="30" rx="5.395" fill="#bfe4d4" stroke="#009254" stroke-width="1.349"></rect>
+<text x="935" y="147.002" font-size="9.442pt" font-weight="700" fill="#065f46" text-anchor="middle">Cobre · fibra · aire</text>
+<line x1="214" y1="85" x2="296" y2="85" stroke="#364e6c" stroke-width="1.798" marker-end="url(#g408m)" marker-start="url(#g408n)"></line>
+<line x1="744" y1="85" x2="826" y2="85" stroke="#364e6c" stroke-width="1.798" marker-end="url(#g408m)" marker-start="url(#g408n)"></line>
+<g transform="translate(105 87.518) scale(0.629)" data-lib="pc"><g stroke="#364e6c" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#ebedf0" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g></g><text x="600" y="244.98" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 3.4. Funciones de la interfaz de red (NIC).</text></svg>
+</div>
+
+<p>CSMA/CD es el mecanismo de acceso utilizado en Ethernet <em>half-duplex</em> y en medios compartidos, como 10BASE5 y 10BASE2, así como en enlaces 10BASE-T conectados a hubs.</p>
+<p>Con la adopción generalizada de <em>switches</em> y enlaces <em>full-duplex</em>, cada puerto pasó a operar como un enlace punto a punto dedicado, lo que elimina las colisiones.</p>
+<p>CSMA/CD se considera obsoleto en las redes Ethernet modernas, porque los estándares de 10 Gb/s y superiores ya no definen operación <em>half-duplex</em>.</p>
+<h3 id="gestion-de-tramas">Gestión de tramas<a class="headerlink" href="#gestion-de-tramas" title="Permanent link">¶</a></h3>
+<p>Construye y procesa tramas conforme al formato definido por el protocolo de enlace correspondiente (Ethernet, IEEE 802.11, entre otros), incorporando elementos como:</p>
+<ul>
+<li>Dirección MAC de origen.</li>
+<li>Dirección MAC de destino.</li>
+<li>Información de control.</li>
+<li>Secuencia de verificación de errores (FCS/CRC).</li>
+</ul>
+<h3 id="conversion-de-datos-digitales-a-senales">Conversión de datos digitales a señales<a class="headerlink" href="#conversion-de-datos-digitales-a-senales" title="Permanent link">¶</a></h3>
+<p>Transforma los datos en formato binario en señales adecuadas para el medio de transmisión: señales eléctricas en Ethernet sobre cobre, señales ópticas en enlaces de fibra y señales de radiofrecuencia en redes inalámbricas.</p>
+<h3 id="identificacion-unica">Identificación única<a class="headerlink" href="#identificacion-unica" title="Permanent link">¶</a></h3>
+<p>En Ethernet, las interfaces utilizan normalmente direcciones MAC de 48 bits. Una dirección puede estar asignada globalmente por un fabricante o administrada localmente por <em>software</em>; por ello, no debe suponerse que toda dirección MAC es inmutable ni que siempre identifica de manera inequívoca al fabricante.</p>
+<p>Según el medio de operación, las interfaces de red se clasifican en:</p>
+<h3 id="interfaces-cableadas">Interfaces cableadas<a class="headerlink" href="#interfaces-cableadas" title="Permanent link">¶</a></h3>
+<p>Basadas principalmente en Ethernet, utilizan conectores modulares 8P8C —comúnmente llamados RJ-45— para cableado de par trenzado, o módulos/transceptores conectados a puertos SFP/SFP+ para distintos tipos de enlace, incluida la fibra óptica.</p>
+<p>Proporcionan velocidades desde 10 Mb/s hasta 100 Gb/s o superiores, dependiendo de la tecnología utilizada.</p>
+<h3 id="interfaces-inalambricas">Interfaces inalámbricas<a class="headerlink" href="#interfaces-inalambricas" title="Permanent link">¶</a></h3>
+<p>Basadas en estándares como IEEE 802.11 (<em>Wi-Fi</em>), Bluetooth o tecnologías celulares como 4G y 5G.</p>
+<p>Proporcionan movilidad y flexibilidad, aunque presentan una mayor variabilidad de rendimiento debido a interferencias, distancia y condiciones del entorno.</p>
+<h3 id="interfaces-especializadas">Interfaces especializadas<a class="headerlink" href="#interfaces-especializadas" title="Permanent link">¶</a></h3>
+<p>Incluyen adaptadores diseñados para aplicaciones específicas, como enlaces de fibra óptica de larga distancia o interfaces utilizadas en redes industriales.</p>
+<h3 id="optimizaciones-de-nic-modernas">Optimizaciones de NIC modernas<a class="headerlink" href="#optimizaciones-de-nic-modernas" title="Permanent link">¶</a></h3>
+<p>En redes de alto rendimiento (10 Gb/s o superiores), la capacidad de procesamiento de la CPU puede convertirse en un factor limitante, porque debe tratar de forma constante las cabeceras y demás operaciones de cada paquete. Para aliviar esa carga, algunas NIC modernas incorporan mecanismos de descarga de procesamiento (<em>offloading</em>) que trasladan determinadas tareas desde la CPU hacia el <em>hardware</em> de red.</p>
+<p>Linux permite administrarlos mediante herramientas como <em>ethtool</em>; por ejemplo, el siguiente comando muestra el estado de estas funciones en la interfaz eth0:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Networking@SecOpsMX:~$ ethtool -k eth0
+</span></code></pre></div>
+<p>Estas funciones mejoran el rendimiento efectivo (<em>throughput</em>) en redes con anchos de banda elevados. Sin embargo, una configuración inadecuada o controladores defectuosos pueden provocar errores aparentes (por ejemplo, <em>checksums</em> incorrectos en las capturas de tráfico) o pérdidas de rendimiento.</p>
+<p>A su vez, los fallos físicos en la interfaz o direcciones MAC duplicadas en un mismo segmento pueden impedir completamente la comunicación.</p>
+<h4 id="tso-gso">TSO / GSO<a class="headerlink" href="#tso-gso" title="Permanent link">¶</a></h4>
+<p>Permiten que el sistema operativo entregue segmentos grandes y que estos se dividan en paquetes compatibles con el tamaño máximo de transmisión (MTU).</p>
+<p>TSO (<em>TCP Segmentation Offload</em>) permite que una NIC compatible divida en segmentos TCP más pequeños un bloque grande entregado por el sistema operativo. GSO (<em>Generic Segmentation Offload</em>) es un mecanismo genérico del <em>kernel</em> Linux que aplaza la segmentación en <em>software</em> hasta el punto más tardío posible; puede utilizarse con o sin descarga TSO de <em>hardware</em>.</p>
+<h4 id="checksum-offloading">Checksum offloading<a class="headerlink" href="#checksum-offloading" title="Permanent link">¶</a></h4>
+<p>Permite que la NIC calcule los valores de verificación (<em>checksums</em>) en lugar de la CPU. La disponibilidad de esta función depende del soporte de la NIC y de su controlador.</p>
+<h4 id="lro-gro">LRO / GRO<a class="headerlink" href="#lro-gro" title="Permanent link">¶</a></h4>
+<p>Agrupan múltiples paquetes pequeños en unidades mayores antes de entregarlos al sistema operativo, reduciendo la cantidad de operaciones necesarias para su procesamiento.</p>
+<p>LRO lo hace en el <em>hardware</em> de la NIC y GRO en el <em>kernel</em>; como LRO puede alterar las cabeceras de los paquetes, suele desactivarse en equipos que enrutan o actúan como bridge, mientras que GRO está diseñado para preservarlas.</p>
+<p>La NIC es el punto de intercambio entre el dispositivo y la infraestructura de red. Las funciones y mecanismos de optimización de una NIC se ilustran en el <strong>Anexo I.</strong></p>
+<h2 id="34-unidad-maxima-de-transmision">3.4 UNIDAD MÁXIMA DE TRANSMISIÓN<a class="headerlink" href="#34-unidad-maxima-de-transmision" title="Permanent link">¶</a></h2>
+<p>La Unidad Máxima de Transmisión (<em>Maximum Transmission Unit</em>, MTU) define el tamaño máximo, expresado en bytes, que puede tener un paquete transmitido a través de un enlace de red sin requerir fragmentación.</p>
+<div class="diagram" id="figura-3-05" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g409" viewBox="0 0 1200 414.788" role="img" aria-labelledby="g409-title">
+<title id="g409-title">Trama Ethernet, MTU y MSS</title>
+<defs><marker id="g409m" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#364e6c"></polygon></marker><marker id="g409n" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#364e6c"></polygon></marker></defs>
+<g id="g409-c" transform="translate(21.599 21.599) scale(1.066)"><rect x="0" y="0" width="170" height="60" rx="5.628" fill="#ebedf0" stroke="#364e6c" stroke-width="1.876"></rect>
+<text x="85" y="26" font-size="9.85pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Cabecera Ethernet</text>
+<text x="85" y="46" font-size="9.85pt" fill="#1a1a1a" text-anchor="middle" font-weight="400">14 B</text>
+<rect x="170" y="0" width="620" height="60" rx="5.628" fill="#e6ecfa" stroke="#003ecc" stroke-width="1.876"></rect>
+<text x="480" y="26" font-size="9.85pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Paquete IP · MTU</text>
+<text x="480" y="46" font-size="9.85pt" fill="#1e3a8a" text-anchor="middle" font-weight="400">1500 B</text>
+<rect x="790" y="0" width="90" height="60" rx="5.628" fill="#ebedf0" stroke="#364e6c" stroke-width="1.876"></rect>
+<text x="835" y="26" font-size="9.85pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">FCS</text>
+<text x="835" y="46" font-size="9.85pt" fill="#1a1a1a" text-anchor="middle" font-weight="400">4 B</text>
+<line x1="170" y1="60" x2="170" y2="130" stroke="#003ecc" stroke-width="1.407" stroke-dasharray="5.628 3.752"></line>
+<line x1="790" y1="60" x2="790" y2="130" stroke="#003ecc" stroke-width="1.407" stroke-dasharray="5.628 3.752"></line>
+<rect x="170" y="130" width="110" height="56" rx="5.628" fill="#f2ebfd" stroke="#7c3aed" stroke-width="1.876"></rect>
+<text x="225" y="156" font-size="9.85pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">IPv4</text>
+<text x="225" y="175" font-size="9.85pt" fill="#5b21b6" text-anchor="middle" font-weight="400">20 B</text>
+<rect x="280" y="130" width="110" height="56" rx="5.628" fill="#fcebe6" stroke="#dd3a00" stroke-width="1.876"></rect>
+<text x="335" y="156" font-size="9.85pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">TCP</text>
+<text x="335" y="175" font-size="9.85pt" fill="#7c2d12" text-anchor="middle" font-weight="400">20 B</text>
+<rect x="390" y="130" width="400" height="56" rx="5.628" fill="#e6f4ee" stroke="#009254" stroke-width="1.876"></rect>
+<text x="590" y="156" font-size="9.85pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Datos · MSS</text>
+<text x="590" y="175" font-size="9.85pt" fill="#065f46" text-anchor="middle" font-weight="400">1460 B</text>
+<rect x="0" y="236" width="260" height="84" rx="5.628" fill="#e6ecfa" stroke="#003ecc" stroke-width="1.876"></rect>
+<line x1="0" y1="266" x2="260" y2="266" stroke="#003ecc" stroke-width="1.407"></line>
+<text x="130" y="257" font-size="13.133pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Ethernet</text>
+<text x="130" y="300" font-size="11.257pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">1500 B</text>
+<rect x="275" y="236" width="260" height="84" rx="5.628" fill="#e6f4ee" stroke="#009254" stroke-width="1.876"></rect>
+<line x1="275" y1="266" x2="535" y2="266" stroke="#009254" stroke-width="1.407"></line>
+<text x="405" y="257" font-size="13.133pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">PPPoE</text>
+<text x="405" y="300" font-size="11.257pt" font-weight="700" fill="#065f46" text-anchor="middle">1492 B</text>
+<rect x="550" y="236" width="260" height="84" rx="5.628" fill="#fcebe6" stroke="#dd3a00" stroke-width="1.876"></rect>
+<line x1="550" y1="266" x2="810" y2="266" stroke="#dd3a00" stroke-width="1.407"></line>
+<text x="680" y="257" font-size="13.133pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">802.1Q</text>
+<text x="680" y="300" font-size="11.257pt" font-weight="700" fill="#7c2d12" text-anchor="middle">IP 1500 B · trama +4 B</text>
+<rect x="825" y="236" width="260" height="84" rx="5.628" fill="#f2ebfd" stroke="#7c3aed" stroke-width="1.876"></rect>
+<line x1="825" y1="266" x2="1085" y2="266" stroke="#7c3aed" stroke-width="1.407"></line>
+<text x="955" y="257" font-size="13.133pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Jumbo frames</text>
+<text x="955" y="300" font-size="11.257pt" font-weight="700" fill="#5b21b6" text-anchor="middle">9000 B o más</text>
+</g><text x="600" y="396.948" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 3.5. Trama Ethernet, MTU y MSS.</text></svg>
+</div>
+
+<p>Cada tecnología de enlace establece un tamaño máximo de transmisión determinado por sus características de funcionamiento. La relación entre VLAN, MTU, <em>jumbo frames</em> y fragmentación se muestra en la Figura 3.5.</p>
+<p>Entre los valores más utilizados se encuentran los siguientes:</p>
+<h3 id="ethernet">Ethernet<a class="headerlink" href="#ethernet" title="Permanent link">¶</a></h3>
+<p>Utiliza normalmente una MTU de 1500 bytes para paquetes IP. Este valor no incluye la cabecera Ethernet de 14 bytes ni el campo de verificación de errores FCS (<em>Frame Check Sequence</em>) de 4 bytes. Es el tamaño estándar empleado en la mayoría de redes LAN basadas en Ethernet.</p>
+<h3 id="pppoe-utilizado-en-conexiones-dsl">PPPoE (utilizado en conexiones DSL)<a class="headerlink" href="#pppoe-utilizado-en-conexiones-dsl" title="Permanent link">¶</a></h3>
+<p>Utiliza una MTU de 1492 bytes, debido a que incorpora una sobrecarga adicional de 8 bytes correspondiente a la encapsulación PPPoE.</p>
+<h3 id="redes-con-vlan-ieee-8021q">Redes con VLAN (IEEE 802.1Q)<a class="headerlink" href="#redes-con-vlan-ieee-8021q" title="Permanent link">¶</a></h3>
+<p>La etiqueta VLAN añade 4 bytes adicionales a la trama Ethernet. Aunque esta modificación incrementa el tamaño de la trama, muchos dispositivos mantienen una MTU IP efectiva de 1500 bytes mediante soporte para tramas ligeramente mayores.</p>
+<h3 id="enlaces-con-jumbo-frames">Enlaces con jumbo frames<a class="headerlink" href="#enlaces-con-jumbo-frames" title="Permanent link">¶</a></h3>
+<p>Permiten utilizar MTU superiores, generalmente de 9000 bytes o más.</p>
+<p>Son habituales en centros de datos debido a que reducen la sobrecarga asociada a las cabeceras y mejoran la eficiencia en transferencias de grandes volúmenes de información.</p>
+<p>La MTU importa porque los dispositivos de red, especialmente los <em>routers</em>, deben determinar qué acción realizar cuando un paquete supera el tamaño permitido por el enlace de salida. Cuando un paquete excede la MTU disponible, el dispositivo puede fragmentarlo o, si la fragmentación no está permitida, descartarlo y avisar al emisor:</p>
+<h3 id="fragmentacion-del-paquete-ip">Fragmentación del paquete IP<a class="headerlink" href="#fragmentacion-del-paquete-ip" title="Permanent link">¶</a></h3>
+<p>En IPv4, un <em>router</em> puede fragmentar un paquete si el bit DF (<em>Don't Fragment</em>) no está activado y la fragmentación está permitida.</p>
+<p>Aunque este mecanismo permite la transmisión, introduce sobrecarga adicional; los fragmentos se vuelven a ensamblar en el destino, no en cada <em>router</em> intermedio.</p>
+<p>En IPv6, los <em>routers</em> no fragmentan los paquetes: solo el nodo de origen puede hacerlo (RFC 8200).</p>
+<h3 id="mensajes-icmp-para-descubrimiento-de-mtu">Mensajes ICMP para descubrimiento de MTU<a class="headerlink" href="#mensajes-icmp-para-descubrimiento-de-mtu" title="Permanent link">¶</a></h3>
+<p>Cuando la fragmentación no está permitida (indicador <em>Don't Fragment</em>, DF, en IPv4) o no es posible (IPv6), el dispositivo intermedio descarta el paquete e informa al emisor, mediante un mensaje ICMP, para que reduzca el tamaño de los paquetes.</p>
+<p>En IPv4 se utiliza el mensaje ICMPv4 Tipo 3, Código 4: <em>Destination Unreachable</em>, <em>Fragmentation Needed and Don't Fragment was Set</em>.</p>
+<p>En IPv6 se utiliza el mensaje ICMPv6 Tipo 2, Código 0: <em>Packet Too Big</em>.</p>
+<p>Estos mecanismos sustentan <em>Path MTU Discovery</em> (PMTUD), cuyo objetivo es determinar dinámicamente el tamaño máximo de paquete permitido a lo largo de una ruta. Los estándares relacionados incluyen:</p>
+<ul>
+<li>RFC 1191: <em>Path MTU Discovery</em> para IPv4.</li>
+<li>RFC 8201: <em>Path MTU Discovery</em> para IPv6.</li>
+<li>RFC 4821: mecanismo <em>Packetization Layer Path MTU Discovery</em> (PLPMTUD) para datagramas IPv4 e IPv6.</li>
+<li>RFC 8899: <em>Datagram Packetization Layer PMTUD</em> (DPLPMTUD), que actualiza y amplía los mecanismos de PLPMTUD.</li>
+</ul>
+<h3 id="capa-de-enlace">Capa de enlace<a class="headerlink" href="#capa-de-enlace" title="Permanent link">¶</a></h3>
+<p>En la capa de enlace, el tratamiento de una trama que supera el tamaño admitido depende de la tecnología: muchas interfaces descartan las tramas demasiado grandes. Una configuración incorrecta de la MTU puede provocar pérdida de paquetes, disminución del rendimiento y fallos de conectividad difíciles de diagnosticar.</p>
+<p>Por ejemplo, establecer una MTU superior a la soportada por un enlace cuyo valor real es de 1500 bytes puede ocasionar que determinados paquetes sean descartados.</p>
+<p>En una red Ethernet convencional:</p>
+<ul>
+<li>MTU: 1500 bytes.</li>
+<li>Cabecera IPv4: 20 bytes.</li>
+<li>Cabecera TCP: 20 bytes.</li>
+<li>MSS resultante habitual: 1460 bytes.</li>
+</ul>
+<p>En redes basadas en TCP, este problema se mitiga mediante el anuncio del MSS (<em>Maximum Segment Size</em>) durante el establecimiento de la conexión (opción TCP incluida en los segmentos SYN).</p>
+<p>El MSS anunciado por un extremo indica la cantidad máxima de datos de segmento TCP (sin incluir las cabeceras IP y TCP) que declara poder recibir. El valor habitual de 1460 bytes se obtiene con una MTU IP de 1500 bytes y cabeceras IPv4 y TCP de 20 bytes cada una, sin opciones.</p>
+<p>Conviene notar que el MSS no garantiza por sí solo que el segmento atraviese toda la ruta sin exceder la MTU de algún enlace intermedio; para detectar o evitar ese problema se utilizan mecanismos como PMTUD o PLPMTUD.</p>
+<h2 id="35-infraestructura-fisica">3.5 INFRAESTRUCTURA FÍSICA<a class="headerlink" href="#35-infraestructura-fisica" title="Permanent link">¶</a></h2>
+<p>La comunicación en una red requiere una infraestructura física que permita la interconexión de todos sus componentes. Esta infraestructura está conformada por los elementos tangibles que soportan la transmisión de datos, más allá de los dispositivos activos encargados del procesamiento y direccionamiento de la información. La Figura 3.6 resume sus componentes.</p>
+<div class="diagram" id="figura-3-06" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g410" viewBox="0 0 1200 506.351" role="img" aria-labelledby="g410-title">
+<title id="g410-title">Componentes de la infraestructura física</title>
+<defs><marker id="g410m" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#364e6c"></polygon></marker><marker id="g410n" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#364e6c"></polygon></marker></defs>
+<g id="g410-c" transform="translate(21.607 21.607) scale(1.071)"><rect x="0" y="0" width="340" height="190" rx="5.602" fill="#fbe6e6" stroke="#d40000" stroke-width="1.867"></rect>
+<line x1="0" y1="34" x2="340" y2="34" stroke="#d40000" stroke-width="1.4"></line>
+<text x="170" y="23" font-size="13.072pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Racks y gabinetes</text>
+<g transform="translate(170 92) scale(1.7) translate(-170 -92)"><rect x="144" y="70" width="52" height="12" fill="#f4bfbf" stroke="#d40000" stroke-width="1.2"></rect><line x1="150" y1="76" x2="162" y2="76" stroke="#d40000" stroke-width="1.5"></line><rect x="144" y="85" width="52" height="12" fill="#f4bfbf" stroke="#d40000" stroke-width="1.2"></rect><line x1="150" y1="91" x2="162" y2="91" stroke="#d40000" stroke-width="1.5"></line><rect x="144" y="100" width="52" height="12" fill="#f4bfbf" stroke="#d40000" stroke-width="1.2"></rect><line x1="150" y1="106" x2="162" y2="106" stroke="#d40000" stroke-width="1.5"></line></g>
+<rect x="14" y="150" width="312" height="28" rx="5.602" fill="#f4bfbf" stroke="#d40000" stroke-width="1.4"></rect>
+<text x="170" y="170.002" font-size="9.804pt" font-weight="700" fill="#7f1d1d" text-anchor="middle">Estándar de 19 pulgadas</text>
+<rect x="370" y="0" width="340" height="190" rx="5.602" fill="#e6ecfa" stroke="#003ecc" stroke-width="1.867"></rect>
+<line x1="370" y1="34" x2="710" y2="34" stroke="#003ecc" stroke-width="1.4"></line>
+<text x="540" y="23" font-size="13.072pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Cables de red</text>
+<g transform="translate(540 92) scale(1.7) translate(-540 -92)"><path d="M -32 0 C -20 -22 -8 -22 0 0 C 8 22 20 22 32 0" fill="none" stroke="#003ecc" stroke-width="3" transform="translate(540 92)"></path></g>
+<rect x="384" y="150" width="312" height="28" rx="5.602" fill="#bfcff2" stroke="#003ecc" stroke-width="1.4"></rect>
+<text x="540" y="170.002" font-size="9.804pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">UTP · fibra · coaxial</text>
+<rect x="740" y="0" width="340" height="190" rx="5.602" fill="#e6f4ee" stroke="#009254" stroke-width="1.867"></rect>
+<line x1="740" y1="34" x2="1080" y2="34" stroke="#009254" stroke-width="1.4"></line>
+<text x="910" y="23" font-size="13.072pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Conectores</text>
+<g transform="translate(910 92) scale(1.7) translate(-910 -92)"><rect x="894" y="84" width="32" height="26" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><line x1="901" y1="84" x2="901" y2="76" stroke="#009254" stroke-width="2"></line><line x1="907" y1="84" x2="907" y2="76" stroke="#009254" stroke-width="2"></line><line x1="913" y1="84" x2="913" y2="76" stroke="#009254" stroke-width="2"></line><line x1="919" y1="84" x2="919" y2="76" stroke="#009254" stroke-width="2"></line></g>
+<rect x="754" y="150" width="312" height="28" rx="5.602" fill="#bfe4d4" stroke="#009254" stroke-width="1.4"></rect>
+<text x="910" y="170.002" font-size="9.804pt" font-weight="700" fill="#065f46" text-anchor="middle">RJ-45 · LC · SC · MPO</text>
+<rect x="0" y="214" width="340" height="190" rx="5.602" fill="#fcebe6" stroke="#dd3a00" stroke-width="1.867"></rect>
+<line x1="0" y1="248" x2="340" y2="248" stroke="#dd3a00" stroke-width="1.4"></line>
+<text x="170" y="237" font-size="13.072pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Paneles de parcheo</text>
+<g transform="translate(170 306) scale(1.7) translate(-170 -306)"><rect x="140" y="298" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="148" y="298" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="156" y="298" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="164" y="298" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="172" y="298" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="180" y="298" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="188" y="298" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="196" y="298" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="140" y="310" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="148" y="310" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="156" y="310" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="164" y="310" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="172" y="310" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="180" y="310" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="188" y="310" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect><rect x="196" y="310" width="6" height="8" fill="#f6cebf" stroke="#dd3a00" stroke-width="1"></rect></g>
+<rect x="14" y="364" width="312" height="28" rx="5.602" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.4"></rect>
+<text x="170" y="384.002" font-size="9.804pt" font-weight="700" fill="#7c2d12" text-anchor="middle">Cableado horizontal</text>
+<rect x="370" y="214" width="340" height="190" rx="5.602" fill="#f2ebfd" stroke="#7c3aed" stroke-width="1.867"></rect>
+<line x1="370" y1="248" x2="710" y2="248" stroke="#7c3aed" stroke-width="1.4"></line>
+<text x="540" y="237" font-size="13.072pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Canalizaciones</text>
+<g transform="translate(540 306) scale(1.7) translate(-540 -306)"><path d="M -28 -12 L -28 12 L 28 12 L 28 -12" fill="none" stroke="#7c3aed" stroke-width="3" transform="translate(540 306)"></path><line x1="522" y1="308" x2="558" y2="308" stroke="#7c3aed" stroke-width="2"></line></g>
+<rect x="384" y="364" width="312" height="28" rx="5.602" fill="#decefa" stroke="#7c3aed" stroke-width="1.4"></rect>
+<text x="540" y="384.002" font-size="9.804pt" font-weight="700" fill="#5b21b6" text-anchor="middle">Bandejas · ductos</text>
+<rect x="740" y="214" width="340" height="190" rx="5.602" fill="#ebedf0" stroke="#364e6c" stroke-width="1.867"></rect>
+<line x1="740" y1="248" x2="1080" y2="248" stroke="#364e6c" stroke-width="1.4"></line>
+<text x="910" y="237" font-size="13.072pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Estándares</text>
+<g transform="translate(910 306) scale(1.7) translate(-910 -306)"><rect x="894" y="284" width="32" height="44" fill="#ffffff" stroke="#364e6c" stroke-width="1.5"></rect><line x1="901" y1="296" x2="919" y2="296" stroke="#364e6c" stroke-width="1.5"></line><line x1="901" y1="304" x2="919" y2="304" stroke="#364e6c" stroke-width="1.5"></line><line x1="901" y1="312" x2="913" y2="312" stroke="#364e6c" stroke-width="1.5"></line></g>
+<rect x="754" y="364" width="312" height="28" rx="5.602" fill="#cdd3da" stroke="#364e6c" stroke-width="1.4"></rect>
+<text x="910" y="384.002" font-size="9.804pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">TIA-568 · TIA-942 · ISO/IEC 11801</text>
+</g><text x="600" y="488.511" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 3.6. Componentes de la infraestructura física.</text></svg>
+</div>
+
+<p>Aunque con frecuencia se la considera un elemento secundario frente a los equipos activos, de ella depende el funcionamiento de toda la red. Su diseño e implementación determinan la confiabilidad, el rendimiento máximo alcanzable, la escalabilidad y la facilidad de mantenimiento de la red.</p>
+<h3 id="racks-y-gabinetes">Racks y gabinetes<a class="headerlink" href="#racks-y-gabinetes" title="Permanent link">¶</a></h3>
+<p>Son estructuras normalizadas, generalmente de 19 pulgadas de ancho, utilizadas para alojar dispositivos activos de red, paneles de parcheo, sistemas de alimentación y otros elementos de infraestructura.</p>
+<p>Proporcionan organización, protección física y facilidad de mantenimiento.</p>
+<h3 id="cables-de-red">Cables de red<a class="headerlink" href="#cables-de-red" title="Permanent link">¶</a></h3>
+<p>Incluyen medios de transmisión como:</p>
+<ul>
+<li>Par trenzado en categorías 5e, 6, 6A y 8 (ANSI/TIA-568), o en clases F y FA (ISO/IEC 11801).</li>
+<li>Fibra óptica monomodo y multimodo.</li>
+<li>Cable coaxial en aplicaciones específicas o heredadas.</li>
+</ul>
+<p>La selección depende de la distancia, el ancho de banda, el entorno de instalación y las interferencias presentes.</p>
+<h3 id="conectores-y-terminaciones">Conectores y terminaciones<a class="headerlink" href="#conectores-y-terminaciones" title="Permanent link">¶</a></h3>
+<p>Permiten la unión física entre los medios de transmisión y los dispositivos de red; los principales tipos incluyen:</p>
+<ul>
+<li>Conectores modulares 8P8C, denominados habitualmente RJ-45, para cableado de par trenzado.</li>
+<li>LC, SC y MPO para enlaces de fibra óptica.</li>
+</ul>
+<p>Estos elementos deben cumplir especificaciones técnicas relacionadas con atenuación, pérdida de inserción y diafonía para garantizar la calidad de la transmisión.</p>
+<h3 id="canalizaciones-y-sistemas-de-cableado-estructurado">Canalizaciones y sistemas de cableado estructurado<a class="headerlink" href="#canalizaciones-y-sistemas-de-cableado-estructurado" title="Permanent link">¶</a></h3>
+<p>Incluyen tuberías, bandejas, ductos y otros elementos destinados a proteger y organizar el tendido de cables. Su correcta implementación evita daños físicos, reduce interferencias y facilita futuras ampliaciones de la infraestructura.</p>
+<h3 id="paneles-de-parcheo-patch-panels">Paneles de parcheo (patch panels)<a class="headerlink" href="#paneles-de-parcheo-patch-panels" title="Permanent link">¶</a></h3>
+<p>Son estructuras utilizadas para centralizar las terminaciones del cableado horizontal y simplificar la administración de las conexiones mediante latiguillos (<em>patch cords</em>); permiten reorganizar la infraestructura sin modificar el tendido permanente del cableado.</p>
+<h3 id="factores-de-diseno">Factores de diseño<a class="headerlink" href="#factores-de-diseno" title="Permanent link">¶</a></h3>
+<p>El diseño de una infraestructura física debe considerar múltiples factores técnicos y operativos. Entre los principales se encuentran:</p>
+<h4 id="capacidad-requerida">Capacidad requerida<a class="headerlink" href="#capacidad-requerida" title="Permanent link">¶</a></h4>
+<p>La infraestructura debe dimensionarse considerando las necesidades actuales y futuras de ancho de banda. Por ejemplo, la instalación de cableado categoría 6A permite soportar velocidades de hasta 10 Gb/s en determinadas condiciones.</p>
+<h4 id="distancia-de-transmision">Distancia de transmisión<a class="headerlink" href="#distancia-de-transmision" title="Permanent link">¶</a></h4>
+<p>La distancia máxima depende del estándar Ethernet utilizado, el tipo de medio de transmisión y las características del enlace.</p>
+<h4 id="interferencia-electromagnetica">Interferencia electromagnética<a class="headerlink" href="#interferencia-electromagnetica" title="Permanent link">¶</a></h4>
+<p>En ambientes industriales o zonas con presencia de motores y equipos eléctricos, puede ser necesario utilizar fibra óptica o cableado blindado en lugar de UTP para reducir los efectos de las interferencias electromagnéticas.</p>
+<h4 id="escalabilidad-y-mantenimiento">Escalabilidad y mantenimiento<a class="headerlink" href="#escalabilidad-y-mantenimiento" title="Permanent link">¶</a></h4>
+<p>El cableado estructurado debe permitir la incorporación de nuevos dispositivos, modificaciones de distribución y tareas de mantenimiento sin requerir reemplazar completamente la infraestructura existente.</p>
+<h3 id="estandares-de-cableado-estructurado">Estándares de cableado estructurado<a class="headerlink" href="#estandares-de-cableado-estructurado" title="Permanent link">¶</a></h3>
+<p>Los principales estándares utilizados en instalaciones de cableado estructurado incluyen:</p>
+<ul>
+<li>ANSI/TIA-568 (anteriormente TIA/EIA-568): norma de cableado estructurado para edificios comerciales que, entre otros aspectos, define el cableado de par trenzado y la terminación de conectores RJ-45.</li>
+<li>T568A y T568B: son los dos esquemas de terminación (asignación de colores a los pares) reconocidos por ANSI/TIA-568. La norma admite ambos; la selección debe ajustarse a las especificaciones del proyecto y a la instalación existente. En un cable directo se utiliza el mismo esquema en ambos extremos; la combinación de esquemas distintos produce un cable cruzado.</li>
+<li>ANSI/TIA-942: estándar para infraestructura de centros de datos que define cuatro niveles de rating (Rated-1 a Rated-4). Sus niveles describen objetivos de redundancia y mantenibilidad que guardan similitudes conceptuales con los niveles Tier del Uptime Institute, pero no deben considerarse equivalentes ni intercambiables.</li>
+<li>ISO/IEC 11801: estándar internacional para sistemas genéricos de cableado estructurado.</li>
+</ul>
+<p>Una infraestructura deficiente, causada por cables con terminaciones incorrectas, etiquetado inadecuado, ausencia de holgura técnica o incumplimiento de estándares, puede provocar fallos intermitentes, errores de trama, negociación incorrecta de velocidad y desconexiones recurrentes.</p>
+<h2 id="36-comunicacion-en-la-red">3.6 COMUNICACIÓN EN LA RED<a class="headerlink" href="#36-comunicacion-en-la-red" title="Permanent link">¶</a></h2>
+<p>El proceso de comunicación en una red no depende de un único elemento, sino de la interacción coordinada entre todos los componentes descritos anteriormente; cada dispositivo desempeña una función específica que, en conjunto, permite la transmisión efectiva de datos desde un origen hasta un destino.</p>
+<p>La comunicación en red surge de la interacción entre dispositivos finales, dispositivos intermedios, interfaces de red e infraestructura física; la correcta integración de estos elementos permite establecer canales de comunicación.</p>
+<h3 id="flujo-de-comunicacion-en-una-red-de-datos">Flujo de comunicación en una red de datos<a class="headerlink" href="#flujo-de-comunicacion-en-una-red-de-datos" title="Permanent link">¶</a></h3>
+<h4 id="1-generacion-de-datos-en-el-dispositivo-final">1. Generación de datos en el dispositivo final<a class="headerlink" href="#1-generacion-de-datos-en-el-dispositivo-final" title="Permanent link">¶</a></h4>
+<p>Una aplicación ejecutándose en un dispositivo final, como una estación de trabajo, genera los datos que serán transmitidos a través de la red. El sistema operativo entrega esta información a la pila de protocolos de comunicación, basada generalmente en el modelo TCP/IP o, con fines académicos, en el modelo OSI.</p>
+<p>En este proceso se realiza el encapsulamiento progresivo de la información en segmentos, paquetes y tramas, de acuerdo con la capa correspondiente.</p>
+<h4 id="2-encapsulamiento-y-transmision-fisica">2. Encapsulamiento y transmisión física<a class="headerlink" href="#2-encapsulamiento-y-transmision-fisica" title="Permanent link">¶</a></h4>
+<p>La interfaz de red (NIC) del dispositivo origen recibe la información preparada por las capas superiores y genera la trama correspondiente mediante el protocolo de enlace de datos. Posteriormente, la NIC convierte la información en señales y las transmite por el medio: eléctricas en cobre, ópticas en fibra o de radiofrecuencia en el aire.</p>
+<h4 id="3-propagacion-por-la-infraestructura-fisica">3. Propagación por la infraestructura física<a class="headerlink" href="#3-propagacion-por-la-infraestructura-fisica" title="Permanent link">¶</a></h4>
+<p>Las señales recorren la infraestructura de red compuesta por elementos como cables, conectores, paneles de parcheo, sistemas de distribución, entre otros componentes de cableado estructurado.</p>
+<p>Durante este recorrido alcanzan los dispositivos intermedios encargados de procesar y reenviar la información; en las redes LAN, el primero suele ser un <em>switch</em> (Figura 3.7).</p>
+<div class="diagram" id="figura-3-07" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g411" viewBox="0 0 1200 329.04" role="img" aria-labelledby="g411-title"><title id="g411-title">Comunicación en la red en seis etapas</title><g id="g411-c" transform="translate(-0.188 -51.477) scale(1.091)"><rect x="20" y="105" width="150" height="135" rx="5.498" fill="#fbe6e6" stroke="#d40000" stroke-width="2.291"></rect><circle cx="95" cy="84" r="17" fill="#7f1d1d"></circle><text x="95" y="89" font-size="10.999pt" font-weight="700" fill="#ffffff" text-anchor="middle">1</text><g transform="translate(95,172) scale(0.641)"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#fbe6e6" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g><text x="95" y="264" font-size="10.999pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Generación</text><text x="95" y="282" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">Dispositivo final</text><text x="95" y="297" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">genera los datos</text><path d="M173 172L199 172" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" fill="none"></path><path d="M187.3 177.7L199 172L187.3 166.3" fill="none" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" stroke-linejoin="round"></path><rect x="202" y="105" width="150" height="135" rx="5.498" fill="#e6ecfa" stroke="#003ecc" stroke-width="2.291"></rect><circle cx="277" cy="84" r="17" fill="#1e3a8a"></circle><text x="277" y="89" font-size="10.999pt" font-weight="700" fill="#ffffff" text-anchor="middle">2</text><g transform="translate(277,168) scale(0.85)"><rect x="-44" y="-22" width="88" height="44" rx="4" fill="#bfcff2" stroke="#003ecc" stroke-width="3"></rect><rect x="-34" y="22" width="7" height="12" fill="#003ecc"></rect><rect x="-22" y="22" width="7" height="12" fill="#003ecc"></rect><rect x="-10" y="22" width="7" height="12" fill="#003ecc"></rect><rect x="2" y="22" width="7" height="12" fill="#003ecc"></rect><rect x="14" y="22" width="7" height="12" fill="#003ecc"></rect><rect x="26" y="22" width="7" height="12" fill="#003ecc"></rect><rect x="20" y="-12" width="18" height="22" rx="2" fill="#ffffff" stroke="#003ecc" stroke-width="2.5"></rect><rect x="-30" y="-8" width="28" height="16" rx="2" fill="#ffffff" stroke="#003ecc" stroke-width="2"></rect></g><text x="277" y="264" font-size="10.999pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Transmisión</text><text x="277" y="282" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">NIC: trama</text><text x="277" y="297" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">y señal</text><path d="M355 172L381 172" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" fill="none"></path><path d="M369.3 177.7L381 172L369.3 166.3" fill="none" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" stroke-linejoin="round"></path><rect x="384" y="105" width="150" height="135" rx="5.498" fill="#e6f4ee" stroke="#009254" stroke-width="2.291"></rect><circle cx="459" cy="84" r="17" fill="#065f46"></circle><text x="459" y="89" font-size="10.999pt" font-weight="700" fill="#ffffff" text-anchor="middle">3</text><path d="M397 175h8M513 175h8" stroke="#009254" stroke-width="2.749" stroke-linecap="round"></path><polyline points="405,175.0 407,170.5 409,166.3 411,163.0 413,160.9 415,160.0 417,160.6 419,162.5 421,165.6 423,169.5 425,174.0 427,178.6 429,182.8 431,186.4 433,188.8 435,189.9 437,189.7 439,188.0 441,185.2 443,181.3 445,176.9 447,172.3 449,168.0 451,164.3 453,161.6 455,160.2 457,160.2 459,161.5 461,164.1 463,167.8 465,172.1 467,176.7 469,181.1 471,185.0 473,187.9 475,189.6 477,190.0 479,188.9 481,186.5 483,183.0 485,178.8 487,174.3 489,169.8 491,165.8 493,162.6 495,160.6 497,160.0 499,160.8 501,162.9 503,166.2 505,170.2 507,174.8 509,179.3 511,183.5 513,186.8" fill="none" stroke="#009254" stroke-width="2.749" stroke-linejoin="round" stroke-linecap="round"></polyline><text x="459" y="264" font-size="10.999pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Propagación</text><text x="459" y="282" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">Infraestructura</text><text x="459" y="297" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">física</text><path d="M537 172L563 172" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" fill="none"></path><path d="M551.3 177.7L563 172L551.3 166.3" fill="none" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" stroke-linejoin="round"></path><rect x="566" y="105" width="150" height="135" rx="5.498" fill="#fcebe6" stroke="#dd3a00" stroke-width="2.291"></rect><circle cx="641" cy="84" r="17" fill="#7c2d12"></circle><text x="641" y="89" font-size="10.999pt" font-weight="700" fill="#ffffff" text-anchor="middle">4</text><g transform="translate(611,178) scale(0.458)"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#dd3a00" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#f6cebf" stroke="#dd3a00" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#dd3a00"></circle><circle cx="-24" cy="-15" r="2.5" fill="#dd3a00"></circle><circle cx="-4" cy="-15" r="2.5" fill="#dd3a00"></circle><circle cx="16" cy="-15" r="2.5" fill="#dd3a00"></circle><circle cx="36" cy="-15" r="2.5" fill="#dd3a00"></circle></g><g transform="translate(677,174) scale(0.42)"><circle cx="0" cy="0" r="42" fill="#ffffff" stroke="#dd3a00" stroke-width="3"></circle><circle r="34" fill="#fcebe6"></circle><g stroke="#dd3a00" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M-24 0h48M14 -10l10 10-10 10M-14 -10l-10 10 10 10M0 -24v48M-9 -14l9-10 9 10M-9 14l9 10 9-10"></path></g></g><text x="641" y="264" font-size="10.999pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Reenvío</text><text x="641" y="282" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">Switch o router</text><text x="641" y="297" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">decide el salto</text><path d="M719 172L745 172" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" fill="none"></path><path d="M733.3 177.7L745 172L733.3 166.3" fill="none" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" stroke-linejoin="round"></path><rect x="748" y="105" width="150" height="135" rx="5.498" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2.291"></rect><circle cx="823" cy="84" r="17" fill="#5b21b6"></circle><text x="823" y="89" font-size="10.999pt" font-weight="700" fill="#ffffff" text-anchor="middle">5</text><g transform="translate(823,175) scale(1.1)"><path d="M-30 6a32 32 0 0 1 54 -22" fill="none" stroke="#7c3aed" stroke-width="5" stroke-linecap="round"></path><path d="M24 -16l-2 -18l16 12z" fill="#7c3aed" stroke="#7c3aed" stroke-width="2"></path><path d="M30 -6a32 32 0 0 1 -54 22" fill="none" stroke="#7c3aed" stroke-width="5" stroke-linecap="round"></path><path d="M-24 16l2 18l-16 -12z" fill="#7c3aed" stroke="#7c3aed" stroke-width="2"></path></g><text x="823" y="264" font-size="10.999pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Saltos</text><text x="823" y="282" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">Se repite</text><text x="823" y="297" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">en cada salto</text><path d="M901 172L927 172" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" fill="none"></path><path d="M915.3 177.7L927 172L915.3 166.3" fill="none" stroke="#364e6c" stroke-width="2.291" stroke-linecap="round" stroke-linejoin="round"></path><rect x="930" y="105" width="150" height="135" rx="5.498" fill="#ebedf0" stroke="#364e6c" stroke-width="2.291"></rect><circle cx="1005" cy="84" r="17" fill="#1e3a5f"></circle><text x="1005" y="89" font-size="10.999pt" font-weight="700" fill="#ffffff" text-anchor="middle">6</text><g transform="translate(1005,176) scale(0.641)"><g stroke="#364e6c" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#ebedf0" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g><text x="1005" y="264" font-size="10.999pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Entrega</text><text x="1005" y="282" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">Destino</text><text x="1005" y="297" font-size="9.624pt" font-weight="400" fill="#1a1a1a" text-anchor="middle">desencapsula</text></g><text x="600" y="311.2" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 3.7. Comunicación en la red en seis etapas.</text></svg>
+</div>
+
+<h4 id="4-conmutacion-o-reenvio-en-el-dispositivo-intermedio">4. Conmutación o reenvío en el dispositivo intermedio<a class="headerlink" href="#4-conmutacion-o-reenvio-en-el-dispositivo-intermedio" title="Permanent link">¶</a></h4>
+<p>El dispositivo intermedio recibe la señal, la interpreta y extrae la información necesaria para determinar su destino. Un <em>switch</em> analiza la dirección MAC de destino y consulta su tabla de direcciones MAC para reenviar la trama solo por el puerto correspondiente.</p>
+<p>Un <em>router</em> analiza la dirección IP de destino, consulta su tabla de enrutamiento y determina el siguiente salto hacia la red destino.</p>
+<p>El dispositivo intermedio transmite nuevamente la información por la interfaz adecuada hacia el siguiente nodo de la trayectoria.</p>
+<h4 id="5-repeticion-de-saltos-intermedios">5. Repetición de saltos intermedios<a class="headerlink" href="#5-repeticion-de-saltos-intermedios" title="Permanent link">¶</a></h4>
+<p>El proceso realizado por los dispositivos intermedios se repite en cada punto de la ruta hasta que la información alcanza el último dispositivo de red antes del destino final.</p>
+<p>Cada salto puede implicar operaciones de análisis, procesamiento, filtrado y reenvío, dependiendo del tipo de dispositivo y de las políticas configuradas.</p>
+<h4 id="6-entrega-al-dispositivo-destino">6. Entrega al dispositivo destino<a class="headerlink" href="#6-entrega-al-dispositivo-destino" title="Permanent link">¶</a></h4>
+<p>El dispositivo receptor obtiene la señal mediante su interfaz de red (NIC), posteriormente ejecuta el proceso de desencapsulación, eliminando progresivamente la información de control correspondiente a cada capa (cabeceras de enlace, de red y de transporte).</p>
+<p>Finalmente, los datos originales son entregados al proceso o aplicación correspondiente.</p>
+<p>Los componentes de red no operan de forma aislada: el comportamiento del conjunto depende de cómo se combinan sus funciones. Al diseñar o diagnosticar una infraestructura conviene, por tanto, identificar primero qué componente cumple cada función y en qué punto del recorrido de los datos puede fallar.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../tema_02/" class="btn btn-neutral float-left" title="02 · Transmisión de datos y capa física"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tema_04/" class="btn btn-neutral float-right" title="04 · Direccionamiento IP y subredes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../tema_02/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="../tema_04/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

@@ -1,0 +1,2092 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="author" content="Guillermo Castillo">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>12 · Arquitecturas modernas de red - NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link href="../../assets/css/extra.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "12 \u00b7 Arquitecturas modernas de red";
+        var mkdocs_page_input_path = "temas/tema_12.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]--> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Inicio</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../..#fundamentos-arquitecturas-y-despliegue-practico">Fundamentos, Arquitecturas y Despliegue Práctico.</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Temas</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_01/">01 · Fundamentos de redes y comunicación</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#11-concepto-de-red-de-computadoras">1.1 CONCEPTO DE RED DE COMPUTADORAS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#12-evolucion-de-las-redes">1.2 EVOLUCIÓN DE LAS REDES</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#13-arquitecturas-cliente-servidor-y-distribuidas">1.3 ARQUITECTURAS CLIENTE-SERVIDOR Y DISTRIBUIDAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#arquitectura-cliente-servidor">Arquitectura cliente-servidor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#arquitecturas-distribuidas">Arquitecturas distribuidas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#14-flujo-de-datos">1.4 FLUJO DE DATOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#recorrido-de-los-datos">Recorrido de los datos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#modelos-de-comunicacion">Modelos de comunicación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#15-encapsulacion">1.5 ENCAPSULACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#proceso-de-encapsulacion">Proceso de encapsulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#desencapsulacion">Desencapsulación</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_02/">02 · Transmisión de datos y capa física</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#21-el-bit-como-unidad-minima-de-informacion">2.1 EL BIT COMO UNIDAD MÍNIMA DE INFORMACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#digitalizacion-de-la-informacion">Digitalización de la información</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#estandarizacion-de-la-transmision">Estandarización de la transmisión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#medicion-del-rendimiento-de-la-red">Medición del rendimiento de la red</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#22-senales-digitales-y-analogicas">2.2 SEÑALES DIGITALES Y ANALÓGICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#senal-digital">Señal digital</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#senal-analogica">Señal analógica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#modulacion">Modulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#demodulacion">Demodulación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#23-codificacion-y-modulacion-de-senales">2.3 CODIFICACIÓN Y MODULACIÓN DE SEÑALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#bit-y-simbolo">Bit y símbolo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#codificacion">Codificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#modulacion_1">Modulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#qam">QAM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ofdm">OFDM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#multiplexacion">Multiplexación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#24-ruido-y-degradacion-de-la-senal">2.4 RUIDO Y DEGRADACIÓN DE LA SEÑAL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ruido-impulsivo">Ruido impulsivo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#distorsion">Distorsión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#interferencia">Interferencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ruido-termico-o-ruido-blanco">Ruido térmico (o ruido blanco)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#atenuacion">Atenuación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#dispersion">Dispersión</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#25-ancho-de-banda-y-capacidad-de-transmision">2.5 ANCHO DE BANDA Y CAPACIDAD DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ancho-de-banda-analogico-hz">Ancho de banda analógico (Hz)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#capacidad-de-canal-bs">Capacidad de canal (b/s)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#teorema-de-shannon-hartley">Teorema de Shannon-Hartley</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#capacidad-teorica-y-rendimiento-real">Capacidad teórica y rendimiento real</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#rendimiento">Rendimiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#latencia">Latencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#jitter">Jitter</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#26-medios-de-transmision-guiados">2.6 MEDIOS DE TRANSMISIÓN GUIADOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#cable-de-par-trenzado">Cable de par trenzado</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#cable-coaxial">Cable coaxial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#fibra-optica">Fibra óptica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#27-medios-de-transmision-no-guiados">2.7 MEDIOS DE TRANSMISIÓN NO GUIADOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#infrarrojo">Infrarrojo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#tecnologias-inalambricas-para-iot">Tecnologías inalámbricas para IoT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#radiofrecuencia">Radiofrecuencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#microondas">Microondas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#28-espectro-electromagnetico-en-redes">2.8 ESPECTRO ELECTROMAGNÉTICO EN REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#frecuencias-bajas-3-khz30-mhz-vlf-lf-mf-y-hf">Frecuencias bajas (3 kHz–30 MHz; VLF, LF, MF y HF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#frecuencias-medias-30-mhz3-ghz-vhf-y-uhf">Frecuencias medias (30 MHz–3 GHz; VHF y UHF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#frecuencias-altas-3-ghz30-ghz-shf">Frecuencias altas (3 GHz–30 GHz; SHF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ondas-milimetricas-30-ghz300-ghz-ehf">Ondas milimétricas (30 GHz–300 GHz; EHF)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#29-frecuencias-de-operacion">2.9 FRECUENCIAS DE OPERACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#banda-de-24-ghz">Banda de 2.4 GHz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#banda-de-5-ghz">Banda de 5 GHz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#banda-de-6-ghz">Banda de 6 GHz</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#210-calculo-basico-de-tiempos-de-transmision">2.10 CÁLCULO BÁSICO DE TIEMPOS DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#conversion-de-unidades">Conversión de unidades</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_03/">03 · Componentes de una red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#31-dispositivos-finales">3.1 DISPOSITIVOS FINALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#caracteristicas-principales">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#computadoras-personales-y-estaciones-de-trabajo">Computadoras personales y estaciones de trabajo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#servidores">Servidores</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#dispositivos-moviles">Dispositivos móviles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#impresoras-de-red">Impresoras de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#dispositivos-iot">Dispositivos IoT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#32-dispositivos-intermedios">3.2 DISPOSITIVOS INTERMEDIOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#switches-conmutadores">Switches (conmutadores)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#enrutadores-routers">Enrutadores (routers)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#puntos-de-acceso-inalambrico">Puntos de acceso inalámbrico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#firewalls">Firewalls</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#balanceadores-de-carga">Balanceadores de carga</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#dispositivos-adicionales-en-redes-modernas">Dispositivos adicionales en redes modernas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#33-interfaces-de-red-nic">3.3 INTERFACES DE RED (NIC)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#control-de-acceso-al-medio">Control de acceso al medio</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#gestion-de-tramas">Gestión de tramas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#conversion-de-datos-digitales-a-senales">Conversión de datos digitales a señales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#identificacion-unica">Identificación única</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#interfaces-cableadas">Interfaces cableadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#interfaces-inalambricas">Interfaces inalámbricas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#interfaces-especializadas">Interfaces especializadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#optimizaciones-de-nic-modernas">Optimizaciones de NIC modernas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#34-unidad-maxima-de-transmision">3.4 UNIDAD MÁXIMA DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#ethernet">Ethernet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#pppoe-utilizado-en-conexiones-dsl">PPPoE (utilizado en conexiones DSL)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#redes-con-vlan-ieee-8021q">Redes con VLAN (IEEE 802.1Q)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#enlaces-con-jumbo-frames">Enlaces con jumbo frames</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#fragmentacion-del-paquete-ip">Fragmentación del paquete IP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#mensajes-icmp-para-descubrimiento-de-mtu">Mensajes ICMP para descubrimiento de MTU</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#capa-de-enlace">Capa de enlace</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#35-infraestructura-fisica">3.5 INFRAESTRUCTURA FÍSICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#racks-y-gabinetes">Racks y gabinetes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#cables-de-red">Cables de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#conectores-y-terminaciones">Conectores y terminaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#canalizaciones-y-sistemas-de-cableado-estructurado">Canalizaciones y sistemas de cableado estructurado</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#paneles-de-parcheo-patch-panels">Paneles de parcheo (patch panels)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#factores-de-diseno">Factores de diseño</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#estandares-de-cableado-estructurado">Estándares de cableado estructurado</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#36-comunicacion-en-la-red">3.6 COMUNICACIÓN EN LA RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#flujo-de-comunicacion-en-una-red-de-datos">Flujo de comunicación en una red de datos</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_04/">04 · Direccionamiento IP y subredes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#41-ipv4-estructura-de-32-bits">4.1 IPv4 ESTRUCTURA DE 32 BITS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#parte-de-red">Parte de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#parte-de-host">Parte de host</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#42-binario-y-decimal">4.2 BINARIO Y DECIMAL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#43-subnetting-y-segmentacion-logica">4.3 SUBNETTING Y SEGMENTACIÓN LÓGICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#objetivos-de-la-segmentacion-logica">Objetivos de la segmentación lógica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#proceso-del-subnetting">Proceso del subnetting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#44-cidr-y-vlsm">4.4 CIDR Y VLSM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#mascara-de-subred-de-longitud-variable">Máscara de subred de longitud variable</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#reduccion-del-desperdicio-de-direcciones">Reducción del desperdicio de direcciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#mayor-complejidad-de-planificacion">Mayor complejidad de planificación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#45-ipv6-estructura-de-128-bits">4.5 IPv6 ESTRUCTURA DE 128 BITS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#prefijo-de-enrutamiento-global">Prefijo de enrutamiento global</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#identificador-de-subred">Identificador de subred</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#identificador-de-interfaz">Identificador de interfaz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#caracteristicas-principales-de-ipv6">Características principales de IPv6</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#46-notacion-hexadecimal-ipv6">4.6 NOTACIÓN HEXADECIMAL IPv6</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#reglas-basicas-de-la-notacion">Reglas básicas de la notación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#47-autoconfiguracion-ipv6">4.7 AUTOCONFIGURACIÓN IPv6</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#autoconfiguracion-sin-estado-slaac">Autoconfiguración sin estado (SLAAC)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#dhcpv6">DHCPv6</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#48-relacion-redes-subredes-host">4.8 RELACIÓN REDES-SUBREDES-HOST</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#red-principal">Red principal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#subred">Subred</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#host">Host</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#formulas-clave">Fórmulas clave</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#beneficios-de-la-organizacion-jerarquica">Beneficios de la organización jerárquica</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_05/">05 · Conmutación y segmentación de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#51-switching-y-direcciones-mac">5.1 SWITCHING Y DIRECCIONES MAC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#mac">MAC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#switching">Switching</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#caracteristicas-tecnicas-del-switching">Características técnicas del switching</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#proceso-del-switching">Proceso del Switching</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#52-vlan">5.2 VLAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#caracteristicas-de-las-vlan">Características de las VLAN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tipos-de-vlan-segun-su-proposito">Tipos de VLAN según su propósito</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#53-trunking-ieee-8021q">5.3 TRUNKING IEEE 802.1Q</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tpid">TPID</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tci">TCI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#vlan-pruning">VLAN pruning</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#54-stp-rstp-y-mstp">5.4 STP, RSTP Y MSTP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#eleccion-del-switch-raiz">Elección del switch raíz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#determinacion-del-puerto-raiz">Determinación del puerto raíz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#seleccion-de-puertos-designados">Selección de puertos designados</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#bloqueo-de-los-puertos-restantes">Bloqueo de los puertos restantes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#estados-y-timers-de-stp-ieee-8021d">Estados y Timers de STP (IEEE 802.1D)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tiempo-de-convergencia-de-stp">Tiempo de convergencia de STP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#rstp">RSTP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#55-dominios-de-broadcast">5.5 DOMINIOS DE BROADCAST</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#caracteristicas-de-los-dominios-de-broadcast">Características de los dominios de broadcast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#segmentacion-de-dominios-de-broadcast">Segmentación de dominios de broadcast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#dominios-de-broadcast-y-de-colision">Dominios de broadcast y de colisión</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_06/">06 · Enrutamiento y conectividad de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#61-principios-de-enrutamiento">6.1 PRINCIPIOS DE ENRUTAMIENTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#conceptos-fundamentales-en-el-enrutamiento">Conceptos fundamentales en el enrutamiento</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#62-rutas-estaticas">6.2 RUTAS ESTÁTICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#sintaxis-tipica-de-una-ruta-estatica">Sintaxis típica de una ruta estática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-las-rutas-configuradas">Verificación de las rutas configuradas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#rutas-estaticas-hacia-una-interfaz-de-tunel">Rutas estáticas hacia una interfaz de túnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#caracteristicas-de-las-rutas-estaticas">Características de las rutas estáticas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ruta-por-defecto-estatica">Ruta por defecto estática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ruta-estatica-flotante">Ruta estática flotante</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#63-rutas-dinamicas">6.3 RUTAS DINÁMICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#clasificacion-segun-su-alcance">Clasificación según su alcance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#segun-su-forma-de-operar">Según su forma de operar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ventajas-del-enrutamiento-dinamico">Ventajas del enrutamiento dinámico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#64-ospf">6.4 OSPF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#metrica">Métrica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#funcionamiento-basado-en-areas">Funcionamiento basado en áreas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#convergencia">Convergencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#estados-de-adyacencia">Estados de adyacencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#multiacceso-dr-y-bdr">Multiacceso, DR y BDR</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#autenticacion">Autenticación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-ospf">Verificación de OSPF</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#65-bgp">6.5 BGP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-sesiones-bgp">Verificación de sesiones BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#caracteristicas-fundamentales-de-bgp">Características fundamentales de BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#uso-tipico-de-bgp">Uso típico de BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificar-rutas-bgp">Verificar rutas BGP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#66-tabla-de-enrutamiento">6.6 TABLA DE ENRUTAMIENTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#proceso-de-busqueda">Proceso de búsqueda</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ver-la-tabla-de-enrutamiento">Ver la tabla de enrutamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#formas-de-poblar-la-tabla">Formas de poblar la tabla</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#67-gateway">6.7 GATEWAY</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#funcionamiento">Funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-conectividad-a-traves-del-gateway">Verificación de conectividad a través del gateway</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#68-gre">6.8 GRE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#caracteristicas-tecnicas">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#funcionamiento-de-un-tunel-gre">Funcionamiento de un túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#creacion-de-un-tunel-gre">Creación de un túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-del-tunel-gre">Verificación del túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ajuste-del-mss-en-linux">Ajuste del MSS en Linux</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#multiples-tuneles-gre">Múltiples túneles GRE</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_07/">07 · Protocolos y servicios de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#71-tcpudp">7.1 TCP/UDP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#tcp">TCP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#udp">UDP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#72-mss">7.2 MSS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#73-http-https-ftp-y-smtp">7.3 HTTP, HTTPS, FTP Y SMTP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#http">HTTP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#https">HTTPS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#ftp">FTP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#smtp">SMTP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#74-dns">7.4 DNS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-de-una-resolucion-dns-tipica">Funcionamiento de una resolución DNS típica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#75-dhcp">7.5 DHCP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#metodos-de-asignacion">Métodos de asignación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#dhcp-para-ipv6">DHCP para IPv6</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-detallado">Funcionamiento detallado</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#76-natpat">7.6 NAT/PAT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#tipos-de-nat">Tipos de NAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-de-pat">Funcionamiento de PAT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#77-igmp">7.7 IGMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#direcciones-multicast">Direcciones multicast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-basico">Funcionamiento básico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#versiones-de-igmp">Versiones de IGMP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#78-inspeccion-igmp">7.8 INSPECCIÓN IGMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-del-igmp-snooping">Funcionamiento del IGMP snooping</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_08/">08 · Seguridad en redes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#81-principios-de-seguridad-triada-cia">8.1 PRINCIPIOS DE SEGURIDAD (TRÍADA CIA)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#confidencialidad">Confidencialidad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#integridad">Integridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#disponibilidad">Disponibilidad</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#82-firewalls">8.2 FIREWALLS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#firewalls-de-filtrado-de-paquetes-estaticos">Firewalls de filtrado de paquetes (estáticos)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#firewalls-stateful-con-inspeccion-de-estado">Firewalls stateful (con inspección de estado)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#firewalls-de-capa-de-aplicacion-proxy">Firewalls de capa de aplicación (proxy)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#ngfw">NGFW</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#83-dmz">8.3 DMZ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#arquitectura-tipica-de-una-dmz-con-un-solo-firewall-tres-piernas">Arquitectura típica de una DMZ con un solo firewall (tres «piernas»)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#reglas-comunes">Reglas comunes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#variantes-de-dmz">Variantes de DMZ</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#84-acl">8.4 ACL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#tipos-de-acl">Tipos de ACL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#consideraciones-de-diseno-de-acl">Consideraciones de diseño de ACL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#aplicacion-de-acl">Aplicación de ACL</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#85-criptografia">8.5 CRIPTOGRAFÍA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#tls">TLS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#funcionamiento-resumido-de-una-sesion-tls">Funcionamiento resumido de una sesión TLS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#ssh">SSH</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#usos-tipicos">Usos típicos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#86-ipsec">8.6 IPSEC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#componentes-de-ipsec">Componentes de IPsec</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#intercambios-de-ikev2-para-establecer-las-sa">Intercambios de IKEv2 para establecer las SA</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#87-amenazas-de-red">8.7 AMENAZAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#clasificacion-de-amenazas-segun-su-naturaleza">Clasificación de amenazas según su naturaleza</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#88-seguridad-en-capas">8.8 SEGURIDAD EN CAPAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#capas-tipicas-en-una-red-empresarial">Capas típicas en una red empresarial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#ventajas-del-modelo">Ventajas del modelo</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_09/">09 · VPN y tunelización</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#91-gre-en-contexto-vpn">9.1 GRE EN CONTEXTO VPN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#92-ipsec">9.2 IPSEC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#componentes-de-ipsec">Componentes de IPsec</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#modo-transporte">Modo transporte</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#modo-tunel">Modo túnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#primera-etapa">Primera etapa</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#segunda-etapa">Segunda etapa</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#93-ssl-vpn">9.3 SSL VPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#portal-ssl-vpn">Portal SSL VPN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#tunel-ssl-vpn">Túnel SSL VPN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#caracteristicas-tecnicas">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones">Limitaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas">Ventajas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#94-openvpn">9.4 OPENVPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#modos-de-operacion">Modos de operación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#protocolos-de-transporte">Protocolos de transporte</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#95-wireguard">9.5 WIREGUARD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#caracteristicas-tecnicas_1">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas_1">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones_1">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#96-vpn-sitio-a-sitio">9.6 VPN SITIO A SITIO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#componentes-principales">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas_2">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones_2">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#97-vpn-de-acceso-remoto">9.7 VPN DE ACCESO REMOTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#componentes-principales_1">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#control-del-flujo-de-trafico">Control del flujo de tráfico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas_3">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones_3">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#98-comparacion-entre-ipsec-y-ssl-vpn">9.8 COMPARACIÓN ENTRE IPSEC Y SSL VPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#capa-de-operacion">Capa de operación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#facilidad-de-despliegue">Facilidad de despliegue</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#rendimiento">Rendimiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#casos-de-uso-habituales">Casos de uso habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#comparacion-general">Comparación general</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_10/">10 · Infraestructura WAN y core</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#101-mpls">10.1 MPLS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#componentes-principales">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#operaciones-basicas">Operaciones básicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#protocolos-asociados">Protocolos asociados</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#servicios-ventajas-y-limitaciones">Servicios, ventajas y limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#102-sd-wan">10.2 SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#caracteristicas-principales">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#componentes-de-una-arquitectura-sd-wan">Componentes de una arquitectura SD-WAN</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#103-mpls-y-sd-wan">10.3 MPLS Y SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#modelo-operativo">Modelo operativo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#transporte">Transporte</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#calidad-de-servicio">Calidad de servicio</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#costos">Costos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#visibilidad-y-gestion">Visibilidad y gestión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#casos-de-uso">Casos de uso</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#104-backbone-de-red">10.4 BACKBONE DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#topologias-habituales">Topologías habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#caracteristicas-principales_1">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#componentes-del-backbone">Componentes del backbone</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#tecnologias-utilizadas">Tecnologías utilizadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#tecnologias-de-transporte">Tecnologías de transporte</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#105-peering">10.5 PEERING</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#tipos-de-peering">Tipos de peering</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#requisitos-habituales">Requisitos habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#relacion-entre-peering-y-transito">Relación entre peering y tránsito</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#106-migracion-de-mpls-hacia-sd-wan">10.6 MIGRACIÓN DE MPLS HACIA SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#objetivos-habituales-de-la-migracion">Objetivos habituales de la migración</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-1-evaluacion-y-planificacion">Fase 1. Evaluación y planificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-2-implementacion-hibrida">Fase 2. Implementación híbrida</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-3-migracion-gradual-de-aplicaciones">Fase 3. Migración gradual de aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-4-optimizacion-y-consolidacion">Fase 4. Optimización y consolidación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-5-operacion-continua">Fase 5. Operación continua</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#desafios-habituales">Desafíos habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#arquitectura-hibrida-de-referencia">Arquitectura híbrida de referencia</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_11/">11 · Arquitectura de red empresarial</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#111-topologias-de-red">11.1 TOPOLOGÍAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-estrella">Topología en estrella</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-bus">Topología en bus</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-anillo">Topología en anillo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-malla">Topología en malla</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-arbol">Topología en árbol</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-logica">Topología lógica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#112-diagramas-de-red">11.2 DIAGRAMAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-fisico">Diagrama físico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-logico">Diagrama lógico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-de-arquitectura-jerarquica">Diagrama de arquitectura jerárquica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-de-flujo-de-datos">Diagrama de flujo de datos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#herramientas-de-diagramacion">Herramientas de diagramación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#113-modelo-jerarquico">11.3 MODELO JERÁRQUICO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#capa-de-acceso">Capa de acceso</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#capa-de-distribucion">Capa de distribución</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#capa-de-nucleo">Capa de núcleo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#beneficios-del-modelo-jerarquico">Beneficios del modelo jerárquico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#variantes-arquitectonicas">Variantes arquitectónicas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#114-alta-disponibilidad">11.4 ALTA DISPONIBILIDAD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#mtbf-mean-time-between-failures">MTBF (Mean Time Between Failures)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#mttr-mean-time-to-repair">MTTR (Mean Time To Repair)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#principios-de-diseno">Principios de diseño</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#alta-disponibilidad-y-continuidad-operativa">Alta disponibilidad y continuidad operativa</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#115-redundancia">11.5 REDUNDANCIA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#redundancia-de-dispositivos">Redundancia de dispositivos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#otros-niveles-de-redundancia">Otros niveles de redundancia</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#116-segmentacion-corporativa">11.6 SEGMENTACIÓN CORPORATIVA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#metodos-de-segmentacion">Métodos de segmentación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#beneficios-principales">Beneficios principales</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#117-dmz">11.7 DMZ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#objetivos-de-una-dmz">Objetivos de una DMZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#arquitectura-tipica">Arquitectura típica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#modelos-de-implementacion">Modelos de implementación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#controles-de-seguridad-recomendados">Controles de seguridad recomendados</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">12 · Arquitecturas modernas de red</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#121-cloud-networking">12.1 CLOUD NETWORKING</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#122-zero-trust">12.2 ZERO TRUST</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#123-ztna">12.3 ZTNA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#124-sase">12.4 SASE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#principales-beneficios">Principales beneficios</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#limitaciones">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#125-microsegmentacion">12.5 MICROSEGMENTACIÓN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#126-modernizacion-de-redes">12.6 MODERNIZACIÓN DE REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#telemetria-avanzada">Telemetría avanzada</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#herramientas-de-automatizacion-modernas">Herramientas de automatización modernas</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_13/">13 · Monitoreo y diagnóstico de redes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#131-ping-traceroute-y-nslookup">13.1 PING, TRACEROUTE Y NSLOOKUP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#ping">Ping</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#traceroute-tracert-en-windows">Traceroute (tracert en Windows)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#nslookup">nslookup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#aplicaciones-de-diagnostico">Aplicaciones de diagnóstico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#132-mtr">13.2 MTR</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#funcionamiento">Funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#interpretacion">Interpretación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#ventaja-principal">Ventaja principal</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#133-wireshark">13.3 WIRESHARK</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#capacidades">Capacidades</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#aplicaciones">Aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#limitaciones">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#134-tcpdump">13.4 TCPDUMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#opciones">Opciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#135-iperf">13.5 IPERF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#parametros">Parámetros</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#metricas">Métricas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#aplicaciones_1">Aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#limitacion">Limitación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_13/#136-siem">13.6 SIEM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#funcionalidades">Funcionalidades</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#ejemplos-de-correlacion">Ejemplos de correlación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_13/#limitaciones_1">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_14/">14 · Herramientas Linux</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#141-ip-iproute2">14.1 IP / IPROUTE2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#subcomandos-principales">Subcomandos principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ventajas-de-iproute2">Ventajas de iproute2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ejemplos-practicos">Ejemplos prácticos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#142-ss-netstat">14.2 SS / NETSTAT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#uso-practico-de-ss">Uso práctico de ss</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#informacion-disponible-mediante-ss">Información disponible mediante ss</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ventajas-de-ss">Ventajas de ss</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#143-routing-en-linux">14.3 ROUTING EN LINUX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#habilitacion-de-ip-forwarding">Habilitación de IP forwarding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#router-linux-basico-con-nat">Router Linux básico con NAT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#144-nftables-iptables">14.4 NFTABLES / IPTABLES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#iptables">IPTABLES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#nftables">NFTABLES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#comparacion-entre-iptables-y-nftables">Comparación entre iptables y nftables</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#aplicaciones-habituales">Aplicaciones habituales</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#145-diagnostico-de-red-en-linux">14.5 DIAGNÓSTICO DE RED EN LINUX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ethtool">ETHTOOL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#netcat">NETCAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#metodologia-de-diagnostico">Metodología de Diagnóstico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#flujo-recomendado-de-troubleshooting">Flujo recomendado de troubleshooting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#146-simulacion-de-redes-gns3-eve-ng">14.6 SIMULACIÓN DE REDES GNS3 / EVE-NG</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#gns3">GNS3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#eve-ng">EVE-NG</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#casos-de-uso-profesionales">Casos de uso profesionales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#seleccion-de-plataforma">Selección de plataforma</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_15/">15 · Implementación práctica integral</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#151-configuracion-de-red-basica">15.1 CONFIGURACIÓN DE RED BÁSICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#identificacion-de-interfaces">Identificación de interfaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-de-una-direccion-ipv4">Configuración de una dirección IPv4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-de-la-puerta-de-enlace">Configuración de la puerta de enlace</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#tabla-de-vecinos">Tabla de vecinos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-progresiva">Verificación progresiva</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#captura-del-trafico">Captura del tráfico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#resolucion-de-nombres">Resolución de nombres</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#152-subnetting-aplicado-vlsm">15.2 SUBNETTING APLICADO — VLSM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-a">Segmento A</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-b">Segmento B</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-c">Segmento C</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-d">Segmento D</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-matematica">Verificación matemática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-con-linux">Verificación con Linux</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#153-vlan-redes-locales-virtuales">15.3 VLAN REDES LOCALES VIRTUALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#creacion-de-una-subinterfaz-vlan">Creación de una subinterfaz VLAN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#puerto-trunk">Puerto trunk</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-mediante-captura">Verificación mediante captura</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#routing-entre-vlan">Routing entre VLAN</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#154-routing-entre-redes">15.4 ROUTING ENTRE REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#rutas-estaticas">Rutas estáticas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#activacion-del-forwarding">Activación del forwarding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#prueba-del-camino">Prueba del camino</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#routing-dinamico-con-ospf">Routing dinámico con OSPF</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#diagnostico-de-routing">Diagnóstico de routing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#155-firewall-nftables">15.5 FIREWALL — NFTABLES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#firewall-basico">Firewall básico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#nat">NAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion">Verificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#principio-de-diagnostico">Principio de diagnóstico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#156-red-parcial-integrada-dhcp">15.6 RED PARCIAL INTEGRADA — DHCP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-conceptual">Configuración conceptual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#proceso-dora">Proceso DORA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-del-cliente">Verificación del cliente</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#diagnostico">Diagnóstico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#integracion">Integración</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#157-red-empresarial-completa">15.7 RED EMPRESARIAL COMPLETA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#principio-de-funcionamiento">Principio de funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-conceptual_1">Configuración conceptual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#prueba-de-failover">Prueba de failover</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#consideraciones-operativas">Consideraciones operativas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#158-troubleshooting-real">15.8 TROUBLESHOOTING REAL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-1">CASO DE ESTUDIO 1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-2">CASO DE ESTUDIO 2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-3">CASO DE ESTUDIO 3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-4">CASO DE ESTUDIO 4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-5">CASO DE ESTUDIO 5</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#validacion-final-del-laboratorio">VALIDACIÓN FINAL DEL LABORATORIO</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#metodologia-aplicada-en-los-casos-de-estudio">Metodología aplicada en los casos de estudio</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../conclusion/">Conclusión</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glosario/">Glosario</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../acronimos/">Acrónimos</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Anexos gráficos</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/">Introducción</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_I/">Anexo I</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_II/">Anexo II</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_III/">Anexo III</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_IV/">Anexo IV</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_V/">Anexo V</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_VI/">Anexo VI</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_VII/">Anexo VII</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_VIII/">Anexo VIII</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_IX/">Anexo IX</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_X/">Anexo X</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_XI/">Anexo XI</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_XII/">Anexo XII</a>
+    <ul>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../bibliograf%C3%ADa/">Bibliografía</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#libros-y-publicaciones-tecnicas">Libros y publicaciones técnicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#estandares-y-documentacion-tecnica">Estándares y documentación técnica</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#internet-engineering-task-force-ietf">Internet Engineering Task Force (IETF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#ieee">IEEE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#linux-y-herramientas-de-administracion-de-redes">Linux y herramientas de administración de redes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#seguridad-informatica-y-buenas-practicas">Seguridad informática y buenas prácticas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#fuentes-historicas-y-academicas">Fuentes históricas y académicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#recursos-complementarios">Recursos complementarios</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Complementos</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../complementos/sistema-de-diagramas/">Sistema de diagramas</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../complementos/derechos-de-autor/">Derechos de autor y licencia</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#derechos-de-autor-y-licencia">Derechos de autor y licencia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#atribucion">Atribución</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#alcance-de-la-licencia">Alcance de la licencia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#contenido-tecnico-y-conocimientos-generales">Contenido técnico y conocimientos generales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#materiales-de-terceros">Materiales de terceros</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#contenido-grafico-y-elementos-visuales">Contenido gráfico y elementos visuales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#tipografias-software-y-herramientas">Tipografías, software y herramientas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#inteligencia-artificial-y-proceso-de-elaboracion">Inteligencia artificial y proceso de elaboración</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#codigo-comandos-configuraciones-y-ejemplos-tecnicos">Código, comandos, configuraciones y ejemplos técnicos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#estandares-y-especificaciones-tecnicas">Estándares y especificaciones técnicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#autoria-y-procedencia-de-los-contenidos">Autoría y procedencia de los contenidos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#limitaciones-y-excepciones-legales">Limitaciones y excepciones legales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#responsabilidad-sobre-la-informacion-tecnica">Responsabilidad sobre la información técnica</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#sobre-este-aviso">Sobre este aviso</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#identificacion-de-la-edicion">Identificación de la edición</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Temas</li>
+      <li class="breadcrumb-item active">12 · Arquitecturas modernas de red</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p class="tema-num">TEMA 12</p>
+
+<h1 id="arquitecturas-modernas-de-red">ARQUITECTURAS MODERNAS DE RED<a class="headerlink" href="#arquitecturas-modernas-de-red" title="Permanent link">¶</a></h1>
+<p>Las arquitecturas modernas de red evolucionan hacia modelos distribuidos, programables y centrados en la seguridad. La adopción masiva de servicios en la nube, la virtualización, la automatización y el trabajo híbrido han transformado la forma de diseñar y operar las infraestructuras.</p>
+<p>La segmentación, la DMZ y la defensa en capas del Tema 11 suponen un perímetro definido. Las arquitecturas modernas parten de que ese perímetro ya no es una referencia suficiente.</p>
+<p>A diferencia de los modelos tradicionales, basados en <em>hardware</em> especializado y configuraciones estáticas, las arquitecturas actuales priorizan la agilidad, la escalabilidad, la automatización y la adaptación dinámica a las necesidades del negocio. En este tema veremos cómo se integran las redes definidas por <em>software</em> (SDN), los servicios en la nube, <em>Zero Trust</em>, el acceso basado en identidad y la segmentación avanzada (Figura 12.1).</p>
+<div class="diagram" id="figura-12-01" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1201" viewBox="0 0 1200 402" role="img" aria-labelledby="g1201-title">
+<title id="g1201-title">Mapa del Tema 12</title>
+<defs></defs>
+<g id="g1201-c" transform="translate(20 20)"><rect x="0" y="0" width="370.67" height="153" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="0" y1="34" x2="370.67" y2="34" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="185.33" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">12.1 Cloud networking</text>
+<g transform="translate(185.33 76.84) scale(0.7)" data-lib="cloud"><path d="M-30 18 C-44 18 -44 -4 -28 -6 C-28 -26 4 -34 14 -16 C32 -22 46 -2 34 14 C32 18 28 18 26 18 Z" fill="#e6ecfa" stroke="#003ecc" stroke-width="3" stroke-linejoin="round"></path></g>
+<text x="185.33" y="134.95" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">VPC, subredes, gateways y balanceadores</text>
+<rect x="394.67" y="0" width="370.67" height="153" rx="6" fill="#ebedf0" stroke="#364e6c" stroke-width="2"></rect>
+<line x1="394.67" y1="34" x2="765.33" y2="34" stroke="#364e6c" stroke-width="1.5"></line>
+<text x="580" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">12.2 Zero Trust</text>
+<g transform="translate(580 76.84) scale(0.7)" data-lib="shield"><path d="M 0 -26 L 22 -17 L 22 2 C 22 16 0 26 0 26 C 0 26 -22 16 -22 2 L -22 -17 Z" fill="#364e6c" stroke="#364e6c" stroke-width="2"></path><path d="M-10 0 L-3 8 L11 -9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<text x="580" y="134.95" font-size="10.9pt" font-weight="400" fill="#1e3a5f" text-anchor="middle">Nunca confiar, siempre verificar</text>
+<rect x="789.33" y="0" width="370.67" height="153" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<line x1="789.33" y1="34" x2="1160" y2="34" stroke="#009254" stroke-width="1.5"></line>
+<text x="974.67" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">12.3 ZTNA</text>
+<g transform="translate(974.67 76.84) scale(0.7)" data-lib="key"><g stroke="#009254" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="-22" cy="0" r="12" fill="#bfe4d4"></circle><path d="M-10 0 H34 M24 0 V12 M14 0 V9"></path></g></g>
+<text x="974.67" y="134.95" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">Acceso por aplicación y no por red</text>
+<rect x="0" y="177" width="370.67" height="153" rx="6" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2"></rect>
+<line x1="0" y1="211" x2="370.67" y2="211" stroke="#7c3aed" stroke-width="1.5"></line>
+<text x="185.33" y="200" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">12.4 SASE</text>
+<g transform="translate(185.33 253.84) scale(0.7)" data-lib="globe"><g stroke="#7c3aed" stroke-width="3" fill="none"><circle cx="0" cy="0" r="30" fill="#f2ebfd"></circle><ellipse cx="0" cy="0" rx="13" ry="30"></ellipse><path d="M-30 0H30M-26 -15H26M-26 15H26" stroke-width="2"></path></g></g>
+<text x="185.33" y="311.95" font-size="10.9pt" font-weight="400" fill="#5b21b6" text-anchor="middle">Red y seguridad entregadas desde la nube</text>
+<rect x="394.67" y="177" width="370.67" height="153" rx="6" fill="#fbe6e6" stroke="#d40000" stroke-width="2"></rect>
+<line x1="394.67" y1="211" x2="765.33" y2="211" stroke="#d40000" stroke-width="1.5"></line>
+<text x="580" y="200" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">12.5 Microsegmentación</text>
+<g transform="translate(580 253.84) scale(0.7)" data-lib="lock"><path d="M-12 -4 V-14 A12 12 0 0 1 12 -14 V-4" fill="none" stroke="#d40000" stroke-width="4"></path><rect x="-20" y="-4" width="40" height="32" rx="5" fill="#d40000"></rect><circle cx="0" cy="10" r="4" fill="#ffffff"></circle><rect x="-1.5" y="12" width="3" height="9" fill="#ffffff"></rect></g>
+<text x="580" y="311.95" font-size="10.9pt" font-weight="400" fill="#7f1d1d" text-anchor="middle">Políticas por carga de trabajo</text>
+<rect x="789.33" y="177" width="370.67" height="153" rx="6" fill="#fcebe6" stroke="#dd3a00" stroke-width="2"></rect>
+<line x1="789.33" y1="211" x2="1160" y2="211" stroke="#dd3a00" stroke-width="1.5"></line>
+<text x="974.67" y="200" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">12.6 Modernización de redes</text>
+<g transform="translate(974.67 253.84) scale(0.7)" data-lib="gear"><g fill="#dd3a00"><rect x="-5" y="-28" width="10" height="12" rx="2" transform="rotate(0)"></rect><rect x="-5" y="-28" width="10" height="12" rx="2" transform="rotate(45)"></rect><rect x="-5" y="-28" width="10" height="12" rx="2" transform="rotate(90)"></rect><rect x="-5" y="-28" width="10" height="12" rx="2" transform="rotate(135)"></rect><rect x="-5" y="-28" width="10" height="12" rx="2" transform="rotate(180)"></rect><rect x="-5" y="-28" width="10" height="12" rx="2" transform="rotate(225)"></rect><rect x="-5" y="-28" width="10" height="12" rx="2" transform="rotate(270)"></rect><rect x="-5" y="-28" width="10" height="12" rx="2" transform="rotate(315)"></rect></g><circle cx="0" cy="0" r="19" fill="#ffffff" stroke="#dd3a00" stroke-width="4"></circle><circle cx="0" cy="0" r="7" fill="#f6cebf" stroke="#dd3a00" stroke-width="3"></circle></g>
+<text x="974.67" y="311.95" font-size="10.9pt" font-weight="400" fill="#7c2d12" text-anchor="middle">SDN, automatización, IaC y NFV</text></g><text x="600" y="384" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 12.1. Mapa del Tema 12.</text></svg>
+</div>
+
+<h2 id="121-cloud-networking">12.1 CLOUD NETWORKING<a class="headerlink" href="#121-cloud-networking" title="Permanent link">¶</a></h2>
+<p><em>Cloud</em> Networking engloba las tecnologías y prácticas utilizadas para crear, administrar y proteger redes dentro de entornos de nube pública, privada e híbrida. Permite desplegar infraestructuras de red completamente virtualizadas sin necesidad de administrar directamente los componentes físicos subyacentes.</p>
+<p>En estas plataformas, los recursos de red se implementan mediante servicios virtuales definidos por <em>software</em>, gestionados mediante interfaces web, APIs o herramientas de automatización. La implementación de recursos de red virtualizados en la nube se muestra en la Figura 12.2.</p>
+<div class="diagram" id="figura-12-02" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1202" viewBox="0 0 1200 502" role="img" aria-labelledby="g1202-title">
+<title id="g1202-title">Componentes de una red virtual en la nube (VPC)</title>
+<defs><marker id="g1202m364e6c" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#364e6c"></polygon></marker><marker id="g1202n364e6c" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#364e6c"></polygon></marker><marker id="g1202m7c3aed" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#7c3aed"></polygon></marker><marker id="g1202n7c3aed" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#7c3aed"></polygon></marker></defs>
+<g id="g1202-c" transform="translate(20 20)"><g transform="translate(90 110) scale(1.2)" data-lib="cloud"><path d="M-30 18 C-44 18 -44 -4 -28 -6 C-28 -26 4 -34 14 -16 C32 -22 46 -2 34 14 C32 18 28 18 26 18 Z" fill="#f2ebfd" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"></path></g>
+<text x="90" y="170" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Internet</text>
+<g transform="translate(90 320) scale(0.9)" data-lib="building"><rect x="-26" y="-34" width="52" height="68" rx="3" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><rect x="-17" y="-24" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-17" y="-8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-17" y="8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-3" y="-24" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-3" y="-8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-3" y="8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="11" y="-24" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="11" y="-8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="11" y="8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-7" y="19" width="14" height="15" fill="#003ecc"></rect></g>
+<text x="90" y="372" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Red local</text>
+<rect x="330" y="0" width="830" height="410" rx="6" fill="#e6ecfa" fill-opacity="0.55" stroke="#003ecc" stroke-width="2" stroke-dasharray="7 5"></rect>
+<text x="342" y="22" font-size="12.5pt" font-weight="700" fill="#1e3a8a" text-anchor="start">VPC · red virtual privada</text>
+<polyline points="160,110 330,110" fill="none" stroke="#364e6c" stroke-width="2.5" marker-end="url(#g1202m364e6c)" marker-start="url(#g1202n364e6c)"></polyline>
+<g transform="translate(250 80) scale(0.6)" data-lib="router"><circle cx="0" cy="0" r="30" fill="#e6ecfa" stroke="#003ecc" stroke-width="3"></circle><g fill="none" stroke="#003ecc" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-8 0H-24M-17 -6L-24 0L-17 6"></path><path d="M8 0H24M17 -6L24 0L17 6"></path><path d="M0 -8V-24M-6 -17L0 -24L6 -17" transform="rotate(180)"></path><path d="M0 8V24M-6 17L0 24L6 17" transform="rotate(180)"></path></g></g>
+<text x="250" y="140" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Gateway</text>
+<text x="250" y="156" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">de Internet</text>
+<polyline points="160,320 330,320" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#g1202m7c3aed)" marker-start="url(#g1202n7c3aed)"></polyline>
+<text x="245" y="305" font-size="10.35pt" font-weight="700" fill="#5b21b6" text-anchor="middle">VPN o</text>
+<text x="245" y="350" font-size="10.35pt" font-weight="700" fill="#5b21b6" text-anchor="middle">interconexión dedicada</text>
+<rect x="360" y="50" width="380" height="190" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<text x="376" y="74" font-size="12.5pt" font-weight="700" fill="#065f46" text-anchor="start">Subred pública</text>
+<rect x="790" y="50" width="340" height="190" rx="6" fill="#fcebe6" stroke="#dd3a00" stroke-width="2"></rect>
+<text x="806" y="74" font-size="12.5pt" font-weight="700" fill="#7c2d12" text-anchor="start">Subred privada</text>
+<g transform="translate(430 140) scale(0.7)" data-lib="fork"><g fill="none" stroke="#009254" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-30 0 H-6 L20 -18 M-6 0 L20 18"></path><path d="M12 -26 L22 -18 L12 -10 M12 10 L22 18 L12 26"></path></g><circle cx="-30" cy="0" r="5" fill="#009254"></circle></g>
+<text x="430" y="195" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Balanceador</text>
+<g transform="translate(550 140) scale(0.7)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="550" y="195" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Servidor web</text>
+<g transform="translate(670 140) scale(0.7)" data-lib="router"><circle cx="0" cy="0" r="30" fill="#e6f4ee" stroke="#009254" stroke-width="3"></circle><g fill="none" stroke="#009254" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-8 0H-24M-17 -6L-24 0L-17 6"></path><path d="M8 0H24M17 -6L24 0L17 6"></path><path d="M0 -8V-24M-6 -17L0 -24L6 -17" transform="rotate(180)"></path><path d="M0 8V24M-6 17L0 24L6 17" transform="rotate(180)"></path></g></g>
+<text x="670" y="195" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">NAT</text>
+<g transform="translate(880 140) scale(0.7)" data-lib="app"><rect x="-38" y="-28" width="76" height="56" rx="5" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><rect x="-38" y="-28" width="76" height="16" rx="4" fill="#bfcff2" stroke="#003ecc" stroke-width="3"></rect><circle cx="-28" cy="-20" r="2.5" fill="#003ecc"></circle><circle cx="-20" cy="-20" r="2.5" fill="#003ecc"></circle><path d="M-26 0h30M-26 12h46" stroke="#003ecc" stroke-width="3" stroke-linecap="round" fill="none"></path></g>
+<text x="880" y="195" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Aplicación</text>
+<g transform="translate(1040 140) scale(0.7)" data-lib="db"><g stroke="#003ecc" stroke-width="3" fill="#ffffff"><path d="M-30 -24 V24 C-30 36 30 36 30 24 V-24"></path><ellipse cx="0" cy="-24" rx="30" ry="11" fill="#e6ecfa"></ellipse><path d="M-30 -4 C-30 8 30 8 30 -4" fill="none"></path><path d="M-30 14 C-30 26 30 26 30 14" fill="none"></path></g></g>
+<text x="1040" y="195" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Base de datos</text>
+<polyline points="742,145 788,145" fill="none" stroke="#364e6c" stroke-width="2.5" marker-end="url(#g1202m364e6c)"></polyline>
+<rect x="360" y="280" width="230" height="30" rx="15.0" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect>
+<text x="475" y="299.66" font-size="10.35pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Tablas de rutas virtuales</text>
+<rect x="600" y="280" width="230" height="30" rx="15.0" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect>
+<text x="715" y="299.66" font-size="10.35pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Grupos de seguridad y ACL</text>
+<rect x="860" y="280" width="270" height="30" rx="15.0" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect>
+<text x="995" y="299.66" font-size="10.35pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Service Mesh (microservicios)</text>
+<text x="745" y="345" font-size="10.35pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Los recursos se definen por software y se administran por consola, API o automatización</text></g><text x="600" y="484" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 12.2. Componentes de una red virtual en la nube (VPC).</text></svg>
+</div>
+
+<p>Entre los elementos principales se incluyen:</p>
+<ul>
+<li>Redes privadas virtuales (VPC o <em>Virtual Private Cloud</em>).</li>
+<li>Subredes públicas y privadas.</li>
+<li>Tablas de enrutamiento virtuales.</li>
+<li><em>Gateways</em> de Internet y NAT.</li>
+<li>VPN e interconexiones dedicadas.</li>
+<li>Grupos de seguridad y listas de control de acceso.</li>
+<li>Balanceadores de carga.</li>
+<li><em>Service Mesh</em> para arquitecturas de microservicios.</li>
+</ul>
+<p>Entre sus ventajas destacan la rapidez de despliegue, la reducción de la inversión inicial y la integración con ecosistemas DevOps.</p>
+<p>Como desafíos aparecen la gobernanza, el control de costos, la complejidad operativa y la dependencia del proveedor. Los mecanismos de redundancia y alta disponibilidad que garantizan la continuidad en infraestructuras <em>cloud</em> se ilustran en el <strong>Anexo IV.</strong></p>
+<h2 id="122-zero-trust">12.2 ZERO TRUST<a class="headerlink" href="#122-zero-trust" title="Permanent link">¶</a></h2>
+<p><em>Zero Trust</em> es un modelo de seguridad que elimina la confianza implícita concedida solo por la ubicación de un usuario o dispositivo dentro de una red.</p>
+<div class="diagram" id="figura-12-03" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1203" viewBox="0 0 1200 422" role="img" aria-labelledby="g1203-title">
+<title id="g1203-title">Confianza implícita frente a verificación explícita</title>
+<defs><marker id="g1203md40000" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#d40000"></polygon></marker><marker id="g1203nd40000" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#d40000"></polygon></marker><marker id="g1203m009254" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#009254"></polygon></marker><marker id="g1203n009254" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#009254"></polygon></marker></defs>
+<g id="g1203-c" transform="translate(20 20)"><rect x="0" y="0" width="560" height="350" rx="6" fill="#fbe6e6" stroke="#d40000" stroke-width="2"></rect>
+<line x1="0" y1="34" x2="560" y2="34" stroke="#d40000" stroke-width="1.5"></line>
+<text x="280" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Modelo perimetral</text>
+<rect x="600" y="0" width="560" height="350" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<line x1="600" y1="34" x2="1160" y2="34" stroke="#009254" stroke-width="1.5"></line>
+<text x="880" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Zero Trust</text>
+<rect x="120" y="70" width="400" height="250" rx="6" fill="#e6ecfa" fill-opacity="0.55" stroke="#003ecc" stroke-width="2" stroke-dasharray="7 5"></rect>
+<text x="132" y="92" font-size="12.5pt" font-weight="700" fill="#1e3a8a" text-anchor="start">Red interna confiable</text>
+<g transform="translate(56 190) scale(0.8)" data-lib="firewall"><rect x="-36" y="-28" width="72" height="56" rx="4" fill="#ffffff" stroke="#dd3a00" stroke-width="3"></rect><path d="M-36 -9.5H36M-36 9.5H36M-12 -28V-9.5M12 -9.5V9.5M-12 9.5V28" stroke="#dd3a00" stroke-width="2.5" fill="none"></path><rect x="-36" y="-28" width="72" height="18.5" rx="3" fill="#f6cebf" stroke="#dd3a00" stroke-width="3"></rect><path d="M-36 -9.5H36M-12 -28V-9.5M12 -9.5V9.5M-12 9.5V28" stroke="#dd3a00" stroke-width="2.5" fill="none"></path></g>
+<text x="56" y="245" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Perímetro</text>
+<polyline points="98,190 118,190" fill="none" stroke="#d40000" stroke-width="2.5" marker-end="url(#g1203md40000)"></polyline>
+<line x1="220" y1="150" x2="370" y2="150" stroke="#003ecc" stroke-width="2.5"></line>
+<line x1="220" y1="150" x2="295" y2="260" stroke="#003ecc" stroke-width="2.5"></line>
+<line x1="370" y1="150" x2="295" y2="260" stroke="#003ecc" stroke-width="2.5"></line>
+<g transform="translate(220 150) scale(0.6)" data-lib="pc"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#fbe6e6" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g>
+<g transform="translate(370 150) scale(0.6)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<g transform="translate(295 260) scale(0.6)" data-lib="db"><g stroke="#003ecc" stroke-width="3" fill="#ffffff"><path d="M-30 -24 V24 C-30 36 30 36 30 24 V-24"></path><ellipse cx="0" cy="-24" rx="30" ry="11" fill="#e6ecfa"></ellipse><path d="M-30 -4 C-30 8 30 8 30 -4" fill="none"></path><path d="M-30 14 C-30 26 30 26 30 14" fill="none"></path></g></g>
+<text x="280" y="300" font-size="10.35pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Dentro de la red, todo es confiable</text>
+<g transform="translate(660 120) scale(0.7)" data-lib="user"><g stroke="#7c3aed" stroke-width="3" fill="#ffffff"><circle cx="0" cy="-18" r="14" fill="#f2ebfd"></circle><path d="M-30 30 C-30 4 -18 0 0 0 C18 0 30 4 30 30 Z" fill="#f2ebfd"></path></g></g>
+<text x="660" y="175" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Usuario</text>
+<g transform="translate(660 255) scale(0.55)" data-lib="pc"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#fbe6e6" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g>
+<text x="660" y="300" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Dispositivo</text>
+<rect x="820" y="90" width="150" height="170" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<line x1="820" y1="141" x2="970" y2="141" stroke="#009254" stroke-width="1.5"></line>
+<text x="895" y="113" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Verifica cada</text>
+<text x="895" y="130" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">solicitud</text>
+<g transform="translate(895 183.84) scale(1.2)" data-lib="shield"><path d="M 0 -26 L 22 -17 L 22 2 C 22 16 0 26 0 26 C 0 26 -22 16 -22 2 L -22 -17 Z" fill="#009254" stroke="#009254" stroke-width="2"></path><path d="M-10 0 L-3 8 L11 -9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<polyline points="710,120 818,175" fill="none" stroke="#009254" stroke-width="2.5" marker-end="url(#g1203m009254)"></polyline>
+<polyline points="710,255 818,175" fill="none" stroke="#009254" stroke-width="2.5" marker-end="url(#g1203m009254)"></polyline>
+<polyline points="972,175 1060,100" fill="none" stroke="#009254" stroke-width="2.5" marker-end="url(#g1203m009254)"></polyline>
+<g transform="translate(1100 94) scale(0.5)" data-lib="app"><rect x="-38" y="-28" width="76" height="56" rx="5" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><rect x="-38" y="-28" width="76" height="16" rx="4" fill="#bfcff2" stroke="#003ecc" stroke-width="3"></rect><circle cx="-28" cy="-20" r="2.5" fill="#003ecc"></circle><circle cx="-20" cy="-20" r="2.5" fill="#003ecc"></circle><path d="M-26 0h30M-26 12h46" stroke="#003ecc" stroke-width="3" stroke-linecap="round" fill="none"></path></g>
+<text x="1100" y="130" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Aplicación</text>
+<polyline points="972,175 1060,190" fill="none" stroke="#009254" stroke-width="2.5" marker-end="url(#g1203m009254)"></polyline>
+<g transform="translate(1100 184) scale(0.5)" data-lib="db"><g stroke="#003ecc" stroke-width="3" fill="#ffffff"><path d="M-30 -24 V24 C-30 36 30 36 30 24 V-24"></path><ellipse cx="0" cy="-24" rx="30" ry="11" fill="#e6ecfa"></ellipse><path d="M-30 -4 C-30 8 30 8 30 -4" fill="none"></path><path d="M-30 14 C-30 26 30 26 30 14" fill="none"></path></g></g>
+<text x="1100" y="220" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Datos</text>
+<polyline points="972,175 1060,280" fill="none" stroke="#009254" stroke-width="2.5" marker-end="url(#g1203m009254)"></polyline>
+<g transform="translate(1100 274) scale(0.5)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="1100" y="310" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Servidor</text>
+<text x="880" y="300" font-size="10.35pt" font-weight="400" fill="#065f46" text-anchor="middle">Ninguna entidad es confiable por defecto</text></g><text x="600" y="404" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 12.3. Confianza implícita frente a verificación explícita.</text></svg>
+</div>
+
+<p>En los modelos tradicionales, la pertenencia a la red corporativa podía interpretarse como una señal suficiente de confianza. <em>Zero Trust</em> parte de una premisa diferente: ninguna entidad obtiene confianza automática por su ubicación; cada solicitud de acceso debe evaluarse mediante políticas explícitas y contexto.</p>
+<p>Su principio suele resumirse como "nunca confiar, siempre verificar". La Figura 12.3 contrasta el modelo perimetral con el enfoque <em>Zero Trust</em>.</p>
+<p>Cada solicitud de acceso debe evaluarse mediante políticas que pueden considerar identidad, estado del dispositivo y otros atributos contextuales, según el recurso y el nivel de riesgo.</p>
+<p>Entre los atributos más habituales se encuentran:</p>
+<ul>
+<li>Identidad del usuario.</li>
+<li>Estado del dispositivo.</li>
+<li>Ubicación geográfica.</li>
+<li>Nivel de riesgo.</li>
+<li>Horario de acceso.</li>
+<li>Sensibilidad del recurso solicitado.</li>
+</ul>
+<p>La Figura 12.4 muestra cómo el motor de políticas combina estos atributos para permitir, condicionar o denegar el acceso.</p>
+<p>Las organizaciones adoptan <em>Zero Trust</em> para reducir movimientos laterales, contener incidentes y proteger entornos distribuidos donde usuarios, aplicaciones y datos se encuentran repartidos entre múltiples ubicaciones y proveedores de nube.</p>
+<div class="diagram" id="figura-12-04" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1204" viewBox="0 0 1200 422" role="img" aria-labelledby="g1204-title">
+<title id="g1204-title">Atributos que evalúa el motor de políticas en cada solicitud</title>
+<defs><marker id="g1204m003ecc" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#003ecc"></polygon></marker><marker id="g1204n003ecc" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#003ecc"></polygon></marker><marker id="g1204m009254" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#009254"></polygon></marker><marker id="g1204n009254" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#009254"></polygon></marker><marker id="g1204mdd3a00" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#dd3a00"></polygon></marker><marker id="g1204ndd3a00" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#dd3a00"></polygon></marker><marker id="g1204md40000" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#d40000"></polygon></marker><marker id="g1204nd40000" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#d40000"></polygon></marker></defs>
+<g id="g1204-c" transform="translate(20 20)"><rect x="0" y="0" width="330" height="46" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<g transform="translate(28 23) scale(0.38)" data-lib="user"><g stroke="#7c3aed" stroke-width="3" fill="#ffffff"><circle cx="0" cy="-18" r="14" fill="#f2ebfd"></circle><path d="M-30 30 C-30 4 -18 0 0 0 C18 0 30 4 30 30 Z" fill="#f2ebfd"></path></g></g>
+<text x="60" y="28" font-size="10.9pt" font-weight="700" fill="#1a1a1a" text-anchor="start">Identidad del usuario</text>
+<polyline points="332,23 470,174" fill="none" stroke="#003ecc" stroke-width="1.6" marker-end="url(#g1204m003ecc)"></polyline>
+<rect x="0" y="58" width="330" height="46" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<g transform="translate(28 81) scale(0.38)" data-lib="pc"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#fbe6e6" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g>
+<text x="60" y="86" font-size="10.9pt" font-weight="700" fill="#1a1a1a" text-anchor="start">Estado del dispositivo</text>
+<polyline points="332,81 470,174" fill="none" stroke="#003ecc" stroke-width="1.6" marker-end="url(#g1204m003ecc)"></polyline>
+<rect x="0" y="116" width="330" height="46" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<g transform="translate(28 139) scale(0.38)" data-lib="pin"><path d="M0 30 C-22 4 -24 -4 -24 -12 A24 24 0 0 1 24 -12 C24 -4 22 4 0 30 Z" fill="#e6ecfa" stroke="#003ecc" stroke-width="3"></path><circle cx="0" cy="-12" r="8" fill="#003ecc"></circle></g>
+<text x="60" y="144" font-size="10.9pt" font-weight="700" fill="#1a1a1a" text-anchor="start">Ubicación geográfica</text>
+<polyline points="332,139 470,174" fill="none" stroke="#003ecc" stroke-width="1.6" marker-end="url(#g1204m003ecc)"></polyline>
+<rect x="0" y="174" width="330" height="46" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<g transform="translate(28 197) scale(0.38)" data-lib="gauge"><path d="M-30 18 A30 30 0 1 1 30 18" fill="none" stroke="#7c3aed" stroke-width="4" stroke-linecap="round"></path><path d="M0 14 L16 -12" stroke="#7c3aed" stroke-width="4" stroke-linecap="round"></path><circle cx="0" cy="14" r="5" fill="#7c3aed"></circle></g>
+<text x="60" y="202" font-size="10.9pt" font-weight="700" fill="#1a1a1a" text-anchor="start">Nivel de riesgo</text>
+<polyline points="332,197 470,174" fill="none" stroke="#003ecc" stroke-width="1.6" marker-end="url(#g1204m003ecc)"></polyline>
+<rect x="0" y="232" width="330" height="46" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<g transform="translate(28 255) scale(0.38)" data-lib="clock"><circle cx="0" cy="0" r="28" fill="#ebedf0" stroke="#364e6c" stroke-width="3"></circle><path d="M0 -16 V0 L12 8" fill="none" stroke="#364e6c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<text x="60" y="260" font-size="10.9pt" font-weight="700" fill="#1a1a1a" text-anchor="start">Horario de acceso</text>
+<polyline points="332,255 470,174" fill="none" stroke="#003ecc" stroke-width="1.6" marker-end="url(#g1204m003ecc)"></polyline>
+<rect x="0" y="290" width="330" height="46" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<g transform="translate(28 313) scale(0.38)" data-lib="lock"><path d="M-12 -4 V-14 A12 12 0 0 1 12 -14 V-4" fill="none" stroke="#003ecc" stroke-width="4"></path><rect x="-20" y="-4" width="40" height="32" rx="5" fill="#003ecc"></rect><circle cx="0" cy="10" r="4" fill="#ffffff"></circle><rect x="-1.5" y="12" width="3" height="9" fill="#ffffff"></rect></g>
+<text x="60" y="318" font-size="10.9pt" font-weight="700" fill="#1a1a1a" text-anchor="start">Sensibilidad del recurso</text>
+<polyline points="332,313 470,174" fill="none" stroke="#003ecc" stroke-width="1.6" marker-end="url(#g1204m003ecc)"></polyline>
+<rect x="472" y="94" width="230" height="160" rx="6" fill="#ebedf0" stroke="#364e6c" stroke-width="2"></rect>
+<line x1="472" y1="128" x2="702" y2="128" stroke="#364e6c" stroke-width="1.5"></line>
+<text x="587" y="117" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Motor de políticas</text>
+<g transform="translate(587 173.36) scale(0.9)" data-lib="shield"><path d="M 0 -26 L 22 -17 L 22 2 C 22 16 0 26 0 26 C 0 26 -22 16 -22 2 L -22 -17 Z" fill="#364e6c" stroke="#364e6c" stroke-width="2"></path><path d="M-10 0 L-3 8 L11 -9" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<text x="587" y="225.12" font-size="10.9pt" font-weight="400" fill="#1e3a5f" text-anchor="middle">Evalúa el contexto de la</text>
+<text x="587" y="244.12" font-size="10.9pt" font-weight="400" fill="#1e3a5f" text-anchor="middle">solicitud</text>
+<rect x="850" y="20" width="310" height="100" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<line x1="850" y1="52" x2="1160" y2="52" stroke="#009254" stroke-width="1.5"></line>
+<text x="1005" y="43" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Permitir</text>
+<text x="1005" y="90.56" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">Acceso al recurso autorizado</text>
+<polyline points="704,174 848,70" fill="none" stroke="#009254" stroke-width="2.2" marker-end="url(#g1204m009254)"></polyline>
+<rect x="850" y="125" width="310" height="100" rx="6" fill="#fcebe6" stroke="#dd3a00" stroke-width="2"></rect>
+<line x1="850" y1="157" x2="1160" y2="157" stroke="#dd3a00" stroke-width="1.5"></line>
+<text x="1005" y="148" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Exigir verificación</text>
+<text x="1005" y="195.56" font-size="10.9pt" font-weight="400" fill="#7c2d12" text-anchor="middle">Autenticación adicional</text>
+<polyline points="704,174 848,175" fill="none" stroke="#dd3a00" stroke-width="2.2" marker-end="url(#g1204mdd3a00)"></polyline>
+<rect x="850" y="230" width="310" height="100" rx="6" fill="#fbe6e6" stroke="#d40000" stroke-width="2"></rect>
+<line x1="850" y1="262" x2="1160" y2="262" stroke="#d40000" stroke-width="1.5"></line>
+<text x="1005" y="253" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Denegar</text>
+<text x="1005" y="300.56" font-size="10.9pt" font-weight="400" fill="#7f1d1d" text-anchor="middle">Solicitud bloqueada</text>
+<polyline points="704,174 848,280" fill="none" stroke="#d40000" stroke-width="2.2" marker-end="url(#g1204md40000)"></polyline></g><text x="600" y="404" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 12.4. Atributos que evalúa el motor de políticas en cada solicitud.</text></svg>
+</div>
+
+<p>El flujo de evaluación del acceso según la identidad, el contexto y el estado del dispositivo, con reevaluaciones cuando las políticas o las señales de riesgo lo requieren, se representa en las Figuras 12.4 y 12.5.</p>
+<h2 id="123-ztna">12.3 ZTNA<a class="headerlink" href="#123-ztna" title="Permanent link">¶</a></h2>
+<p>ZTNA aplica principios <em>Zero Trust</em> al acceso remoto. Mientras que una VPN tradicional suele proporcionar conectividad a una red o segmento, ZTNA busca conceder acceso granular a aplicaciones o recursos autorizados, sin otorgar por defecto acceso general a la red. El alcance exacto depende de la arquitectura y de las capacidades del producto: algunas implementaciones publican aplicaciones concretas y otras permiten acceso a grupos de recursos mediante políticas.</p>
+<div class="diagram" id="figura-12-05" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1205" viewBox="0 0 1200 342" role="img" aria-labelledby="g1205-title">
+<title id="g1205-title">Proceso de acceso mediante ZTNA</title>
+<defs><marker id="g1205m364e6c" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#364e6c"></polygon></marker><marker id="g1205n364e6c" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#364e6c"></polygon></marker></defs>
+<g id="g1205-c" transform="translate(20 20)"><circle cx="104.8" cy="15" r="15" fill="#1e3a8a"></circle>
+<text x="104.8" y="20" font-size="11.35pt" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<rect x="0" y="38" width="209.6" height="232" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="0" y1="72" x2="209.6" y2="72" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="104.8" y="61" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Autenticación</text>
+<g transform="translate(104.8 143.28) scale(0.95)" data-lib="user"><g stroke="#003ecc" stroke-width="3" fill="#ffffff"><circle cx="0" cy="-18" r="14" fill="#e6ecfa"></circle><path d="M-30 30 C-30 4 -18 0 0 0 C18 0 30 4 30 30 Z" fill="#e6ecfa"></path></g></g>
+<text x="104.8" y="227.44" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">El usuario se identifica ante</text>
+<text x="104.8" y="246.44" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">el proveedor de identidad</text>
+<polyline points="211.6,154 235.6,154" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1205m364e6c)"></polyline>
+<circle cx="342.4" cy="15" r="15" fill="#065f46"></circle>
+<text x="342.4" y="20" font-size="11.35pt" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<rect x="237.6" y="38" width="209.6" height="232" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<line x1="237.6" y1="72" x2="447.2" y2="72" stroke="#009254" stroke-width="1.5"></line>
+<text x="342.4" y="61" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Postura</text>
+<g transform="translate(342.4 143.28) scale(0.95)" data-lib="check"><circle cx="0" cy="0" r="28" fill="#009254"></circle><path d="M-13 1 L-4 11 L15 -10" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<text x="342.4" y="227.44" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">Se verifica el cumplimiento</text>
+<text x="342.4" y="246.44" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">de políticas de seguridad</text>
+<polyline points="449.2,154 473.2,154" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1205m364e6c)"></polyline>
+<circle cx="580" cy="15" r="15" fill="#5b21b6"></circle>
+<text x="580" y="20" font-size="11.35pt" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<rect x="475.2" y="38" width="209.6" height="232" rx="6" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2"></rect>
+<line x1="475.2" y1="72" x2="684.8" y2="72" stroke="#7c3aed" stroke-width="1.5"></line>
+<text x="580" y="61" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Evaluación</text>
+<g transform="translate(580 143.28) scale(0.95)" data-lib="eye"><path d="M-34 0 C-18 -24 18 -24 34 0 C18 24 -18 24 -34 0 Z" fill="#f2ebfd" stroke="#7c3aed" stroke-width="3"></path><circle cx="0" cy="0" r="9" fill="#7c3aed"></circle></g>
+<text x="580" y="227.44" font-size="10.9pt" font-weight="400" fill="#5b21b6" text-anchor="middle">El broker ZTNA analiza el</text>
+<text x="580" y="246.44" font-size="10.9pt" font-weight="400" fill="#5b21b6" text-anchor="middle">contexto de acceso</text>
+<polyline points="686.8,154 710.8,154" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1205m364e6c)"></polyline>
+<circle cx="817.6" cy="15" r="15" fill="#7c2d12"></circle>
+<text x="817.6" y="20" font-size="11.35pt" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+<rect x="712.8" y="38" width="209.6" height="232" rx="6" fill="#fcebe6" stroke="#dd3a00" stroke-width="2"></rect>
+<line x1="712.8" y1="72" x2="922.4" y2="72" stroke="#dd3a00" stroke-width="1.5"></line>
+<text x="817.6" y="61" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Canal cifrado</text>
+<g transform="translate(817.6 143.28) scale(0.95)" data-lib="tunnel"><g stroke="#dd3a00" stroke-width="3"><path d="M-40 -14 H40 M-40 14 H40" fill="none"></path><ellipse cx="-40" cy="0" rx="8" ry="14" fill="#f6cebf"></ellipse><ellipse cx="40" cy="0" rx="8" ry="14" fill="#fcebe6"></ellipse></g><path d="M-26 0 H20 M12 -7 l8 7 -8 7" fill="none" stroke="#dd3a00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<text x="817.6" y="227.44" font-size="10.9pt" font-weight="400" fill="#7c2d12" text-anchor="middle">Se establece un túnel hacia</text>
+<text x="817.6" y="246.44" font-size="10.9pt" font-weight="400" fill="#7c2d12" text-anchor="middle">la aplicación autorizada</text>
+<polyline points="924.4,154 948.4,154" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1205m364e6c)"></polyline>
+<circle cx="1055.2" cy="15" r="15" fill="#7f1d1d"></circle>
+<text x="1055.2" y="20" font-size="11.35pt" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+<rect x="950.4" y="38" width="209.6" height="232" rx="6" fill="#fbe6e6" stroke="#d40000" stroke-width="2"></rect>
+<line x1="950.4" y1="72" x2="1160" y2="72" stroke="#d40000" stroke-width="1.5"></line>
+<text x="1055.2" y="61" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Acceso</text>
+<g transform="translate(1055.2 143.28) scale(0.95)" data-lib="app"><rect x="-38" y="-28" width="76" height="56" rx="5" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><rect x="-38" y="-28" width="76" height="16" rx="4" fill="#f4bfbf" stroke="#d40000" stroke-width="3"></rect><circle cx="-28" cy="-20" r="2.5" fill="#d40000"></circle><circle cx="-20" cy="-20" r="2.5" fill="#d40000"></circle><path d="M-26 0h30M-26 12h46" stroke="#d40000" stroke-width="3" stroke-linecap="round" fill="none"></path></g>
+<text x="1055.2" y="227.44" font-size="10.9pt" font-weight="400" fill="#7f1d1d" text-anchor="middle">El usuario llega solo al</text>
+<text x="1055.2" y="246.44" font-size="10.9pt" font-weight="400" fill="#7f1d1d" text-anchor="middle">recurso permitido</text></g><text x="600" y="324" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 12.5. Proceso de acceso mediante ZTNA.</text></svg>
+</div>
+
+<p>Se ha convertido en uno de los componentes de las arquitecturas modernas de seguridad y de las plataformas SASE.</p>
+<p>El proceso general, que se representa en la Figura 12.5, funciona de la siguiente manera:</p>
+<ul>
+<li>El usuario se autentica mediante un proveedor de identidad.</li>
+<li>Se verifica el cumplimiento de políticas de seguridad.</li>
+<li>Un <em>broker</em> ZTNA evalúa el contexto de acceso.</li>
+<li>Se establece un canal cifrado hacia la aplicación autorizada.</li>
+<li>El usuario obtiene acceso exclusivamente al recurso permitido.</li>
+</ul>
+<p>La aplicación puede permanecer inaccesible para usuarios no autorizados y no es necesario exponer directamente la red interna para proporcionar el acceso al recurso. La Tabla 12.1 compara el acceso mediante una VPN tradicional con el acceso mediante ZTNA.</p>
+<div class="diagram tabla-svg" id="tabla-12-1" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 384" role="img" aria-labelledby="t58-title"><title id="t58-title">Tabla 12.1. Comparación entre VPN tradicional y ZTNA.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="84.4" y="20.0" dominant-baseline="central" text-anchor="middle">Característica</text>
+<text class="tb-ht" x="420.3" y="20.0" dominant-baseline="central" text-anchor="middle">VPN tradicional</text>
+<text class="tb-ht" x="936.0" y="20.0" dominant-baseline="central" text-anchor="middle">ZTNA</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="60.8" dominant-baseline="central">Modelo de</text>
+<text class="tb-tx tb-b" x="12.0" y="83.5" dominant-baseline="central">acceso</text>
+<text class="tb-tx" x="180.7" y="60.8" dominant-baseline="central">Proporciona conectividad a una red o segmento autorizado</text>
+<text class="tb-tx" x="180.7" y="83.5" dominant-baseline="central">mediante un túnel.</text>
+<text class="tb-tx" x="683.9" y="60.8" dominant-baseline="central">Proporciona acceso a aplicaciones o recursos específicos</text>
+<text class="tb-tx" x="683.9" y="83.5" dominant-baseline="central">mediante políticas de identidad y contexto.</text>
+<rect class="tb-to" x="0" y="104.2" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="124.2" dominant-baseline="central">Autenticación</text>
+<text class="tb-tx" x="180.7" y="124.2" dominant-baseline="central">Puede basarse en credenciales, certificados y MFA.</text>
+<text class="tb-tx" x="683.9" y="124.2" dominant-baseline="central">Utiliza identidad, autenticación y políticas contextuales.</text>
+<rect class="tb-te" x="0" y="145.0" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="176.4" dominant-baseline="central">Alcance</text>
+<text class="tb-tx" x="180.7" y="165.0" dominant-baseline="central">Puede permitir acceso a subredes o recursos definidos por</text>
+<text class="tb-tx" x="180.7" y="187.8" dominant-baseline="central">las rutas y políticas.</text>
+<text class="tb-tx" x="683.9" y="165.0" dominant-baseline="central">Limita el acceso al recurso o aplicación expresamente</text>
+<text class="tb-tx" x="683.9" y="187.8" dominant-baseline="central">autorizados.</text>
+<rect class="tb-to" x="0" y="208.5" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="228.5" dominant-baseline="central">Movimiento</text>
+<text class="tb-tx tb-b" x="12.0" y="251.2" dominant-baseline="central">lateral</text>
+<text class="tb-tx" x="180.7" y="228.5" dominant-baseline="central">Puede existir dentro del segmento accesible si la</text>
+<text class="tb-tx" x="180.7" y="251.2" dominant-baseline="central">segmentación y las políticas son insuficientes.</text>
+<text class="tb-tx" x="683.9" y="239.9" dominant-baseline="central">Reduce la exposición al limitar el acceso a recursos concretos.</text>
+<rect class="tb-te" x="0" y="272.0" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="292.0" dominant-baseline="central">Criterios de</text>
+<text class="tb-tx tb-b" x="12.0" y="314.8" dominant-baseline="central">decisión</text>
+<text class="tb-tx" x="180.7" y="303.4" dominant-baseline="central">Credenciales, pertenencia a la VPN y políticas de red.</text>
+<text class="tb-tx" x="683.9" y="303.4" dominant-baseline="central">Identidad, estado del dispositivo, contexto y nivel de riesgo.</text>
+<text class="tb-cap" x="600.0" y="361.5" text-anchor="middle">Tabla 12.1. Comparación entre VPN tradicional y ZTNA.</text></svg>
+</div>
+
+<h2 id="124-sase">12.4 SASE<a class="headerlink" href="#124-sase" title="Permanent link">¶</a></h2>
+<p>SASE es un modelo arquitectónico que integra capacidades de red y seguridad en una plataforma unificada entregada desde la nube.</p>
+<p>El concepto fue introducido por Gartner en 2019 para responder a la creciente dispersión de usuarios, aplicaciones y datos fuera de los centros de datos tradicionales. En lugar de desplegar múltiples soluciones independientes, SASE combina SD-WAN, <em>Zero Trust Network Access</em> (ZTNA), <em>Secure Web Gateway</em> (SWG), Firewall as a Service (FWaaS), <em>Cloud Access Security Broker</em> (CASB) y protección de acceso a aplicaciones SaaS. La Tabla 12.2 resume estos componentes.</p>
+<p>La plataforma aplica políticas de seguridad basadas en la identidad del usuario, el estado del dispositivo, la ubicación, el tipo de aplicación y el nivel de riesgo. El tráfico puede dirigirse hacia un punto de presencia (PoP) apropiado del proveedor SASE, donde se realizan funciones de inspección, filtrado y aplicación de políticas, como se observa en la Figura 12.6.</p>
+<div class="diagram tabla-svg" id="tabla-12-2" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 406" role="img" aria-labelledby="t59-title"><title id="t59-title">Tabla 12.2. Componentes de una plataforma SASE.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="142.2" y="20.0" dominant-baseline="central" text-anchor="middle">Componente</text>
+<text class="tb-ht" x="527.2" y="20.0" dominant-baseline="central" text-anchor="middle">Función</text>
+<text class="tb-ht" x="985.0" y="20.0" dominant-baseline="central" text-anchor="middle">Aplicación</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="72.1" dominant-baseline="central">SD-WAN</text>
+<text class="tb-tx" x="296.3" y="60.8" dominant-baseline="central">Gestiona la conectividad y selección de rutas entre sedes</text>
+<text class="tb-tx" x="296.3" y="83.5" dominant-baseline="central">y servicios.</text>
+<text class="tb-tx" x="782.1" y="60.8" dominant-baseline="central">Optimización del transporte y conectividad</text>
+<text class="tb-tx" x="782.1" y="83.5" dominant-baseline="central">distribuida.</text>
+<rect class="tb-to" x="0" y="104.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="135.6" dominant-baseline="central">ZTNA</text>
+<text class="tb-tx" x="296.3" y="124.2" dominant-baseline="central">Controla el acceso a aplicaciones según identidad y</text>
+<text class="tb-tx" x="296.3" y="147.0" dominant-baseline="central">contexto.</text>
+<text class="tb-tx" x="782.1" y="135.6" dominant-baseline="central">Acceso remoto de confianza cero.</text>
+<rect class="tb-te" x="0" y="167.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="199.1" dominant-baseline="central">SWG (Secure Web Gateway)</text>
+<text class="tb-tx" x="296.3" y="199.1" dominant-baseline="central">Inspecciona y controla el tráfico web.</text>
+<text class="tb-tx" x="782.1" y="187.8" dominant-baseline="central">Protección de navegación y aplicación de políticas</text>
+<text class="tb-tx" x="782.1" y="210.5" dominant-baseline="central">web.</text>
+<rect class="tb-to" x="0" y="231.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="262.6" dominant-baseline="central">FWaaS (Firewall as a Service)</text>
+<text class="tb-tx" x="296.3" y="251.2" dominant-baseline="central">Proporciona funciones de firewall como servicio desde la</text>
+<text class="tb-tx" x="296.3" y="274.0" dominant-baseline="central">nube.</text>
+<text class="tb-tx" x="782.1" y="251.2" dominant-baseline="central">Filtrado de tráfico en puntos de presencia del</text>
+<text class="tb-tx" x="782.1" y="274.0" dominant-baseline="central">proveedor.</text>
+<rect class="tb-te" x="0" y="294.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="314.8" dominant-baseline="central">CASB (Cloud Access Security</text>
+<text class="tb-tx tb-b" x="12.0" y="337.5" dominant-baseline="central">Broker)</text>
+<text class="tb-tx" x="296.3" y="314.8" dominant-baseline="central">Proporciona visibilidad y control sobre el uso de</text>
+<text class="tb-tx" x="296.3" y="337.5" dominant-baseline="central">aplicaciones SaaS.</text>
+<text class="tb-tx" x="782.1" y="314.8" dominant-baseline="central">Políticas de acceso y protección de datos en</text>
+<text class="tb-tx" x="782.1" y="337.5" dominant-baseline="central">servicios cloud.</text>
+<text class="tb-cap" x="600.0" y="384.2" text-anchor="middle">Tabla 12.2. Componentes de una plataforma SASE.</text></svg>
+</div>
+
+<p>La selección del PoP puede considerar proximidad, disponibilidad, latencia y las políticas del servicio. SASE es especialmente relevante en organizaciones con teletrabajo, aplicaciones SaaS y estrategias de transformación digital basadas en la nube.</p>
+<div class="diagram" id="figura-12-06" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1206" viewBox="0 0 1200 472" role="img" aria-labelledby="g1206-title">
+<title id="g1206-title">Arquitectura SASE: origen, punto de presencia y destino</title>
+<defs><marker id="g1206m364e6c" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#364e6c"></polygon></marker><marker id="g1206n364e6c" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#364e6c"></polygon></marker></defs>
+<g id="g1206-c" transform="translate(20 20)"><g transform="translate(70 80) scale(0.8)" data-lib="user"><g stroke="#7c3aed" stroke-width="3" fill="#ffffff"><circle cx="0" cy="-18" r="14" fill="#f2ebfd"></circle><path d="M-30 30 C-30 4 -18 0 0 0 C18 0 30 4 30 30 Z" fill="#f2ebfd"></path></g></g>
+<text x="70" y="132" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Usuario remoto</text>
+<polyline points="140,80 300,200" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1206m364e6c)"></polyline>
+<g transform="translate(70 190) scale(0.8)" data-lib="building"><rect x="-26" y="-34" width="52" height="68" rx="3" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><rect x="-17" y="-24" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-17" y="-8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-17" y="8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-3" y="-24" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-3" y="-8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-3" y="8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="11" y="-24" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="11" y="-8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="11" y="8" width="10" height="9" fill="#bfcff2" stroke="#003ecc" stroke-width="1.5"></rect><rect x="-7" y="19" width="14" height="15" fill="#003ecc"></rect></g>
+<text x="70" y="242" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Sucursal</text>
+<polyline points="140,190 300,200" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1206m364e6c)"></polyline>
+<g transform="translate(70 300) scale(0.8)" data-lib="phone"><rect x="-17" y="-32" width="34" height="64" rx="6" fill="#ffffff" stroke="#7c3aed" stroke-width="3"></rect><rect x="-12" y="-24" width="24" height="42" rx="2" fill="#f2ebfd"></rect><circle cx="0" cy="25" r="3" fill="#7c3aed"></circle></g>
+<text x="70" y="352" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Dispositivo móvil</text>
+<polyline points="140,300 300,200" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1206m364e6c)"></polyline>
+<g transform="translate(1090 80) scale(0.8)" data-lib="cloud"><path d="M-30 18 C-44 18 -44 -4 -28 -6 C-28 -26 4 -34 14 -16 C32 -22 46 -2 34 14 C32 18 28 18 26 18 Z" fill="#e6ecfa" stroke="#003ecc" stroke-width="3" stroke-linejoin="round"></path></g>
+<text x="1090" y="132" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Aplicaciones SaaS</text>
+<polyline points="860,200 1020,80" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1206m364e6c)"></polyline>
+<g transform="translate(1090 190) scale(0.8)" data-lib="globe"><g stroke="#7c3aed" stroke-width="3" fill="none"><circle cx="0" cy="0" r="30" fill="#f2ebfd"></circle><ellipse cx="0" cy="0" rx="13" ry="30"></ellipse><path d="M-30 0H30M-26 -15H26M-26 15H26" stroke-width="2"></path></g></g>
+<text x="1090" y="242" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Internet</text>
+<polyline points="860,200 1020,190" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1206m364e6c)"></polyline>
+<g transform="translate(1090 300) scale(0.8)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="1090" y="352" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Centro de datos</text>
+<polyline points="860,200 1020,300" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1206m364e6c)"></polyline>
+<rect x="300" y="0" width="560" height="400" rx="6" fill="#f2ebfd" fill-opacity="0.55" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"></rect>
+<text x="312" y="22" font-size="12.5pt" font-weight="700" fill="#5b21b6" text-anchor="start">PoP del proveedor SASE</text>
+<rect x="320" y="36" width="520" height="56" rx="6" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2"></rect>
+<text x="580" y="68.56" font-size="10.9pt" font-weight="700" fill="#5b21b6" text-anchor="middle">Consola centralizada de políticas</text>
+<rect x="320" y="112" width="160" height="110" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="320" y1="144" x2="480" y2="144" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="400" y="135" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">SD-WAN</text>
+<text x="400" y="178.06" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Conectividad de</text>
+<text x="400" y="197.06" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">sucursales</text>
+<rect x="500" y="112" width="160" height="110" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="500" y1="144" x2="660" y2="144" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="580" y="135" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">ZTNA</text>
+<text x="580" y="178.06" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Acceso por</text>
+<text x="580" y="197.06" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">aplicación</text>
+<rect x="680" y="112" width="160" height="110" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="680" y1="144" x2="840" y2="144" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="760" y="135" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">SWG</text>
+<text x="760" y="178.06" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Navegación web</text>
+<text x="760" y="197.06" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">segura</text>
+<rect x="410" y="246" width="160" height="110" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="410" y1="278" x2="570" y2="278" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="490" y="269" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">FWaaS</text>
+<text x="490" y="312.06" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Firewall desde la</text>
+<text x="490" y="331.06" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">nube</text>
+<rect x="590" y="246" width="160" height="110" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<line x1="590" y1="278" x2="750" y2="278" stroke="#009254" stroke-width="1.5"></line>
+<text x="670" y="269" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">CASB</text>
+<text x="670" y="312.06" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">Control de</text>
+<text x="670" y="331.06" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">aplicaciones SaaS</text></g><text x="600" y="454" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 12.6. Arquitectura SASE: origen, punto de presencia y destino.</text></svg>
+</div>
+
+<h3 id="principales-beneficios">Principales beneficios<a class="headerlink" href="#principales-beneficios" title="Permanent link">¶</a></h3>
+<ul>
+<li>Consola centralizada de administración.</li>
+<li>Seguridad uniforme para usuarios y sucursales.</li>
+<li>Menor dependencia de dispositivos perimetrales.</li>
+</ul>
+<h3 id="limitaciones">Limitaciones<a class="headerlink" href="#limitaciones" title="Permanent link">¶</a></h3>
+<ul>
+<li>Dependencia de la conectividad a Internet.</li>
+<li>Posible dependencia tecnológica del proveedor.</li>
+<li>Procesos de migración complejos desde infraestructuras tradicionales.</li>
+</ul>
+<h2 id="125-microsegmentacion">12.5 MICROSEGMENTACIÓN<a class="headerlink" href="#125-microsegmentacion" title="Permanent link">¶</a></h2>
+<p>La microsegmentación extiende el concepto tradicional de segmentación de red hasta el nivel de aplicaciones, máquinas virtuales, contenedores o cargas de trabajo individuales.</p>
+<p>Mientras una VLAN separa grupos completos de dispositivos, la microsegmentación controla específicamente qué aplicaciones o servicios pueden comunicarse entre sí. La Figura 12.7 contrasta ambos enfoques.</p>
+<div class="diagram tabla-svg" id="tabla-12-3" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 361" role="img" aria-labelledby="t60-title"><title id="t60-title">Tabla 12.3. Tecnologías y plataformas relacionadas con la microsegmentación.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="141.2" y="20.0" dominant-baseline="central" text-anchor="middle">Tecnología</text>
+<text class="tb-ht" x="403.5" y="20.0" dominant-baseline="central" text-anchor="middle">Categoría</text>
+<text class="tb-ht" x="862.3" y="20.0" dominant-baseline="central" text-anchor="middle">Descripción</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="72.1" dominant-baseline="central">VXLAN y Geneve</text>
+<text class="tb-tx" x="294.5" y="72.1" dominant-baseline="central">Encapsulación overlay</text>
+<text class="tb-tx" x="536.6" y="60.8" dominant-baseline="central">Mecanismos de encapsulación utilizados para transportar redes virtuales sobre</text>
+<text class="tb-tx" x="536.6" y="83.5" dominant-baseline="central">una infraestructura IP.</text>
+<rect class="tb-to" x="0" y="104.2" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="124.2" dominant-baseline="central">VMware NSX</text>
+<text class="tb-tx" x="294.5" y="124.2" dominant-baseline="central">Virtualización de red</text>
+<text class="tb-tx" x="536.6" y="124.2" dominant-baseline="central">Plataforma de virtualización, segmentación y aplicación de políticas de red.</text>
+<rect class="tb-te" x="0" y="145.0" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="165.0" dominant-baseline="central">Illumio</text>
+<text class="tb-tx" x="294.5" y="165.0" dominant-baseline="central">Segmentación</text>
+<text class="tb-tx" x="536.6" y="165.0" dominant-baseline="central">Plataforma para definir y aplicar políticas de segmentación de cargas de trabajo.</text>
+<rect class="tb-to" x="0" y="185.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="205.8" dominant-baseline="central">Akamai Guardicore</text>
+<text class="tb-tx tb-b" x="12.0" y="228.5" dominant-baseline="central">Segmentation</text>
+<text class="tb-tx" x="294.5" y="205.8" dominant-baseline="central">Seguridad de cargas de</text>
+<text class="tb-tx" x="294.5" y="228.5" dominant-baseline="central">trabajo</text>
+<text class="tb-tx" x="536.6" y="205.8" dominant-baseline="central">Plataforma de segmentación y protección de comunicaciones entre cargas de</text>
+<text class="tb-tx" x="536.6" y="228.5" dominant-baseline="central">trabajo.</text>
+<rect class="tb-te" x="0" y="249.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="269.2" dominant-baseline="central">Azure Network Security Groups</text>
+<text class="tb-tx tb-b" x="12.0" y="292.0" dominant-baseline="central">(NSG)</text>
+<text class="tb-tx" x="294.5" y="269.2" dominant-baseline="central">Control de tráfico en la</text>
+<text class="tb-tx" x="294.5" y="292.0" dominant-baseline="central">nube</text>
+<text class="tb-tx" x="536.6" y="280.6" dominant-baseline="central">Controles de tráfico aplicados a nivel de subred e interfaz de red en Azure.</text>
+<text class="tb-cap" x="600.0" y="338.8" text-anchor="middle">Tabla 12.3. Tecnologías y plataformas relacionadas con la microsegmentación.</text></svg>
+</div>
+
+<p>Nota: VXLAN y Geneve son mecanismos de encapsulación; no constituyen por sí mismos motores de políticas de microsegmentación. La aplicación de políticas depende de la plataforma de virtualización, el <em>firewall</em> o el sistema de segmentación utilizado.</p>
+<p>La segmentación es un control habitual y valioso en arquitecturas <em>Zero Trust</em> porque limita las comunicaciones y el movimiento lateral. No obstante, <em>Zero Trust</em> es un modelo más amplio, basado en decisiones de acceso explícitas y contextuales; no exige una tecnología concreta de segmentación en todos los despliegues.</p>
+<p>Las políticas se basan en la identidad de la carga de trabajo, las etiquetas, los roles de aplicación, el tipo de servicio y el contexto de seguridad.</p>
+<p>Por ejemplo:</p>
+<div class="diagram" id="figura-12-07" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1207" viewBox="0 0 1200 402" role="img" aria-labelledby="g1207-title">
+<title id="g1207-title">Segmentación por VLAN frente a microsegmentación</title>
+<defs><marker id="g1207m003ecc" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#003ecc"></polygon></marker><marker id="g1207n003ecc" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#003ecc"></polygon></marker><marker id="g1207m009254" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#009254"></polygon></marker><marker id="g1207n009254" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#009254"></polygon></marker><marker id="g1207md40000" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#d40000"></polygon></marker><marker id="g1207nd40000" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#d40000"></polygon></marker></defs>
+<g id="g1207-c" transform="translate(20 20)"><rect x="0" y="0" width="560" height="330" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="0" y1="34" x2="560" y2="34" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="280" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Segmentación por VLAN</text>
+<rect x="600" y="0" width="560" height="330" rx="6" fill="#fbe6e6" stroke="#d40000" stroke-width="2"></rect>
+<line x1="600" y1="34" x2="1160" y2="34" stroke="#d40000" stroke-width="1.5"></line>
+<text x="880" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Microsegmentación</text>
+<rect x="20" y="66" width="520" height="140" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2" stroke-dasharray="7 5"></rect>
+<g transform="translate(90 120) scale(0.8)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="90" y="172" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Web</text>
+<g transform="translate(690 120) scale(0.8)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="690" y="172" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Web</text>
+<g transform="translate(280 120) scale(0.8)" data-lib="app"><rect x="-38" y="-28" width="76" height="56" rx="5" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><rect x="-38" y="-28" width="76" height="16" rx="4" fill="#bfcff2" stroke="#003ecc" stroke-width="3"></rect><circle cx="-28" cy="-20" r="2.5" fill="#003ecc"></circle><circle cx="-20" cy="-20" r="2.5" fill="#003ecc"></circle><path d="M-26 0h30M-26 12h46" stroke="#003ecc" stroke-width="3" stroke-linecap="round" fill="none"></path></g>
+<text x="280" y="172" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Aplicación</text>
+<g transform="translate(880 120) scale(0.8)" data-lib="app"><rect x="-38" y="-28" width="76" height="56" rx="5" fill="#ffffff" stroke="#003ecc" stroke-width="3"></rect><rect x="-38" y="-28" width="76" height="16" rx="4" fill="#bfcff2" stroke="#003ecc" stroke-width="3"></rect><circle cx="-28" cy="-20" r="2.5" fill="#003ecc"></circle><circle cx="-20" cy="-20" r="2.5" fill="#003ecc"></circle><path d="M-26 0h30M-26 12h46" stroke="#003ecc" stroke-width="3" stroke-linecap="round" fill="none"></path></g>
+<text x="880" y="172" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Aplicación</text>
+<g transform="translate(470 120) scale(0.8)" data-lib="db"><g stroke="#003ecc" stroke-width="3" fill="#ffffff"><path d="M-30 -24 V24 C-30 36 30 36 30 24 V-24"></path><ellipse cx="0" cy="-24" rx="30" ry="11" fill="#e6ecfa"></ellipse><path d="M-30 -4 C-30 8 30 8 30 -4" fill="none"></path><path d="M-30 14 C-30 26 30 26 30 14" fill="none"></path></g></g>
+<text x="470" y="172" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Base de datos</text>
+<g transform="translate(1070 120) scale(0.8)" data-lib="db"><g stroke="#003ecc" stroke-width="3" fill="#ffffff"><path d="M-30 -24 V24 C-30 36 30 36 30 24 V-24"></path><ellipse cx="0" cy="-24" rx="30" ry="11" fill="#e6ecfa"></ellipse><path d="M-30 -4 C-30 8 30 8 30 -4" fill="none"></path><path d="M-30 14 C-30 26 30 26 30 14" fill="none"></path></g></g>
+<text x="1070" y="172" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Base de datos</text>
+<polyline points="135,120 235,120" fill="none" stroke="#003ecc" stroke-width="2.5" marker-end="url(#g1207m003ecc)" marker-start="url(#g1207n003ecc)"></polyline>
+<polyline points="325,120 425,120" fill="none" stroke="#003ecc" stroke-width="2.5" marker-end="url(#g1207m003ecc)" marker-start="url(#g1207n003ecc)"></polyline>
+<polyline points="90,205 90,240 470,240 470,205" fill="none" stroke="#003ecc" stroke-width="2.5" marker-end="url(#g1207m003ecc)" marker-start="url(#g1207n003ecc)"></polyline>
+<text x="280" y="290" font-size="10.35pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Los equipos de una VLAN se comunican libremente</text>
+<polyline points="735,120 835,120" fill="none" stroke="#009254" stroke-width="3" marker-end="url(#g1207m009254)"></polyline>
+<text x="785" y="100" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">TCP 8080</text>
+<polyline points="925,120 1025,120" fill="none" stroke="#009254" stroke-width="3" marker-end="url(#g1207m009254)"></polyline>
+<text x="975" y="100" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">TCP 3306</text>
+<polyline points="690,205 690,245 1070,245 1070,205" fill="none" stroke="#d40000" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#g1207md40000)"></polyline>
+<g transform="translate(880 245) scale(0.6)" data-lib="x"><circle cx="0" cy="0" r="28" fill="#d40000"></circle><path d="M-11 -11 L11 11 M11 -11 L-11 11" stroke="#ffffff" stroke-width="5" stroke-linecap="round"></path></g>
+<text x="880" y="285" font-size="10.35pt" font-weight="700" fill="#7f1d1d" text-anchor="middle">Web hacia base de datos: bloqueado</text>
+<text x="880" y="312" font-size="10.35pt" font-weight="400" fill="#7f1d1d" text-anchor="middle">Solo se permiten los flujos necesarios</text></g><text x="600" y="384" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 12.7. Segmentación por VLAN frente a microsegmentación.</text></svg>
+</div>
+
+<ul>
+<li>El servidor web puede comunicarse con el servidor de aplicaciones solo por TCP 8080.</li>
+<li>El servidor de aplicaciones puede acceder a la base de datos solo por TCP 3306.</li>
+<li>La base de datos no acepta conexiones desde otros sistemas.</li>
+</ul>
+<p>Este enfoque reduce las posibilidades de movimiento lateral dentro de una red comprometida.</p>
+<p>Entre sus desafíos se encuentran la complejidad en la definición de políticas, la necesidad de conocer las dependencias entre aplicaciones y el mayor esfuerzo inicial de planificación.</p>
+<p>Las tecnologías y plataformas relacionadas se resumen en la Tabla 12.3. Hoy la microsegmentación es uno de los mecanismos más efectivos para limitar el impacto de compromisos internos y ataques de movimiento lateral.</p>
+<h2 id="126-modernizacion-de-redes">12.6 MODERNIZACIÓN DE REDES<a class="headerlink" href="#126-modernizacion-de-redes" title="Permanent link">¶</a></h2>
+<p>La modernización de redes es un proceso continuo en el que las infraestructuras tradicionales evolucionan hacia plataformas automatizadas, programables y orientadas a servicios. El objetivo no es solo sustituir equipos antiguos, sino transformar la forma en que la red se diseña, opera y protege.</p>
+<div class="diagram tabla-svg" id="tabla-12-4" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 447" role="img" aria-labelledby="t61-title"><title id="t61-title">Tabla 12.4. Herramientas y modelos de automatización modernos.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="63.5"></rect>
+<text class="tb-ht" x="105.8" y="20.0" dominant-baseline="central" text-anchor="middle">Herramienta o</text>
+<text class="tb-ht" x="105.8" y="42.8" dominant-baseline="central" text-anchor="middle">tecnología</text>
+<text class="tb-ht" x="343.3" y="31.4" dominant-baseline="central" text-anchor="middle">Categoría</text>
+<text class="tb-ht" x="837.5" y="31.4" dominant-baseline="central" text-anchor="middle">Función</text>
+<rect class="tb-te" x="0" y="63.5" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="94.9" dominant-baseline="central">Ansible</text>
+<text class="tb-tx" x="223.7" y="83.5" dominant-baseline="central">Automatización de</text>
+<text class="tb-tx" x="223.7" y="106.2" dominant-baseline="central">configuración</text>
+<text class="tb-tx" x="487.0" y="94.9" dominant-baseline="central">Automatiza tareas de configuración y operación mediante playbooks.</text>
+<rect class="tb-to" x="0" y="127.0" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="158.4" dominant-baseline="central">Terraform</text>
+<text class="tb-tx" x="223.7" y="147.0" dominant-baseline="central">Infraestructura como código</text>
+<text class="tb-tx" x="223.7" y="169.8" dominant-baseline="central">(IaC)</text>
+<text class="tb-tx" x="487.0" y="158.4" dominant-baseline="central">Define y aprovisiona infraestructura mediante archivos declarativos.</text>
+<rect class="tb-te" x="0" y="190.5" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="221.9" dominant-baseline="central">Kubernetes</text>
+<text class="tb-tx" x="223.7" y="210.5" dominant-baseline="central">Orquestación de</text>
+<text class="tb-tx" x="223.7" y="233.2" dominant-baseline="central">contenedores</text>
+<text class="tb-tx" x="487.0" y="221.9" dominant-baseline="central">Gestiona despliegue, escalado y operación de cargas de trabajo en contenedores.</text>
+<rect class="tb-to" x="0" y="254.0" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="274.0" dominant-baseline="central">Helm</text>
+<text class="tb-tx" x="223.7" y="274.0" dominant-baseline="central">Gestor de paquetes</text>
+<text class="tb-tx" x="487.0" y="274.0" dominant-baseline="central">Facilita la instalación y gestión de aplicaciones en Kubernetes.</text>
+<rect class="tb-te" x="0" y="294.8" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="314.8" dominant-baseline="central">Pulumi</text>
+<text class="tb-tx" x="223.7" y="314.8" dominant-baseline="central">IaC multilenguaje</text>
+<text class="tb-tx" x="487.0" y="314.8" dominant-baseline="central">Define infraestructura mediante lenguajes de programación.</text>
+<rect class="tb-to" x="0" y="335.5" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="366.9" dominant-baseline="central">GitOps</text>
+<text class="tb-tx" x="223.7" y="355.5" dominant-baseline="central">Modelo operativo basado en</text>
+<text class="tb-tx" x="223.7" y="378.2" dominant-baseline="central">Git</text>
+<text class="tb-tx" x="487.0" y="355.5" dominant-baseline="central">Utiliza Git como fuente de verdad y herramientas como Argo CD y Flux para sincronizar</text>
+<text class="tb-tx" x="487.0" y="378.2" dominant-baseline="central">el estado deseado.</text>
+<text class="tb-cap" x="600.0" y="425.0" text-anchor="middle">Tabla 12.4. Herramientas y modelos de automatización modernos.</text></svg>
+</div>
+
+<h3 id="telemetria-avanzada">Telemetría avanzada<a class="headerlink" href="#telemetria-avanzada" title="Permanent link">¶</a></h3>
+<p>Complementa los modelos tradicionales basados en SNMP con mecanismos de observabilidad y telemetría más dinámicos, según la plataforma, como gNMI y <em>Streaming Telemetry</em>, NETCONF, RESTCONF y gRPC (utilizado como transporte o <em>framework</em> en diversas implementaciones de telemetría y gestión). La Tabla 12.5 resume estos protocolos.</p>
+<div class="diagram tabla-svg" id="tabla-12-5" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 361" role="img" aria-labelledby="t62-title"><title id="t62-title">Tabla 12.5. Protocolos y tecnologías de gestión y telemetría.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="55.4" y="20.0" dominant-baseline="central" text-anchor="middle">Protocolo</text>
+<text class="tb-ht" x="308.2" y="20.0" dominant-baseline="central" text-anchor="middle">Modelo o transporte</text>
+<text class="tb-ht" x="852.8" y="20.0" dominant-baseline="central" text-anchor="middle">Uso principal</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="72.1" dominant-baseline="central">SNMP</text>
+<text class="tb-tx" x="122.8" y="72.1" dominant-baseline="central">Consultas periódicas y notificaciones (traps).</text>
+<text class="tb-tx" x="517.5" y="60.8" dominant-baseline="central">Monitoreo tradicional de dispositivos. SNMPv1/v2c utilizan comunidades; SNMPv3</text>
+<text class="tb-tx" x="517.5" y="83.5" dominant-baseline="central">incorpora mecanismos de autenticación y privacidad.</text>
+<rect class="tb-to" x="0" y="104.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="135.6" dominant-baseline="central">NETCONF</text>
+<text class="tb-tx" x="122.8" y="124.2" dominant-baseline="central">Mensajes XML sobre SSH y modelos de datos</text>
+<text class="tb-tx" x="122.8" y="147.0" dominant-baseline="central">YANG.</text>
+<text class="tb-tx" x="517.5" y="135.6" dominant-baseline="central">Configuración y gestión programática de dispositivos.</text>
+<rect class="tb-te" x="0" y="167.8" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="187.8" dominant-baseline="central">RESTCONF</text>
+<text class="tb-tx" x="122.8" y="187.8" dominant-baseline="central">API HTTP/HTTPS y modelos YANG.</text>
+<text class="tb-tx" x="517.5" y="187.8" dominant-baseline="central">Acceso programático a configuración y estado de dispositivos.</text>
+<rect class="tb-to" x="0" y="208.5" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="239.9" dominant-baseline="central">gNMI</text>
+<text class="tb-tx" x="122.8" y="228.5" dominant-baseline="central">Interfaz de gestión basada en gRPC y modelos</text>
+<text class="tb-tx" x="122.8" y="251.2" dominant-baseline="central">de datos estructurados.</text>
+<text class="tb-tx" x="517.5" y="239.9" dominant-baseline="central">Configuración y telemetría en streaming.</text>
+<rect class="tb-te" x="0" y="272.0" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="292.0" dominant-baseline="central">gRPC</text>
+<text class="tb-tx" x="122.8" y="292.0" dominant-baseline="central">Framework RPC sobre HTTP/2.</text>
+<text class="tb-tx" x="517.5" y="292.0" dominant-baseline="central">Transporte en diversas implementaciones de telemetría y gestión.</text>
+<text class="tb-cap" x="600.0" y="338.8" text-anchor="middle">Tabla 12.5. Protocolos y tecnologías de gestión y telemetría.</text></svg>
+</div>
+
+<h3 id="herramientas-de-automatizacion-modernas">Herramientas de automatización modernas<a class="headerlink" href="#herramientas-de-automatizacion-modernas" title="Permanent link">¶</a></h3>
+<h4 id="seguridad-integrada">Seguridad integrada<a class="headerlink" href="#seguridad-integrada" title="Permanent link">¶</a></h4>
+<p>La seguridad pasa a formar parte de la arquitectura desde su diseño, incorporando <em>Zero Trust</em>, ZTNA, SASE y microsegmentación.</p>
+<h4 id="infraestructura-hibrida-y-multinube">Infraestructura híbrida y multinube<a class="headerlink" href="#infraestructura-hibrida-y-multinube" title="Permanent link">¶</a></h4>
+<p>Las organizaciones gestionan recursos distribuidos entre centros de datos propios y múltiples proveedores de nube mediante políticas unificadas.</p>
+<h4 id="infraestructura-como-codigo-iac">Infraestructura como código (IaC)<a class="headerlink" href="#infraestructura-como-codigo-iac" title="Permanent link">¶</a></h4>
+<p>La configuración de red se gestiona mediante archivos versionados almacenados en repositorios Git y desplegados mediante procesos automatizados.</p>
+<h4 id="redes-definidas-por-software-sdn">Redes definidas por software (SDN)<a class="headerlink" href="#redes-definidas-por-software-sdn" title="Permanent link">¶</a></h4>
+<p>Separan el plano de control del plano de datos, de modo que un controlador central puede administrar políticas y configuraciones de manera consistente. La Figura 12.8 compara este modelo con la red tradicional.</p>
+<h4 id="automatizacion-y-orquestacion">Automatización y orquestación<a class="headerlink" href="#automatizacion-y-orquestacion" title="Permanent link">¶</a></h4>
+<p>Herramientas como Ansible y Terraform, junto con lenguajes como Python, permiten automatizar tareas repetitivas y reducir errores operativos.</p>
+<div class="diagram" id="figura-12-08" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1208" viewBox="0 0 1200 472" role="img" aria-labelledby="g1208-title">
+<title id="g1208-title">Redes definidas por software: planos de control y de datos</title>
+<defs><marker id="g1208m364e6c" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#364e6c"></polygon></marker><marker id="g1208n364e6c" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#364e6c"></polygon></marker></defs>
+<g id="g1208-c" transform="translate(20 20)"><rect x="0" y="0" width="560" height="400" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="0" y1="34" x2="560" y2="34" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="280" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Red tradicional</text>
+<rect x="600" y="0" width="560" height="400" rx="6" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2"></rect>
+<line x1="600" y1="34" x2="1160" y2="34" stroke="#7c3aed" stroke-width="1.5"></line>
+<text x="880" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">SDN</text>
+<g transform="translate(100 150) scale(0.8)" data-lib="switch"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#009254" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-24" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-4" cy="-15" r="2.5" fill="#009254"></circle><circle cx="16" cy="-15" r="2.5" fill="#009254"></circle><circle cx="36" cy="-15" r="2.5" fill="#009254"></circle></g>
+<rect x="38" y="190" width="124" height="26" rx="13.0" fill="#decefa" stroke="#7c3aed" stroke-width="1.5"></rect>
+<text x="100" y="207.66" font-size="10.35pt" font-weight="700" fill="#5b21b6" text-anchor="middle">Plano de control</text>
+<rect x="38" y="224" width="124" height="26" rx="13.0" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect>
+<text x="100" y="241.66" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">Plano de datos</text>
+<g transform="translate(280 150) scale(0.8)" data-lib="switch"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#009254" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-24" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-4" cy="-15" r="2.5" fill="#009254"></circle><circle cx="16" cy="-15" r="2.5" fill="#009254"></circle><circle cx="36" cy="-15" r="2.5" fill="#009254"></circle></g>
+<rect x="218" y="190" width="124" height="26" rx="13.0" fill="#decefa" stroke="#7c3aed" stroke-width="1.5"></rect>
+<text x="280" y="207.66" font-size="10.35pt" font-weight="700" fill="#5b21b6" text-anchor="middle">Plano de control</text>
+<rect x="218" y="224" width="124" height="26" rx="13.0" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect>
+<text x="280" y="241.66" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">Plano de datos</text>
+<g transform="translate(460 150) scale(0.8)" data-lib="switch"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#009254" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-24" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-4" cy="-15" r="2.5" fill="#009254"></circle><circle cx="16" cy="-15" r="2.5" fill="#009254"></circle><circle cx="36" cy="-15" r="2.5" fill="#009254"></circle></g>
+<rect x="398" y="190" width="124" height="26" rx="13.0" fill="#decefa" stroke="#7c3aed" stroke-width="1.5"></rect>
+<text x="460" y="207.66" font-size="10.35pt" font-weight="700" fill="#5b21b6" text-anchor="middle">Plano de control</text>
+<rect x="398" y="224" width="124" height="26" rx="13.0" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect>
+<text x="460" y="241.66" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">Plano de datos</text>
+<line x1="160" y1="150" x2="220" y2="150" stroke="#364e6c" stroke-width="2.5"></line>
+<line x1="340" y1="150" x2="400" y2="150" stroke="#364e6c" stroke-width="2.5"></line>
+<text x="280" y="300" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Cada equipo decide por sí mismo</text>
+<text x="280" y="322" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">y se configura de forma individual</text>
+<rect x="760" y="52" width="240" height="54" rx="6" fill="#ebedf0" stroke="#364e6c" stroke-width="2"></rect>
+<text x="880" y="83.56" font-size="10.9pt" font-weight="700" fill="#1e3a5f" text-anchor="middle">Aplicaciones y políticas</text>
+<rect x="740" y="150" width="280" height="80" rx="6" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2"></rect>
+<line x1="740" y1="182" x2="1020" y2="182" stroke="#7c3aed" stroke-width="1.5"></line>
+<text x="880" y="173" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Controlador SDN</text>
+<text x="880" y="210.56" font-size="10.9pt" font-weight="400" fill="#5b21b6" text-anchor="middle">Plano de control centralizado</text>
+<polyline points="880,108 880,148" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1208m364e6c)" marker-start="url(#g1208n364e6c)"></polyline>
+<polyline points="800,230 700,290" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1208m364e6c)" marker-start="url(#g1208n364e6c)"></polyline>
+<g transform="translate(700 318) scale(0.7)" data-lib="switch"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#009254" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-24" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-4" cy="-15" r="2.5" fill="#009254"></circle><circle cx="16" cy="-15" r="2.5" fill="#009254"></circle><circle cx="36" cy="-15" r="2.5" fill="#009254"></circle></g>
+<rect x="638" y="352" width="124" height="26" rx="13.0" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect>
+<text x="700" y="369.66" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">Plano de datos</text>
+<polyline points="880,230 880,290" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1208m364e6c)" marker-start="url(#g1208n364e6c)"></polyline>
+<g transform="translate(880 318) scale(0.7)" data-lib="switch"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#009254" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-24" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-4" cy="-15" r="2.5" fill="#009254"></circle><circle cx="16" cy="-15" r="2.5" fill="#009254"></circle><circle cx="36" cy="-15" r="2.5" fill="#009254"></circle></g>
+<rect x="818" y="352" width="124" height="26" rx="13.0" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect>
+<text x="880" y="369.66" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">Plano de datos</text>
+<polyline points="960,230 1060,290" fill="none" stroke="#364e6c" stroke-width="2" marker-end="url(#g1208m364e6c)" marker-start="url(#g1208n364e6c)"></polyline>
+<g transform="translate(1060 318) scale(0.7)" data-lib="switch"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#009254" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-24" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-4" cy="-15" r="2.5" fill="#009254"></circle><circle cx="16" cy="-15" r="2.5" fill="#009254"></circle><circle cx="36" cy="-15" r="2.5" fill="#009254"></circle></g>
+<rect x="998" y="352" width="124" height="26" rx="13.0" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect>
+<text x="1060" y="369.66" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">Plano de datos</text></g><text x="600" y="454" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 12.8. Redes definidas por software: planos de control y de datos.</text></svg>
+</div>
+
+<h4 id="virtualizacion-de-funciones-de-red-nfv">Virtualización de funciones de red (NFV)<a class="headerlink" href="#virtualizacion-de-funciones-de-red-nfv" title="Permanent link">¶</a></h4>
+<p>Servicios de red tradicionalmente implementados mediante <em>hardware</em> dedicado, como <em>firewalls</em>, balanceadores, <em>routers</em> y <em>gateways</em> VPN, pueden ejecutarse como funciones virtualizadas en máquinas virtuales; en arquitecturas <em>cloud-native</em> relacionadas, también pueden implementarse como funciones de red en contenedores (CNF).</p>
+<p>La modernización de redes debe entenderse como un proceso evolutivo permanente, que acompaña la transformación digital de la organización y responde a nuevos requerimientos de negocio, crecimiento y seguridad.</p>
+<p>El proceso evolutivo de modernización de una red empresarial hacia plataformas automatizadas y programables se representa en el <strong>Anexo V.</strong></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../tema_11/" class="btn btn-neutral float-left" title="11 · Arquitectura de red empresarial"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tema_13/" class="btn btn-neutral float-right" title="13 · Monitoreo y diagnóstico de redes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../tema_11/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="../tema_13/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>
