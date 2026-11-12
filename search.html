@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Guillermo Castillo" />
+      <link rel="shortcut icon" href="./img/favicon.ico" />
+    <title>NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico</title>
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme_extra.css" />
+        <link href="./assets/css/extra.css" rel="stylesheet" />
+    
+    <!--[if lt IE 9]>
+      <script src="./js/html5shiv.min.js"></script>
+    <![endif]--> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="./." class="icon icon-home"> NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="./.">Inicio</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./.#fundamentos-arquitecturas-y-despliegue-practico">Fundamentos, Arquitecturas y Despliegue Práctico.</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Temas</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_01/">01 · Fundamentos de redes y comunicación</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_01/#11-concepto-de-red-de-computadoras">1.1 CONCEPTO DE RED DE COMPUTADORAS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_01/#12-evolucion-de-las-redes">1.2 EVOLUCIÓN DE LAS REDES</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_01/#13-arquitecturas-cliente-servidor-y-distribuidas">1.3 ARQUITECTURAS CLIENTE-SERVIDOR Y DISTRIBUIDAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_01/#arquitectura-cliente-servidor">Arquitectura cliente-servidor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_01/#arquitecturas-distribuidas">Arquitecturas distribuidas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_01/#14-flujo-de-datos">1.4 FLUJO DE DATOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_01/#recorrido-de-los-datos">Recorrido de los datos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_01/#modelos-de-comunicacion">Modelos de comunicación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_01/#15-encapsulacion">1.5 ENCAPSULACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_01/#proceso-de-encapsulacion">Proceso de encapsulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_01/#desencapsulacion">Desencapsulación</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_02/">02 · Transmisión de datos y capa física</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#21-el-bit-como-unidad-minima-de-informacion">2.1 EL BIT COMO UNIDAD MÍNIMA DE INFORMACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#digitalizacion-de-la-informacion">Digitalización de la información</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#estandarizacion-de-la-transmision">Estandarización de la transmisión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#medicion-del-rendimiento-de-la-red">Medición del rendimiento de la red</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#22-senales-digitales-y-analogicas">2.2 SEÑALES DIGITALES Y ANALÓGICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#senal-digital">Señal digital</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#senal-analogica">Señal analógica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#modulacion">Modulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#demodulacion">Demodulación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#23-codificacion-y-modulacion-de-senales">2.3 CODIFICACIÓN Y MODULACIÓN DE SEÑALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#bit-y-simbolo">Bit y símbolo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#codificacion">Codificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#modulacion_1">Modulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#qam">QAM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#ofdm">OFDM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#multiplexacion">Multiplexación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#24-ruido-y-degradacion-de-la-senal">2.4 RUIDO Y DEGRADACIÓN DE LA SEÑAL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#ruido-impulsivo">Ruido impulsivo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#distorsion">Distorsión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#interferencia">Interferencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#ruido-termico-o-ruido-blanco">Ruido térmico (o ruido blanco)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#atenuacion">Atenuación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#dispersion">Dispersión</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#25-ancho-de-banda-y-capacidad-de-transmision">2.5 ANCHO DE BANDA Y CAPACIDAD DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#ancho-de-banda-analogico-hz">Ancho de banda analógico (Hz)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#capacidad-de-canal-bs">Capacidad de canal (b/s)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#teorema-de-shannon-hartley">Teorema de Shannon-Hartley</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#capacidad-teorica-y-rendimiento-real">Capacidad teórica y rendimiento real</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#rendimiento">Rendimiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#latencia">Latencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#jitter">Jitter</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#26-medios-de-transmision-guiados">2.6 MEDIOS DE TRANSMISIÓN GUIADOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#cable-de-par-trenzado">Cable de par trenzado</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#cable-coaxial">Cable coaxial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#fibra-optica">Fibra óptica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#27-medios-de-transmision-no-guiados">2.7 MEDIOS DE TRANSMISIÓN NO GUIADOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#infrarrojo">Infrarrojo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#tecnologias-inalambricas-para-iot">Tecnologías inalámbricas para IoT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#radiofrecuencia">Radiofrecuencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#microondas">Microondas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#28-espectro-electromagnetico-en-redes">2.8 ESPECTRO ELECTROMAGNÉTICO EN REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#frecuencias-bajas-3-khz30-mhz-vlf-lf-mf-y-hf">Frecuencias bajas (3 kHz–30 MHz; VLF, LF, MF y HF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#frecuencias-medias-30-mhz3-ghz-vhf-y-uhf">Frecuencias medias (30 MHz–3 GHz; VHF y UHF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#frecuencias-altas-3-ghz30-ghz-shf">Frecuencias altas (3 GHz–30 GHz; SHF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#ondas-milimetricas-30-ghz300-ghz-ehf">Ondas milimétricas (30 GHz–300 GHz; EHF)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#29-frecuencias-de-operacion">2.9 FRECUENCIAS DE OPERACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#banda-de-24-ghz">Banda de 2.4 GHz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#banda-de-5-ghz">Banda de 5 GHz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#banda-de-6-ghz">Banda de 6 GHz</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_02/#210-calculo-basico-de-tiempos-de-transmision">2.10 CÁLCULO BÁSICO DE TIEMPOS DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_02/#conversion-de-unidades">Conversión de unidades</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_03/">03 · Componentes de una red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_03/#31-dispositivos-finales">3.1 DISPOSITIVOS FINALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#caracteristicas-principales">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#computadoras-personales-y-estaciones-de-trabajo">Computadoras personales y estaciones de trabajo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#servidores">Servidores</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#dispositivos-moviles">Dispositivos móviles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#impresoras-de-red">Impresoras de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#dispositivos-iot">Dispositivos IoT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_03/#32-dispositivos-intermedios">3.2 DISPOSITIVOS INTERMEDIOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#switches-conmutadores">Switches (conmutadores)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#enrutadores-routers">Enrutadores (routers)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#puntos-de-acceso-inalambrico">Puntos de acceso inalámbrico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#firewalls">Firewalls</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#balanceadores-de-carga">Balanceadores de carga</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#dispositivos-adicionales-en-redes-modernas">Dispositivos adicionales en redes modernas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_03/#33-interfaces-de-red-nic">3.3 INTERFACES DE RED (NIC)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#control-de-acceso-al-medio">Control de acceso al medio</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#gestion-de-tramas">Gestión de tramas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#conversion-de-datos-digitales-a-senales">Conversión de datos digitales a señales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#identificacion-unica">Identificación única</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#interfaces-cableadas">Interfaces cableadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#interfaces-inalambricas">Interfaces inalámbricas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#interfaces-especializadas">Interfaces especializadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#optimizaciones-de-nic-modernas">Optimizaciones de NIC modernas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_03/#34-unidad-maxima-de-transmision">3.4 UNIDAD MÁXIMA DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#ethernet">Ethernet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#pppoe-utilizado-en-conexiones-dsl">PPPoE (utilizado en conexiones DSL)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#redes-con-vlan-ieee-8021q">Redes con VLAN (IEEE 802.1Q)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#enlaces-con-jumbo-frames">Enlaces con jumbo frames</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#fragmentacion-del-paquete-ip">Fragmentación del paquete IP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#mensajes-icmp-para-descubrimiento-de-mtu">Mensajes ICMP para descubrimiento de MTU</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#capa-de-enlace">Capa de enlace</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_03/#35-infraestructura-fisica">3.5 INFRAESTRUCTURA FÍSICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#racks-y-gabinetes">Racks y gabinetes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#cables-de-red">Cables de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#conectores-y-terminaciones">Conectores y terminaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#canalizaciones-y-sistemas-de-cableado-estructurado">Canalizaciones y sistemas de cableado estructurado</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#paneles-de-parcheo-patch-panels">Paneles de parcheo (patch panels)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#factores-de-diseno">Factores de diseño</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#estandares-de-cableado-estructurado">Estándares de cableado estructurado</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_03/#36-comunicacion-en-la-red">3.6 COMUNICACIÓN EN LA RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_03/#flujo-de-comunicacion-en-una-red-de-datos">Flujo de comunicación en una red de datos</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_04/">04 · Direccionamiento IP y subredes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_04/#41-ipv4-estructura-de-32-bits">4.1 IPv4 ESTRUCTURA DE 32 BITS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#parte-de-red">Parte de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#parte-de-host">Parte de host</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_04/#42-binario-y-decimal">4.2 BINARIO Y DECIMAL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_04/#43-subnetting-y-segmentacion-logica">4.3 SUBNETTING Y SEGMENTACIÓN LÓGICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#objetivos-de-la-segmentacion-logica">Objetivos de la segmentación lógica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#proceso-del-subnetting">Proceso del subnetting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_04/#44-cidr-y-vlsm">4.4 CIDR Y VLSM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#mascara-de-subred-de-longitud-variable">Máscara de subred de longitud variable</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#reduccion-del-desperdicio-de-direcciones">Reducción del desperdicio de direcciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#mayor-complejidad-de-planificacion">Mayor complejidad de planificación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_04/#45-ipv6-estructura-de-128-bits">4.5 IPv6 ESTRUCTURA DE 128 BITS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#prefijo-de-enrutamiento-global">Prefijo de enrutamiento global</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#identificador-de-subred">Identificador de subred</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#identificador-de-interfaz">Identificador de interfaz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#caracteristicas-principales-de-ipv6">Características principales de IPv6</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_04/#46-notacion-hexadecimal-ipv6">4.6 NOTACIÓN HEXADECIMAL IPv6</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#reglas-basicas-de-la-notacion">Reglas básicas de la notación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_04/#47-autoconfiguracion-ipv6">4.7 AUTOCONFIGURACIÓN IPv6</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#autoconfiguracion-sin-estado-slaac">Autoconfiguración sin estado (SLAAC)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#dhcpv6">DHCPv6</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_04/#48-relacion-redes-subredes-host">4.8 RELACIÓN REDES-SUBREDES-HOST</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#red-principal">Red principal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#subred">Subred</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#host">Host</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#formulas-clave">Fórmulas clave</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_04/#beneficios-de-la-organizacion-jerarquica">Beneficios de la organización jerárquica</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_05/">05 · Conmutación y segmentación de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_05/#51-switching-y-direcciones-mac">5.1 SWITCHING Y DIRECCIONES MAC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#mac">MAC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#switching">Switching</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#caracteristicas-tecnicas-del-switching">Características técnicas del switching</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#proceso-del-switching">Proceso del Switching</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_05/#52-vlan">5.2 VLAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#caracteristicas-de-las-vlan">Características de las VLAN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#tipos-de-vlan-segun-su-proposito">Tipos de VLAN según su propósito</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_05/#53-trunking-ieee-8021q">5.3 TRUNKING IEEE 802.1Q</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#tpid">TPID</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#tci">TCI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#vlan-pruning">VLAN pruning</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_05/#54-stp-rstp-y-mstp">5.4 STP, RSTP Y MSTP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#eleccion-del-switch-raiz">Elección del switch raíz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#determinacion-del-puerto-raiz">Determinación del puerto raíz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#seleccion-de-puertos-designados">Selección de puertos designados</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#bloqueo-de-los-puertos-restantes">Bloqueo de los puertos restantes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#estados-y-timers-de-stp-ieee-8021d">Estados y Timers de STP (IEEE 802.1D)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#tiempo-de-convergencia-de-stp">Tiempo de convergencia de STP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#rstp">RSTP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_05/#55-dominios-de-broadcast">5.5 DOMINIOS DE BROADCAST</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#caracteristicas-de-los-dominios-de-broadcast">Características de los dominios de broadcast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#segmentacion-de-dominios-de-broadcast">Segmentación de dominios de broadcast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_05/#dominios-de-broadcast-y-de-colision">Dominios de broadcast y de colisión</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_06/">06 · Enrutamiento y conectividad de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_06/#61-principios-de-enrutamiento">6.1 PRINCIPIOS DE ENRUTAMIENTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#conceptos-fundamentales-en-el-enrutamiento">Conceptos fundamentales en el enrutamiento</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_06/#62-rutas-estaticas">6.2 RUTAS ESTÁTICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#sintaxis-tipica-de-una-ruta-estatica">Sintaxis típica de una ruta estática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#verificacion-de-las-rutas-configuradas">Verificación de las rutas configuradas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#rutas-estaticas-hacia-una-interfaz-de-tunel">Rutas estáticas hacia una interfaz de túnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#caracteristicas-de-las-rutas-estaticas">Características de las rutas estáticas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#ruta-por-defecto-estatica">Ruta por defecto estática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#ruta-estatica-flotante">Ruta estática flotante</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_06/#63-rutas-dinamicas">6.3 RUTAS DINÁMICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#clasificacion-segun-su-alcance">Clasificación según su alcance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#segun-su-forma-de-operar">Según su forma de operar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#ventajas-del-enrutamiento-dinamico">Ventajas del enrutamiento dinámico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_06/#64-ospf">6.4 OSPF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#metrica">Métrica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#funcionamiento-basado-en-areas">Funcionamiento basado en áreas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#convergencia">Convergencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#estados-de-adyacencia">Estados de adyacencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#multiacceso-dr-y-bdr">Multiacceso, DR y BDR</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#autenticacion">Autenticación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#verificacion-de-ospf">Verificación de OSPF</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_06/#65-bgp">6.5 BGP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#verificacion-de-sesiones-bgp">Verificación de sesiones BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#caracteristicas-fundamentales-de-bgp">Características fundamentales de BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#uso-tipico-de-bgp">Uso típico de BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#verificar-rutas-bgp">Verificar rutas BGP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_06/#66-tabla-de-enrutamiento">6.6 TABLA DE ENRUTAMIENTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#proceso-de-busqueda">Proceso de búsqueda</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#ver-la-tabla-de-enrutamiento">Ver la tabla de enrutamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#formas-de-poblar-la-tabla">Formas de poblar la tabla</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_06/#67-gateway">6.7 GATEWAY</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#funcionamiento">Funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#verificacion-de-conectividad-a-traves-del-gateway">Verificación de conectividad a través del gateway</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_06/#68-gre">6.8 GRE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#caracteristicas-tecnicas">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#funcionamiento-de-un-tunel-gre">Funcionamiento de un túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#creacion-de-un-tunel-gre">Creación de un túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#verificacion-del-tunel-gre">Verificación del túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#ajuste-del-mss-en-linux">Ajuste del MSS en Linux</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_06/#multiples-tuneles-gre">Múltiples túneles GRE</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_07/">07 · Protocolos y servicios de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_07/#71-tcpudp">7.1 TCP/UDP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#tcp">TCP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#udp">UDP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_07/#72-mss">7.2 MSS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_07/#73-http-https-ftp-y-smtp">7.3 HTTP, HTTPS, FTP Y SMTP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#http">HTTP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#https">HTTPS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#ftp">FTP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#smtp">SMTP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_07/#74-dns">7.4 DNS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#funcionamiento-de-una-resolucion-dns-tipica">Funcionamiento de una resolución DNS típica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_07/#75-dhcp">7.5 DHCP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#metodos-de-asignacion">Métodos de asignación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#dhcp-para-ipv6">DHCP para IPv6</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#funcionamiento-detallado">Funcionamiento detallado</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_07/#76-natpat">7.6 NAT/PAT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#tipos-de-nat">Tipos de NAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#funcionamiento-de-pat">Funcionamiento de PAT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_07/#77-igmp">7.7 IGMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#direcciones-multicast">Direcciones multicast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#funcionamiento-basico">Funcionamiento básico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#versiones-de-igmp">Versiones de IGMP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_07/#78-inspeccion-igmp">7.8 INSPECCIÓN IGMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_07/#funcionamiento-del-igmp-snooping">Funcionamiento del IGMP snooping</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_08/">08 · Seguridad en redes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_08/#81-principios-de-seguridad-triada-cia">8.1 PRINCIPIOS DE SEGURIDAD (TRÍADA CIA)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#confidencialidad">Confidencialidad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#integridad">Integridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#disponibilidad">Disponibilidad</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_08/#82-firewalls">8.2 FIREWALLS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#firewalls-de-filtrado-de-paquetes-estaticos">Firewalls de filtrado de paquetes (estáticos)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#firewalls-stateful-con-inspeccion-de-estado">Firewalls stateful (con inspección de estado)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#firewalls-de-capa-de-aplicacion-proxy">Firewalls de capa de aplicación (proxy)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#ngfw">NGFW</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_08/#83-dmz">8.3 DMZ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#arquitectura-tipica-de-una-dmz-con-un-solo-firewall-tres-piernas">Arquitectura típica de una DMZ con un solo firewall (tres «piernas»)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#reglas-comunes">Reglas comunes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#variantes-de-dmz">Variantes de DMZ</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_08/#84-acl">8.4 ACL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#tipos-de-acl">Tipos de ACL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#consideraciones-de-diseno-de-acl">Consideraciones de diseño de ACL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#aplicacion-de-acl">Aplicación de ACL</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_08/#85-criptografia">8.5 CRIPTOGRAFÍA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#tls">TLS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#funcionamiento-resumido-de-una-sesion-tls">Funcionamiento resumido de una sesión TLS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#ssh">SSH</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#usos-tipicos">Usos típicos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_08/#86-ipsec">8.6 IPSEC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#componentes-de-ipsec">Componentes de IPsec</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#intercambios-de-ikev2-para-establecer-las-sa">Intercambios de IKEv2 para establecer las SA</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_08/#87-amenazas-de-red">8.7 AMENAZAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#clasificacion-de-amenazas-segun-su-naturaleza">Clasificación de amenazas según su naturaleza</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_08/#88-seguridad-en-capas">8.8 SEGURIDAD EN CAPAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#capas-tipicas-en-una-red-empresarial">Capas típicas en una red empresarial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_08/#ventajas-del-modelo">Ventajas del modelo</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_09/">09 · VPN y tunelización</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_09/#91-gre-en-contexto-vpn">9.1 GRE EN CONTEXTO VPN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_09/#92-ipsec">9.2 IPSEC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#componentes-de-ipsec">Componentes de IPsec</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#modo-transporte">Modo transporte</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#modo-tunel">Modo túnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#primera-etapa">Primera etapa</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#segunda-etapa">Segunda etapa</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_09/#93-ssl-vpn">9.3 SSL VPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#portal-ssl-vpn">Portal SSL VPN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#tunel-ssl-vpn">Túnel SSL VPN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#caracteristicas-tecnicas">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#limitaciones">Limitaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#ventajas">Ventajas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_09/#94-openvpn">9.4 OPENVPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#modos-de-operacion">Modos de operación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#protocolos-de-transporte">Protocolos de transporte</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_09/#95-wireguard">9.5 WIREGUARD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#caracteristicas-tecnicas_1">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#ventajas_1">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#limitaciones_1">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_09/#96-vpn-sitio-a-sitio">9.6 VPN SITIO A SITIO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#componentes-principales">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#ventajas_2">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#limitaciones_2">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_09/#97-vpn-de-acceso-remoto">9.7 VPN DE ACCESO REMOTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#componentes-principales_1">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#control-del-flujo-de-trafico">Control del flujo de tráfico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#ventajas_3">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#limitaciones_3">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_09/#98-comparacion-entre-ipsec-y-ssl-vpn">9.8 COMPARACIÓN ENTRE IPSEC Y SSL VPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#capa-de-operacion">Capa de operación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#facilidad-de-despliegue">Facilidad de despliegue</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#rendimiento">Rendimiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#casos-de-uso-habituales">Casos de uso habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_09/#comparacion-general">Comparación general</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_10/">10 · Infraestructura WAN y core</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_10/#101-mpls">10.1 MPLS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#componentes-principales">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#operaciones-basicas">Operaciones básicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#protocolos-asociados">Protocolos asociados</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#servicios-ventajas-y-limitaciones">Servicios, ventajas y limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_10/#102-sd-wan">10.2 SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#caracteristicas-principales">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#componentes-de-una-arquitectura-sd-wan">Componentes de una arquitectura SD-WAN</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_10/#103-mpls-y-sd-wan">10.3 MPLS Y SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#modelo-operativo">Modelo operativo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#transporte">Transporte</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#calidad-de-servicio">Calidad de servicio</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#costos">Costos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#visibilidad-y-gestion">Visibilidad y gestión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#casos-de-uso">Casos de uso</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_10/#104-backbone-de-red">10.4 BACKBONE DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#topologias-habituales">Topologías habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#caracteristicas-principales_1">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#componentes-del-backbone">Componentes del backbone</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#tecnologias-utilizadas">Tecnologías utilizadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#tecnologias-de-transporte">Tecnologías de transporte</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_10/#105-peering">10.5 PEERING</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#tipos-de-peering">Tipos de peering</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#requisitos-habituales">Requisitos habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#relacion-entre-peering-y-transito">Relación entre peering y tránsito</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_10/#106-migracion-de-mpls-hacia-sd-wan">10.6 MIGRACIÓN DE MPLS HACIA SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#objetivos-habituales-de-la-migracion">Objetivos habituales de la migración</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#fase-1-evaluacion-y-planificacion">Fase 1. Evaluación y planificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#fase-2-implementacion-hibrida">Fase 2. Implementación híbrida</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#fase-3-migracion-gradual-de-aplicaciones">Fase 3. Migración gradual de aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#fase-4-optimizacion-y-consolidacion">Fase 4. Optimización y consolidación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#fase-5-operacion-continua">Fase 5. Operación continua</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#desafios-habituales">Desafíos habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_10/#arquitectura-hibrida-de-referencia">Arquitectura híbrida de referencia</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_11/">11 · Arquitectura de red empresarial</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_11/#111-topologias-de-red">11.1 TOPOLOGÍAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#topologia-en-estrella">Topología en estrella</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#topologia-en-bus">Topología en bus</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#topologia-en-anillo">Topología en anillo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#topologia-en-malla">Topología en malla</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#topologia-en-arbol">Topología en árbol</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#topologia-logica">Topología lógica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_11/#112-diagramas-de-red">11.2 DIAGRAMAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#diagrama-fisico">Diagrama físico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#diagrama-logico">Diagrama lógico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#diagrama-de-arquitectura-jerarquica">Diagrama de arquitectura jerárquica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#diagrama-de-flujo-de-datos">Diagrama de flujo de datos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#herramientas-de-diagramacion">Herramientas de diagramación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_11/#113-modelo-jerarquico">11.3 MODELO JERÁRQUICO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#capa-de-acceso">Capa de acceso</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#capa-de-distribucion">Capa de distribución</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#capa-de-nucleo">Capa de núcleo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#beneficios-del-modelo-jerarquico">Beneficios del modelo jerárquico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#variantes-arquitectonicas">Variantes arquitectónicas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_11/#114-alta-disponibilidad">11.4 ALTA DISPONIBILIDAD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#mtbf-mean-time-between-failures">MTBF (Mean Time Between Failures)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#mttr-mean-time-to-repair">MTTR (Mean Time To Repair)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#principios-de-diseno">Principios de diseño</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#alta-disponibilidad-y-continuidad-operativa">Alta disponibilidad y continuidad operativa</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_11/#115-redundancia">11.5 REDUNDANCIA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#redundancia-de-dispositivos">Redundancia de dispositivos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#otros-niveles-de-redundancia">Otros niveles de redundancia</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_11/#116-segmentacion-corporativa">11.6 SEGMENTACIÓN CORPORATIVA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#metodos-de-segmentacion">Métodos de segmentación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#beneficios-principales">Beneficios principales</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_11/#117-dmz">11.7 DMZ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#objetivos-de-una-dmz">Objetivos de una DMZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#arquitectura-tipica">Arquitectura típica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#modelos-de-implementacion">Modelos de implementación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_11/#controles-de-seguridad-recomendados">Controles de seguridad recomendados</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_12/">12 · Arquitecturas modernas de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_12/#121-cloud-networking">12.1 CLOUD NETWORKING</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_12/#122-zero-trust">12.2 ZERO TRUST</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_12/#123-ztna">12.3 ZTNA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_12/#124-sase">12.4 SASE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_12/#principales-beneficios">Principales beneficios</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_12/#limitaciones">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_12/#125-microsegmentacion">12.5 MICROSEGMENTACIÓN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_12/#126-modernizacion-de-redes">12.6 MODERNIZACIÓN DE REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_12/#telemetria-avanzada">Telemetría avanzada</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_12/#herramientas-de-automatizacion-modernas">Herramientas de automatización modernas</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_13/">13 · Monitoreo y diagnóstico de redes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_13/#131-ping-traceroute-y-nslookup">13.1 PING, TRACEROUTE Y NSLOOKUP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#ping">Ping</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#traceroute-tracert-en-windows">Traceroute (tracert en Windows)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#nslookup">nslookup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#aplicaciones-de-diagnostico">Aplicaciones de diagnóstico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_13/#132-mtr">13.2 MTR</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#funcionamiento">Funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#interpretacion">Interpretación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#ventaja-principal">Ventaja principal</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_13/#133-wireshark">13.3 WIRESHARK</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#capacidades">Capacidades</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#aplicaciones">Aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#limitaciones">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_13/#134-tcpdump">13.4 TCPDUMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#opciones">Opciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_13/#135-iperf">13.5 IPERF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#parametros">Parámetros</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#metricas">Métricas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#aplicaciones_1">Aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#limitacion">Limitación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_13/#136-siem">13.6 SIEM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#funcionalidades">Funcionalidades</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#ejemplos-de-correlacion">Ejemplos de correlación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_13/#limitaciones_1">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_14/">14 · Herramientas Linux</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_14/#141-ip-iproute2">14.1 IP / IPROUTE2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#subcomandos-principales">Subcomandos principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#ventajas-de-iproute2">Ventajas de iproute2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#ejemplos-practicos">Ejemplos prácticos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_14/#142-ss-netstat">14.2 SS / NETSTAT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#uso-practico-de-ss">Uso práctico de ss</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#informacion-disponible-mediante-ss">Información disponible mediante ss</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#ventajas-de-ss">Ventajas de ss</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_14/#143-routing-en-linux">14.3 ROUTING EN LINUX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#habilitacion-de-ip-forwarding">Habilitación de IP forwarding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#router-linux-basico-con-nat">Router Linux básico con NAT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_14/#144-nftables-iptables">14.4 NFTABLES / IPTABLES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#iptables">IPTABLES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#nftables">NFTABLES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#comparacion-entre-iptables-y-nftables">Comparación entre iptables y nftables</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#aplicaciones-habituales">Aplicaciones habituales</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_14/#145-diagnostico-de-red-en-linux">14.5 DIAGNÓSTICO DE RED EN LINUX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#ethtool">ETHTOOL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#netcat">NETCAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#metodologia-de-diagnostico">Metodología de Diagnóstico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#flujo-recomendado-de-troubleshooting">Flujo recomendado de troubleshooting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_14/#146-simulacion-de-redes-gns3-eve-ng">14.6 SIMULACIÓN DE REDES GNS3 / EVE-NG</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#gns3">GNS3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#eve-ng">EVE-NG</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#casos-de-uso-profesionales">Casos de uso profesionales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_14/#seleccion-de-plataforma">Selección de plataforma</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./temas/tema_15/">15 · Implementación práctica integral</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_15/#151-configuracion-de-red-basica">15.1 CONFIGURACIÓN DE RED BÁSICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#identificacion-de-interfaces">Identificación de interfaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#configuracion-de-una-direccion-ipv4">Configuración de una dirección IPv4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#configuracion-de-la-puerta-de-enlace">Configuración de la puerta de enlace</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#tabla-de-vecinos">Tabla de vecinos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#verificacion-progresiva">Verificación progresiva</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#captura-del-trafico">Captura del tráfico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#resolucion-de-nombres">Resolución de nombres</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_15/#152-subnetting-aplicado-vlsm">15.2 SUBNETTING APLICADO — VLSM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#segmento-a">Segmento A</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#segmento-b">Segmento B</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#segmento-c">Segmento C</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#segmento-d">Segmento D</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#verificacion-matematica">Verificación matemática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#verificacion-con-linux">Verificación con Linux</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_15/#153-vlan-redes-locales-virtuales">15.3 VLAN REDES LOCALES VIRTUALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#creacion-de-una-subinterfaz-vlan">Creación de una subinterfaz VLAN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#puerto-trunk">Puerto trunk</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#verificacion-mediante-captura">Verificación mediante captura</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#routing-entre-vlan">Routing entre VLAN</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_15/#154-routing-entre-redes">15.4 ROUTING ENTRE REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#rutas-estaticas">Rutas estáticas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#activacion-del-forwarding">Activación del forwarding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#prueba-del-camino">Prueba del camino</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#routing-dinamico-con-ospf">Routing dinámico con OSPF</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#diagnostico-de-routing">Diagnóstico de routing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_15/#155-firewall-nftables">15.5 FIREWALL — NFTABLES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#firewall-basico">Firewall básico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#nat">NAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#verificacion">Verificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#principio-de-diagnostico">Principio de diagnóstico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_15/#156-red-parcial-integrada-dhcp">15.6 RED PARCIAL INTEGRADA — DHCP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#configuracion-conceptual">Configuración conceptual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#proceso-dora">Proceso DORA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#verificacion-del-cliente">Verificación del cliente</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#diagnostico">Diagnóstico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#integracion">Integración</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_15/#157-red-empresarial-completa">15.7 RED EMPRESARIAL COMPLETA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#principio-de-funcionamiento">Principio de funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#configuracion-conceptual_1">Configuración conceptual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#prueba-de-failover">Prueba de failover</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#consideraciones-operativas">Consideraciones operativas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./temas/tema_15/#158-troubleshooting-real">15.8 TROUBLESHOOTING REAL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#caso-de-estudio-1">CASO DE ESTUDIO 1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#caso-de-estudio-2">CASO DE ESTUDIO 2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#caso-de-estudio-3">CASO DE ESTUDIO 3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#caso-de-estudio-4">CASO DE ESTUDIO 4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#caso-de-estudio-5">CASO DE ESTUDIO 5</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#validacion-final-del-laboratorio">VALIDACIÓN FINAL DEL LABORATORIO</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./temas/tema_15/#metodologia-aplicada-en-los-casos-de-estudio">Metodología aplicada en los casos de estudio</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="./conclusion/">Conclusión</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="./glosario/">Glosario</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="./acronimos/">Acrónimos</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Anexos gráficos</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/">Introducción</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_I/">Anexo I</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_II/">Anexo II</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_III/">Anexo III</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_IV/">Anexo IV</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_V/">Anexo V</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_VI/">Anexo VI</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_VII/">Anexo VII</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_VIII/">Anexo VIII</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_IX/">Anexo IX</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_X/">Anexo X</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_XI/">Anexo XI</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./anexos/anexo_XII/">Anexo XII</a>
+    <ul>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="./bibliograf%C3%ADa/">Bibliografía</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./bibliograf%C3%ADa/#libros-y-publicaciones-tecnicas">Libros y publicaciones técnicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./bibliograf%C3%ADa/#estandares-y-documentacion-tecnica">Estándares y documentación técnica</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="./bibliograf%C3%ADa/#internet-engineering-task-force-ietf">Internet Engineering Task Force (IETF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./bibliograf%C3%ADa/#ieee">IEEE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./bibliograf%C3%ADa/#linux-y-herramientas-de-administracion-de-redes">Linux y herramientas de administración de redes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="./bibliograf%C3%ADa/#seguridad-informatica-y-buenas-practicas">Seguridad informática y buenas prácticas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./bibliograf%C3%ADa/#fuentes-historicas-y-academicas">Fuentes históricas y académicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./bibliograf%C3%ADa/#recursos-complementarios">Recursos complementarios</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Complementos</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="./complementos/sistema-de-diagramas/">Sistema de diagramas</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="./complementos/derechos-de-autor/">Derechos de autor y licencia</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#derechos-de-autor-y-licencia">Derechos de autor y licencia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#atribucion">Atribución</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#alcance-de-la-licencia">Alcance de la licencia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#contenido-tecnico-y-conocimientos-generales">Contenido técnico y conocimientos generales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#materiales-de-terceros">Materiales de terceros</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#contenido-grafico-y-elementos-visuales">Contenido gráfico y elementos visuales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#tipografias-software-y-herramientas">Tipografías, software y herramientas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#inteligencia-artificial-y-proceso-de-elaboracion">Inteligencia artificial y proceso de elaboración</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#codigo-comandos-configuraciones-y-ejemplos-tecnicos">Código, comandos, configuraciones y ejemplos técnicos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#estandares-y-especificaciones-tecnicas">Estándares y especificaciones técnicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#autoria-y-procedencia-de-los-contenidos">Autoría y procedencia de los contenidos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#limitaciones-y-excepciones-legales">Limitaciones y excepciones legales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#responsabilidad-sobre-la-informacion-tecnica">Responsabilidad sobre la información técnica</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#sobre-este-aviso">Sobre este aviso</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="./complementos/derechos-de-autor/#identificacion-de-la-edicion">Identificación de la edición</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="./.">NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="./." class="icon icon-home" aria-label="Docs"></a></li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+
+  <h1 id="search">Search Results</h1>
+
+  <form id="content_search" action="search.html">
+    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+    <input name="q" id="mkdocs-search-query" type="text" class="search_input search-query ui-autocomplete-input" placeholder="Search the Docs" aria-label="Search the Docs" autocomplete="off" autofocus title="Type search term here">
+  </form>
+
+  <div id="mkdocs-search-results" class="search-results" data-no-results-text="No results found">
+    Searching...
+  </div>
+
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="./js/theme_extra.js"></script>
+    <script src="./js/theme.js"></script>
+      <script src="./assets/js/extra.js"></script>
+      <script src="./search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

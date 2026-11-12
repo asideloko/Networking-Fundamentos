@@ -1,0 +1,2040 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="author" content="Guillermo Castillo">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>13 · Monitoreo y diagnóstico de redes - NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link href="../../assets/css/extra.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "13 \u00b7 Monitoreo y diagn\u00f3stico de redes";
+        var mkdocs_page_input_path = "temas/tema_13.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]--> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Inicio</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../..#fundamentos-arquitecturas-y-despliegue-practico">Fundamentos, Arquitecturas y Despliegue Práctico.</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Temas</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_01/">01 · Fundamentos de redes y comunicación</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#11-concepto-de-red-de-computadoras">1.1 CONCEPTO DE RED DE COMPUTADORAS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#12-evolucion-de-las-redes">1.2 EVOLUCIÓN DE LAS REDES</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#13-arquitecturas-cliente-servidor-y-distribuidas">1.3 ARQUITECTURAS CLIENTE-SERVIDOR Y DISTRIBUIDAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#arquitectura-cliente-servidor">Arquitectura cliente-servidor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#arquitecturas-distribuidas">Arquitecturas distribuidas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#14-flujo-de-datos">1.4 FLUJO DE DATOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#recorrido-de-los-datos">Recorrido de los datos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#modelos-de-comunicacion">Modelos de comunicación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_01/#15-encapsulacion">1.5 ENCAPSULACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#proceso-de-encapsulacion">Proceso de encapsulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_01/#desencapsulacion">Desencapsulación</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_02/">02 · Transmisión de datos y capa física</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#21-el-bit-como-unidad-minima-de-informacion">2.1 EL BIT COMO UNIDAD MÍNIMA DE INFORMACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#digitalizacion-de-la-informacion">Digitalización de la información</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#estandarizacion-de-la-transmision">Estandarización de la transmisión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#medicion-del-rendimiento-de-la-red">Medición del rendimiento de la red</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#22-senales-digitales-y-analogicas">2.2 SEÑALES DIGITALES Y ANALÓGICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#senal-digital">Señal digital</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#senal-analogica">Señal analógica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#modulacion">Modulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#demodulacion">Demodulación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#23-codificacion-y-modulacion-de-senales">2.3 CODIFICACIÓN Y MODULACIÓN DE SEÑALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#bit-y-simbolo">Bit y símbolo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#codificacion">Codificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#modulacion_1">Modulación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#qam">QAM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ofdm">OFDM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#multiplexacion">Multiplexación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#24-ruido-y-degradacion-de-la-senal">2.4 RUIDO Y DEGRADACIÓN DE LA SEÑAL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ruido-impulsivo">Ruido impulsivo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#distorsion">Distorsión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#interferencia">Interferencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ruido-termico-o-ruido-blanco">Ruido térmico (o ruido blanco)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#atenuacion">Atenuación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#dispersion">Dispersión</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#25-ancho-de-banda-y-capacidad-de-transmision">2.5 ANCHO DE BANDA Y CAPACIDAD DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ancho-de-banda-analogico-hz">Ancho de banda analógico (Hz)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#capacidad-de-canal-bs">Capacidad de canal (b/s)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#teorema-de-shannon-hartley">Teorema de Shannon-Hartley</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#capacidad-teorica-y-rendimiento-real">Capacidad teórica y rendimiento real</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#rendimiento">Rendimiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#latencia">Latencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#jitter">Jitter</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#26-medios-de-transmision-guiados">2.6 MEDIOS DE TRANSMISIÓN GUIADOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#cable-de-par-trenzado">Cable de par trenzado</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#cable-coaxial">Cable coaxial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#fibra-optica">Fibra óptica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#27-medios-de-transmision-no-guiados">2.7 MEDIOS DE TRANSMISIÓN NO GUIADOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#infrarrojo">Infrarrojo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#tecnologias-inalambricas-para-iot">Tecnologías inalámbricas para IoT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#radiofrecuencia">Radiofrecuencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#microondas">Microondas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#28-espectro-electromagnetico-en-redes">2.8 ESPECTRO ELECTROMAGNÉTICO EN REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#frecuencias-bajas-3-khz30-mhz-vlf-lf-mf-y-hf">Frecuencias bajas (3 kHz–30 MHz; VLF, LF, MF y HF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#frecuencias-medias-30-mhz3-ghz-vhf-y-uhf">Frecuencias medias (30 MHz–3 GHz; VHF y UHF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#frecuencias-altas-3-ghz30-ghz-shf">Frecuencias altas (3 GHz–30 GHz; SHF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#ondas-milimetricas-30-ghz300-ghz-ehf">Ondas milimétricas (30 GHz–300 GHz; EHF)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#29-frecuencias-de-operacion">2.9 FRECUENCIAS DE OPERACIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#banda-de-24-ghz">Banda de 2.4 GHz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#banda-de-5-ghz">Banda de 5 GHz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#banda-de-6-ghz">Banda de 6 GHz</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_02/#210-calculo-basico-de-tiempos-de-transmision">2.10 CÁLCULO BÁSICO DE TIEMPOS DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_02/#conversion-de-unidades">Conversión de unidades</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_03/">03 · Componentes de una red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#31-dispositivos-finales">3.1 DISPOSITIVOS FINALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#caracteristicas-principales">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#computadoras-personales-y-estaciones-de-trabajo">Computadoras personales y estaciones de trabajo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#servidores">Servidores</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#dispositivos-moviles">Dispositivos móviles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#impresoras-de-red">Impresoras de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#dispositivos-iot">Dispositivos IoT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#32-dispositivos-intermedios">3.2 DISPOSITIVOS INTERMEDIOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#switches-conmutadores">Switches (conmutadores)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#enrutadores-routers">Enrutadores (routers)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#puntos-de-acceso-inalambrico">Puntos de acceso inalámbrico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#firewalls">Firewalls</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#balanceadores-de-carga">Balanceadores de carga</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#dispositivos-adicionales-en-redes-modernas">Dispositivos adicionales en redes modernas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#33-interfaces-de-red-nic">3.3 INTERFACES DE RED (NIC)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#control-de-acceso-al-medio">Control de acceso al medio</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#gestion-de-tramas">Gestión de tramas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#conversion-de-datos-digitales-a-senales">Conversión de datos digitales a señales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#identificacion-unica">Identificación única</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#interfaces-cableadas">Interfaces cableadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#interfaces-inalambricas">Interfaces inalámbricas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#interfaces-especializadas">Interfaces especializadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#optimizaciones-de-nic-modernas">Optimizaciones de NIC modernas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#34-unidad-maxima-de-transmision">3.4 UNIDAD MÁXIMA DE TRANSMISIÓN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#ethernet">Ethernet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#pppoe-utilizado-en-conexiones-dsl">PPPoE (utilizado en conexiones DSL)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#redes-con-vlan-ieee-8021q">Redes con VLAN (IEEE 802.1Q)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#enlaces-con-jumbo-frames">Enlaces con jumbo frames</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#fragmentacion-del-paquete-ip">Fragmentación del paquete IP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#mensajes-icmp-para-descubrimiento-de-mtu">Mensajes ICMP para descubrimiento de MTU</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#capa-de-enlace">Capa de enlace</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#35-infraestructura-fisica">3.5 INFRAESTRUCTURA FÍSICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#racks-y-gabinetes">Racks y gabinetes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#cables-de-red">Cables de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#conectores-y-terminaciones">Conectores y terminaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#canalizaciones-y-sistemas-de-cableado-estructurado">Canalizaciones y sistemas de cableado estructurado</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#paneles-de-parcheo-patch-panels">Paneles de parcheo (patch panels)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#factores-de-diseno">Factores de diseño</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#estandares-de-cableado-estructurado">Estándares de cableado estructurado</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_03/#36-comunicacion-en-la-red">3.6 COMUNICACIÓN EN LA RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_03/#flujo-de-comunicacion-en-una-red-de-datos">Flujo de comunicación en una red de datos</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_04/">04 · Direccionamiento IP y subredes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#41-ipv4-estructura-de-32-bits">4.1 IPv4 ESTRUCTURA DE 32 BITS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#parte-de-red">Parte de red</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#parte-de-host">Parte de host</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#42-binario-y-decimal">4.2 BINARIO Y DECIMAL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#43-subnetting-y-segmentacion-logica">4.3 SUBNETTING Y SEGMENTACIÓN LÓGICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#objetivos-de-la-segmentacion-logica">Objetivos de la segmentación lógica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#proceso-del-subnetting">Proceso del subnetting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#44-cidr-y-vlsm">4.4 CIDR Y VLSM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#mascara-de-subred-de-longitud-variable">Máscara de subred de longitud variable</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#reduccion-del-desperdicio-de-direcciones">Reducción del desperdicio de direcciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#mayor-complejidad-de-planificacion">Mayor complejidad de planificación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#45-ipv6-estructura-de-128-bits">4.5 IPv6 ESTRUCTURA DE 128 BITS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#prefijo-de-enrutamiento-global">Prefijo de enrutamiento global</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#identificador-de-subred">Identificador de subred</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#identificador-de-interfaz">Identificador de interfaz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#caracteristicas-principales-de-ipv6">Características principales de IPv6</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#46-notacion-hexadecimal-ipv6">4.6 NOTACIÓN HEXADECIMAL IPv6</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#reglas-basicas-de-la-notacion">Reglas básicas de la notación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#47-autoconfiguracion-ipv6">4.7 AUTOCONFIGURACIÓN IPv6</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#autoconfiguracion-sin-estado-slaac">Autoconfiguración sin estado (SLAAC)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#dhcpv6">DHCPv6</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_04/#48-relacion-redes-subredes-host">4.8 RELACIÓN REDES-SUBREDES-HOST</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#red-principal">Red principal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#subred">Subred</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#host">Host</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#formulas-clave">Fórmulas clave</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_04/#beneficios-de-la-organizacion-jerarquica">Beneficios de la organización jerárquica</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_05/">05 · Conmutación y segmentación de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#51-switching-y-direcciones-mac">5.1 SWITCHING Y DIRECCIONES MAC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#mac">MAC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#switching">Switching</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#caracteristicas-tecnicas-del-switching">Características técnicas del switching</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#proceso-del-switching">Proceso del Switching</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#52-vlan">5.2 VLAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#caracteristicas-de-las-vlan">Características de las VLAN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tipos-de-vlan-segun-su-proposito">Tipos de VLAN según su propósito</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#53-trunking-ieee-8021q">5.3 TRUNKING IEEE 802.1Q</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tpid">TPID</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tci">TCI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#vlan-pruning">VLAN pruning</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#54-stp-rstp-y-mstp">5.4 STP, RSTP Y MSTP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#eleccion-del-switch-raiz">Elección del switch raíz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#determinacion-del-puerto-raiz">Determinación del puerto raíz</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#seleccion-de-puertos-designados">Selección de puertos designados</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#bloqueo-de-los-puertos-restantes">Bloqueo de los puertos restantes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#estados-y-timers-de-stp-ieee-8021d">Estados y Timers de STP (IEEE 802.1D)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#tiempo-de-convergencia-de-stp">Tiempo de convergencia de STP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#rstp">RSTP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_05/#55-dominios-de-broadcast">5.5 DOMINIOS DE BROADCAST</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#caracteristicas-de-los-dominios-de-broadcast">Características de los dominios de broadcast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#segmentacion-de-dominios-de-broadcast">Segmentación de dominios de broadcast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_05/#dominios-de-broadcast-y-de-colision">Dominios de broadcast y de colisión</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_06/">06 · Enrutamiento y conectividad de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#61-principios-de-enrutamiento">6.1 PRINCIPIOS DE ENRUTAMIENTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#conceptos-fundamentales-en-el-enrutamiento">Conceptos fundamentales en el enrutamiento</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#62-rutas-estaticas">6.2 RUTAS ESTÁTICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#sintaxis-tipica-de-una-ruta-estatica">Sintaxis típica de una ruta estática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-las-rutas-configuradas">Verificación de las rutas configuradas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#rutas-estaticas-hacia-una-interfaz-de-tunel">Rutas estáticas hacia una interfaz de túnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#caracteristicas-de-las-rutas-estaticas">Características de las rutas estáticas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ruta-por-defecto-estatica">Ruta por defecto estática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ruta-estatica-flotante">Ruta estática flotante</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#63-rutas-dinamicas">6.3 RUTAS DINÁMICAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#clasificacion-segun-su-alcance">Clasificación según su alcance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#segun-su-forma-de-operar">Según su forma de operar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ventajas-del-enrutamiento-dinamico">Ventajas del enrutamiento dinámico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#64-ospf">6.4 OSPF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#metrica">Métrica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#funcionamiento-basado-en-areas">Funcionamiento basado en áreas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#convergencia">Convergencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#estados-de-adyacencia">Estados de adyacencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#multiacceso-dr-y-bdr">Multiacceso, DR y BDR</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#autenticacion">Autenticación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-ospf">Verificación de OSPF</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#65-bgp">6.5 BGP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-sesiones-bgp">Verificación de sesiones BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#caracteristicas-fundamentales-de-bgp">Características fundamentales de BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#uso-tipico-de-bgp">Uso típico de BGP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificar-rutas-bgp">Verificar rutas BGP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#66-tabla-de-enrutamiento">6.6 TABLA DE ENRUTAMIENTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#proceso-de-busqueda">Proceso de búsqueda</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ver-la-tabla-de-enrutamiento">Ver la tabla de enrutamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#formas-de-poblar-la-tabla">Formas de poblar la tabla</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#67-gateway">6.7 GATEWAY</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#funcionamiento">Funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-de-conectividad-a-traves-del-gateway">Verificación de conectividad a través del gateway</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_06/#68-gre">6.8 GRE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#caracteristicas-tecnicas">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#funcionamiento-de-un-tunel-gre">Funcionamiento de un túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#creacion-de-un-tunel-gre">Creación de un túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#verificacion-del-tunel-gre">Verificación del túnel GRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#ajuste-del-mss-en-linux">Ajuste del MSS en Linux</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_06/#multiples-tuneles-gre">Múltiples túneles GRE</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_07/">07 · Protocolos y servicios de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#71-tcpudp">7.1 TCP/UDP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#tcp">TCP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#udp">UDP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#72-mss">7.2 MSS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#73-http-https-ftp-y-smtp">7.3 HTTP, HTTPS, FTP Y SMTP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#http">HTTP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#https">HTTPS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#ftp">FTP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#smtp">SMTP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#74-dns">7.4 DNS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-de-una-resolucion-dns-tipica">Funcionamiento de una resolución DNS típica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#75-dhcp">7.5 DHCP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#metodos-de-asignacion">Métodos de asignación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#dhcp-para-ipv6">DHCP para IPv6</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-detallado">Funcionamiento detallado</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#76-natpat">7.6 NAT/PAT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#tipos-de-nat">Tipos de NAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-de-pat">Funcionamiento de PAT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#77-igmp">7.7 IGMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#direcciones-multicast">Direcciones multicast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-basico">Funcionamiento básico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#versiones-de-igmp">Versiones de IGMP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_07/#78-inspeccion-igmp">7.8 INSPECCIÓN IGMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_07/#funcionamiento-del-igmp-snooping">Funcionamiento del IGMP snooping</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_08/">08 · Seguridad en redes</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#81-principios-de-seguridad-triada-cia">8.1 PRINCIPIOS DE SEGURIDAD (TRÍADA CIA)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#confidencialidad">Confidencialidad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#integridad">Integridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#disponibilidad">Disponibilidad</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#82-firewalls">8.2 FIREWALLS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#firewalls-de-filtrado-de-paquetes-estaticos">Firewalls de filtrado de paquetes (estáticos)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#firewalls-stateful-con-inspeccion-de-estado">Firewalls stateful (con inspección de estado)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#firewalls-de-capa-de-aplicacion-proxy">Firewalls de capa de aplicación (proxy)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#ngfw">NGFW</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#83-dmz">8.3 DMZ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#arquitectura-tipica-de-una-dmz-con-un-solo-firewall-tres-piernas">Arquitectura típica de una DMZ con un solo firewall (tres «piernas»)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#reglas-comunes">Reglas comunes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#variantes-de-dmz">Variantes de DMZ</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#84-acl">8.4 ACL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#tipos-de-acl">Tipos de ACL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#consideraciones-de-diseno-de-acl">Consideraciones de diseño de ACL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#aplicacion-de-acl">Aplicación de ACL</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#85-criptografia">8.5 CRIPTOGRAFÍA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#tls">TLS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#funcionamiento-resumido-de-una-sesion-tls">Funcionamiento resumido de una sesión TLS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#ssh">SSH</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#usos-tipicos">Usos típicos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#86-ipsec">8.6 IPSEC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#componentes-de-ipsec">Componentes de IPsec</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#intercambios-de-ikev2-para-establecer-las-sa">Intercambios de IKEv2 para establecer las SA</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#87-amenazas-de-red">8.7 AMENAZAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#clasificacion-de-amenazas-segun-su-naturaleza">Clasificación de amenazas según su naturaleza</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_08/#88-seguridad-en-capas">8.8 SEGURIDAD EN CAPAS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#capas-tipicas-en-una-red-empresarial">Capas típicas en una red empresarial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_08/#ventajas-del-modelo">Ventajas del modelo</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_09/">09 · VPN y tunelización</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#91-gre-en-contexto-vpn">9.1 GRE EN CONTEXTO VPN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#92-ipsec">9.2 IPSEC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#componentes-de-ipsec">Componentes de IPsec</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#modo-transporte">Modo transporte</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#modo-tunel">Modo túnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#primera-etapa">Primera etapa</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#segunda-etapa">Segunda etapa</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#93-ssl-vpn">9.3 SSL VPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#portal-ssl-vpn">Portal SSL VPN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#tunel-ssl-vpn">Túnel SSL VPN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#caracteristicas-tecnicas">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones">Limitaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas">Ventajas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#94-openvpn">9.4 OPENVPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#modos-de-operacion">Modos de operación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#protocolos-de-transporte">Protocolos de transporte</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#95-wireguard">9.5 WIREGUARD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#caracteristicas-tecnicas_1">Características técnicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas_1">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones_1">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#96-vpn-sitio-a-sitio">9.6 VPN SITIO A SITIO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#componentes-principales">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas_2">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones_2">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#97-vpn-de-acceso-remoto">9.7 VPN DE ACCESO REMOTO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#componentes-principales_1">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#control-del-flujo-de-trafico">Control del flujo de tráfico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#ventajas_3">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#limitaciones_3">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_09/#98-comparacion-entre-ipsec-y-ssl-vpn">9.8 COMPARACIÓN ENTRE IPSEC Y SSL VPN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#capa-de-operacion">Capa de operación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#facilidad-de-despliegue">Facilidad de despliegue</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#rendimiento">Rendimiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#casos-de-uso-habituales">Casos de uso habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_09/#comparacion-general">Comparación general</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_10/">10 · Infraestructura WAN y core</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#101-mpls">10.1 MPLS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#componentes-principales">Componentes principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#operaciones-basicas">Operaciones básicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#protocolos-asociados">Protocolos asociados</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#servicios-ventajas-y-limitaciones">Servicios, ventajas y limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#102-sd-wan">10.2 SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#caracteristicas-principales">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#componentes-de-una-arquitectura-sd-wan">Componentes de una arquitectura SD-WAN</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#103-mpls-y-sd-wan">10.3 MPLS Y SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#modelo-operativo">Modelo operativo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#transporte">Transporte</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#calidad-de-servicio">Calidad de servicio</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#costos">Costos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#visibilidad-y-gestion">Visibilidad y gestión</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#casos-de-uso">Casos de uso</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#104-backbone-de-red">10.4 BACKBONE DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#topologias-habituales">Topologías habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#caracteristicas-principales_1">Características principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#componentes-del-backbone">Componentes del backbone</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#tecnologias-utilizadas">Tecnologías utilizadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#tecnologias-de-transporte">Tecnologías de transporte</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#105-peering">10.5 PEERING</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#tipos-de-peering">Tipos de peering</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#requisitos-habituales">Requisitos habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#relacion-entre-peering-y-transito">Relación entre peering y tránsito</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_10/#106-migracion-de-mpls-hacia-sd-wan">10.6 MIGRACIÓN DE MPLS HACIA SD-WAN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#objetivos-habituales-de-la-migracion">Objetivos habituales de la migración</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-1-evaluacion-y-planificacion">Fase 1. Evaluación y planificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-2-implementacion-hibrida">Fase 2. Implementación híbrida</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-3-migracion-gradual-de-aplicaciones">Fase 3. Migración gradual de aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-4-optimizacion-y-consolidacion">Fase 4. Optimización y consolidación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#fase-5-operacion-continua">Fase 5. Operación continua</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#desafios-habituales">Desafíos habituales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_10/#arquitectura-hibrida-de-referencia">Arquitectura híbrida de referencia</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_11/">11 · Arquitectura de red empresarial</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#111-topologias-de-red">11.1 TOPOLOGÍAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-estrella">Topología en estrella</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-bus">Topología en bus</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-anillo">Topología en anillo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-malla">Topología en malla</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-en-arbol">Topología en árbol</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#topologia-logica">Topología lógica</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#112-diagramas-de-red">11.2 DIAGRAMAS DE RED</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-fisico">Diagrama físico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-logico">Diagrama lógico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-de-arquitectura-jerarquica">Diagrama de arquitectura jerárquica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#diagrama-de-flujo-de-datos">Diagrama de flujo de datos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#herramientas-de-diagramacion">Herramientas de diagramación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#113-modelo-jerarquico">11.3 MODELO JERÁRQUICO</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#capa-de-acceso">Capa de acceso</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#capa-de-distribucion">Capa de distribución</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#capa-de-nucleo">Capa de núcleo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#beneficios-del-modelo-jerarquico">Beneficios del modelo jerárquico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#variantes-arquitectonicas">Variantes arquitectónicas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#114-alta-disponibilidad">11.4 ALTA DISPONIBILIDAD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#mtbf-mean-time-between-failures">MTBF (Mean Time Between Failures)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#mttr-mean-time-to-repair">MTTR (Mean Time To Repair)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#principios-de-diseno">Principios de diseño</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#alta-disponibilidad-y-continuidad-operativa">Alta disponibilidad y continuidad operativa</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#115-redundancia">11.5 REDUNDANCIA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#redundancia-de-dispositivos">Redundancia de dispositivos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#otros-niveles-de-redundancia">Otros niveles de redundancia</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#116-segmentacion-corporativa">11.6 SEGMENTACIÓN CORPORATIVA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#metodos-de-segmentacion">Métodos de segmentación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#beneficios-principales">Beneficios principales</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_11/#117-dmz">11.7 DMZ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#objetivos-de-una-dmz">Objetivos de una DMZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#arquitectura-tipica">Arquitectura típica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#modelos-de-implementacion">Modelos de implementación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_11/#controles-de-seguridad-recomendados">Controles de seguridad recomendados</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_12/">12 · Arquitecturas modernas de red</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#121-cloud-networking">12.1 CLOUD NETWORKING</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#122-zero-trust">12.2 ZERO TRUST</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#123-ztna">12.3 ZTNA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#124-sase">12.4 SASE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_12/#principales-beneficios">Principales beneficios</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_12/#limitaciones">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#125-microsegmentacion">12.5 MICROSEGMENTACIÓN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_12/#126-modernizacion-de-redes">12.6 MODERNIZACIÓN DE REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_12/#telemetria-avanzada">Telemetría avanzada</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_12/#herramientas-de-automatizacion-modernas">Herramientas de automatización modernas</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">13 · Monitoreo y diagnóstico de redes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#131-ping-traceroute-y-nslookup">13.1 PING, TRACEROUTE Y NSLOOKUP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ping">Ping</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#traceroute-tracert-en-windows">Traceroute (tracert en Windows)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nslookup">nslookup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aplicaciones-de-diagnostico">Aplicaciones de diagnóstico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#132-mtr">13.2 MTR</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#funcionamiento">Funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interpretacion">Interpretación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ventaja-principal">Ventaja principal</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#133-wireshark">13.3 WIRESHARK</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#capacidades">Capacidades</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aplicaciones">Aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#limitaciones">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#134-tcpdump">13.4 TCPDUMP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#opciones">Opciones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#135-iperf">13.5 IPERF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#parametros">Parámetros</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#metricas">Métricas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aplicaciones_1">Aplicaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#limitacion">Limitación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#136-siem">13.6 SIEM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#funcionalidades">Funcionalidades</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejemplos-de-correlacion">Ejemplos de correlación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#limitaciones_1">Limitaciones</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_14/">14 · Herramientas Linux</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#141-ip-iproute2">14.1 IP / IPROUTE2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#subcomandos-principales">Subcomandos principales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ventajas-de-iproute2">Ventajas de iproute2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ejemplos-practicos">Ejemplos prácticos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#142-ss-netstat">14.2 SS / NETSTAT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#uso-practico-de-ss">Uso práctico de ss</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#informacion-disponible-mediante-ss">Información disponible mediante ss</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ventajas-de-ss">Ventajas de ss</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#143-routing-en-linux">14.3 ROUTING EN LINUX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#habilitacion-de-ip-forwarding">Habilitación de IP forwarding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#router-linux-basico-con-nat">Router Linux básico con NAT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#144-nftables-iptables">14.4 NFTABLES / IPTABLES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#iptables">IPTABLES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#nftables">NFTABLES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#comparacion-entre-iptables-y-nftables">Comparación entre iptables y nftables</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#aplicaciones-habituales">Aplicaciones habituales</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#145-diagnostico-de-red-en-linux">14.5 DIAGNÓSTICO DE RED EN LINUX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#ethtool">ETHTOOL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#netcat">NETCAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#metodologia-de-diagnostico">Metodología de Diagnóstico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#flujo-recomendado-de-troubleshooting">Flujo recomendado de troubleshooting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_14/#146-simulacion-de-redes-gns3-eve-ng">14.6 SIMULACIÓN DE REDES GNS3 / EVE-NG</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#gns3">GNS3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#eve-ng">EVE-NG</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#casos-de-uso-profesionales">Casos de uso profesionales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_14/#seleccion-de-plataforma">Selección de plataforma</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tema_15/">15 · Implementación práctica integral</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#151-configuracion-de-red-basica">15.1 CONFIGURACIÓN DE RED BÁSICA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#identificacion-de-interfaces">Identificación de interfaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-de-una-direccion-ipv4">Configuración de una dirección IPv4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-de-la-puerta-de-enlace">Configuración de la puerta de enlace</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#tabla-de-vecinos">Tabla de vecinos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-progresiva">Verificación progresiva</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#captura-del-trafico">Captura del tráfico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#resolucion-de-nombres">Resolución de nombres</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#152-subnetting-aplicado-vlsm">15.2 SUBNETTING APLICADO — VLSM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-a">Segmento A</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-b">Segmento B</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-c">Segmento C</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#segmento-d">Segmento D</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-matematica">Verificación matemática</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-con-linux">Verificación con Linux</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#153-vlan-redes-locales-virtuales">15.3 VLAN REDES LOCALES VIRTUALES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#creacion-de-una-subinterfaz-vlan">Creación de una subinterfaz VLAN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#puerto-trunk">Puerto trunk</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-mediante-captura">Verificación mediante captura</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#routing-entre-vlan">Routing entre VLAN</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#154-routing-entre-redes">15.4 ROUTING ENTRE REDES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#rutas-estaticas">Rutas estáticas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#activacion-del-forwarding">Activación del forwarding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#prueba-del-camino">Prueba del camino</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#routing-dinamico-con-ospf">Routing dinámico con OSPF</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#diagnostico-de-routing">Diagnóstico de routing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#155-firewall-nftables">15.5 FIREWALL — NFTABLES</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#firewall-basico">Firewall básico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#nat">NAT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion">Verificación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#principio-de-diagnostico">Principio de diagnóstico</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#156-red-parcial-integrada-dhcp">15.6 RED PARCIAL INTEGRADA — DHCP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-conceptual">Configuración conceptual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#proceso-dora">Proceso DORA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#verificacion-del-cliente">Verificación del cliente</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#diagnostico">Diagnóstico</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#integracion">Integración</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#157-red-empresarial-completa">15.7 RED EMPRESARIAL COMPLETA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#principio-de-funcionamiento">Principio de funcionamiento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#configuracion-conceptual_1">Configuración conceptual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#prueba-de-failover">Prueba de failover</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#consideraciones-operativas">Consideraciones operativas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../tema_15/#158-troubleshooting-real">15.8 TROUBLESHOOTING REAL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-1">CASO DE ESTUDIO 1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-2">CASO DE ESTUDIO 2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-3">CASO DE ESTUDIO 3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-4">CASO DE ESTUDIO 4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#caso-de-estudio-5">CASO DE ESTUDIO 5</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#validacion-final-del-laboratorio">VALIDACIÓN FINAL DEL LABORATORIO</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../tema_15/#metodologia-aplicada-en-los-casos-de-estudio">Metodología aplicada en los casos de estudio</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../conclusion/">Conclusión</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glosario/">Glosario</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../acronimos/">Acrónimos</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Anexos gráficos</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/">Introducción</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_I/">Anexo I</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_II/">Anexo II</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_III/">Anexo III</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_IV/">Anexo IV</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_V/">Anexo V</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_VI/">Anexo VI</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_VII/">Anexo VII</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_VIII/">Anexo VIII</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_IX/">Anexo IX</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_X/">Anexo X</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_XI/">Anexo XI</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../anexos/anexo_XII/">Anexo XII</a>
+    <ul>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../bibliograf%C3%ADa/">Bibliografía</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#libros-y-publicaciones-tecnicas">Libros y publicaciones técnicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#estandares-y-documentacion-tecnica">Estándares y documentación técnica</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#internet-engineering-task-force-ietf">Internet Engineering Task Force (IETF)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#ieee">IEEE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#linux-y-herramientas-de-administracion-de-redes">Linux y herramientas de administración de redes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../bibliograf%C3%ADa/#seguridad-informatica-y-buenas-practicas">Seguridad informática y buenas prácticas</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#fuentes-historicas-y-academicas">Fuentes históricas y académicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../bibliograf%C3%ADa/#recursos-complementarios">Recursos complementarios</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Complementos</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../complementos/sistema-de-diagramas/">Sistema de diagramas</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../complementos/derechos-de-autor/">Derechos de autor y licencia</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#derechos-de-autor-y-licencia">Derechos de autor y licencia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#atribucion">Atribución</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#alcance-de-la-licencia">Alcance de la licencia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#contenido-tecnico-y-conocimientos-generales">Contenido técnico y conocimientos generales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#materiales-de-terceros">Materiales de terceros</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#contenido-grafico-y-elementos-visuales">Contenido gráfico y elementos visuales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#tipografias-software-y-herramientas">Tipografías, software y herramientas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#inteligencia-artificial-y-proceso-de-elaboracion">Inteligencia artificial y proceso de elaboración</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#codigo-comandos-configuraciones-y-ejemplos-tecnicos">Código, comandos, configuraciones y ejemplos técnicos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#estandares-y-especificaciones-tecnicas">Estándares y especificaciones técnicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#autoria-y-procedencia-de-los-contenidos">Autoría y procedencia de los contenidos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#limitaciones-y-excepciones-legales">Limitaciones y excepciones legales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#responsabilidad-sobre-la-informacion-tecnica">Responsabilidad sobre la información técnica</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#sobre-este-aviso">Sobre este aviso</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../complementos/derechos-de-autor/#identificacion-de-la-edicion">Identificación de la edición</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">NETWORKING — Fundamentos, Arquitecturas y Despliegue Práctico</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Temas</li>
+      <li class="breadcrumb-item active">13 · Monitoreo y diagnóstico de redes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p class="tema-num">TEMA 13</p>
+
+<h1 id="monitoreo-y-diagnostico-de-redes">MONITOREO Y DIAGNÓSTICO DE REDES<a class="headerlink" href="#monitoreo-y-diagnostico-de-redes" title="Permanent link">¶</a></h1>
+<p>El monitoreo y el diagnóstico de redes reúnen las técnicas, herramientas y procedimientos para observar, medir, analizar y resolver el comportamiento de una infraestructura de comunicaciones.</p>
+<p>Operar las arquitecturas anteriores exige comprobar que funcionan como se diseñaron. El monitoreo y el diagnóstico proporcionan la evidencia para hacerlo, y la evidencia debe preceder a cualquier corrección.</p>
+<p>Estas actividades son fundamentales para garantizar la disponibilidad, el rendimiento, la estabilidad y la seguridad de la red, ya que se detectan anomalías, se identifican degradaciones de servicio y se resuelven incidencias antes de que afecten a los usuarios o a las aplicaciones. La Figura 13.1 presenta el mapa de los subtemas y la Tabla 13.2 resume las herramientas que se estudian.</p>
+<p>El monitoreo puede realizarse de forma pasiva, observando el tráfico y los eventos existentes, o de forma activa, mediante la generación de tráfico de prueba para evaluar el comportamiento de enlaces y dispositivos. El diagnóstico complementa este proceso mediante la identificación sistemática de la causa raíz de problemas de conectividad, rendimiento o seguridad. La Figura 13.2 compara ambos enfoques.</p>
+<div class="diagram" id="figura-13-01" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1301" viewBox="0 0 1200 402" role="img" aria-labelledby="g1301-title">
+<title id="g1301-title">Mapa del Tema 13</title>
+<defs></defs>
+<g id="g1301-c" transform="translate(20 20)"><rect x="0" y="0" width="370.67" height="153" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="0" y1="34" x2="370.67" y2="34" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="185.33" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">13.1 Ping, traceroute y nslookup</text>
+<g transform="translate(185.33 76.84) scale(0.7)" data-lib="search"><circle cx="-6" cy="-6" r="20" fill="#e6ecfa" stroke="#003ecc" stroke-width="4"></circle><path d="M9 9 L28 28" stroke="#003ecc" stroke-width="6" stroke-linecap="round"></path></g>
+<text x="185.33" y="134.95" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Conectividad, ruta y resolución de nombres</text>
+<rect x="394.67" y="0" width="370.67" height="153" rx="6" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2"></rect>
+<line x1="394.67" y1="34" x2="765.33" y2="34" stroke="#7c3aed" stroke-width="1.5"></line>
+<text x="580" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">13.2 MTR</text>
+<g transform="translate(580 76.84) scale(0.7)" data-lib="gauge"><path d="M-30 18 A30 30 0 1 1 30 18" fill="none" stroke="#7c3aed" stroke-width="4" stroke-linecap="round"></path><path d="M0 14 L16 -12" stroke="#7c3aed" stroke-width="4" stroke-linecap="round"></path><circle cx="0" cy="14" r="5" fill="#7c3aed"></circle></g>
+<text x="580" y="134.95" font-size="10.9pt" font-weight="400" fill="#5b21b6" text-anchor="middle">Estadísticas continuas por salto</text>
+<rect x="789.33" y="0" width="370.67" height="153" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<line x1="789.33" y1="34" x2="1160" y2="34" stroke="#009254" stroke-width="1.5"></line>
+<text x="974.67" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">13.3 Wireshark</text>
+<g transform="translate(974.67 76.84) scale(0.7)" data-lib="eye"><path d="M-34 0 C-18 -24 18 -24 34 0 C18 24 -18 24 -34 0 Z" fill="#e6f4ee" stroke="#009254" stroke-width="3"></path><circle cx="0" cy="0" r="9" fill="#009254"></circle></g>
+<text x="974.67" y="134.95" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">Análisis de paquetes por capas</text>
+<rect x="0" y="177" width="370.67" height="153" rx="6" fill="#ebedf0" stroke="#364e6c" stroke-width="2"></rect>
+<line x1="0" y1="211" x2="370.67" y2="211" stroke="#364e6c" stroke-width="1.5"></line>
+<text x="185.33" y="200" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">13.4 tcpdump</text>
+<g transform="translate(185.33 253.84) scale(0.7)" data-lib="terminal"><rect x="-38" y="-28" width="76" height="56" rx="5" fill="#ebedf0" stroke="#364e6c" stroke-width="3"></rect><path d="M-26 -12L-12 0L-26 12" fill="none" stroke="#364e6c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M-4 12h22" stroke="#364e6c" stroke-width="4" stroke-linecap="round"></path></g>
+<text x="185.33" y="311.95" font-size="10.9pt" font-weight="400" fill="#1e3a5f" text-anchor="middle">Captura en línea de comandos</text>
+<rect x="394.67" y="177" width="370.67" height="153" rx="6" fill="#fcebe6" stroke="#dd3a00" stroke-width="2"></rect>
+<line x1="394.67" y1="211" x2="765.33" y2="211" stroke="#dd3a00" stroke-width="1.5"></line>
+<text x="580" y="200" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">13.5 iperf3</text>
+<g transform="translate(580 253.84) scale(0.7)" data-lib="bolt"><path d="M6 -32 L-20 4 H-2 L-8 32 L22 -6 H4 Z" fill="#fcebe6" stroke="#dd3a00" stroke-width="3" stroke-linejoin="round"></path></g>
+<text x="580" y="311.95" font-size="10.9pt" font-weight="400" fill="#7c2d12" text-anchor="middle">Medición activa de rendimiento</text>
+<rect x="789.33" y="177" width="370.67" height="153" rx="6" fill="#fbe6e6" stroke="#d40000" stroke-width="2"></rect>
+<line x1="789.33" y1="211" x2="1160" y2="211" stroke="#d40000" stroke-width="1.5"></line>
+<text x="974.67" y="200" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">13.6 SIEM</text>
+<g transform="translate(974.67 253.84) scale(0.7)" data-lib="db"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><path d="M-30 -24 V24 C-30 36 30 36 30 24 V-24"></path><ellipse cx="0" cy="-24" rx="30" ry="11" fill="#fbe6e6"></ellipse><path d="M-30 -4 C-30 8 30 8 30 -4" fill="none"></path><path d="M-30 14 C-30 26 30 26 30 14" fill="none"></path></g></g>
+<text x="974.67" y="311.95" font-size="10.9pt" font-weight="400" fill="#7f1d1d" text-anchor="middle">Correlación de eventos de seguridad</text></g><text x="600" y="384" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 13.1. Mapa del Tema 13.</text></svg>
+</div>
+
+<p>Desde una perspectiva operativa, el monitoreo consiste en la recolección continua de métricas, eventos y registros provenientes de dispositivos, aplicaciones y servicios de red.</p>
+<p>El diagnóstico utiliza dicha información para determinar el origen de una falla o una desviación respecto al comportamiento esperado.</p>
+<div class="diagram tabla-svg" id="tabla-13-1" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 574" role="img" aria-labelledby="t63-title"><title id="t63-title">Tabla 13.1. Métricas comunes de monitoreo.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="124.9" y="20.0" dominant-baseline="central" text-anchor="middle">Métrica</text>
+<text class="tb-ht" x="535.6" y="20.0" dominant-baseline="central" text-anchor="middle">Descripción</text>
+<text class="tb-ht" x="1010.6" y="20.0" dominant-baseline="central" text-anchor="middle">Herramienta o mecanismo</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="60.8" dominant-baseline="central">Utilización de ancho de</text>
+<text class="tb-tx tb-b" x="12.0" y="83.5" dominant-baseline="central">banda</text>
+<text class="tb-tx" x="261.9" y="60.8" dominant-baseline="central">Porcentaje o volumen de capacidad utilizada en una interfaz o</text>
+<text class="tb-tx" x="261.9" y="83.5" dominant-baseline="central">enlace.</text>
+<text class="tb-tx" x="833.2" y="60.8" dominant-baseline="central">SNMP, contadores de interfaz y streaming</text>
+<text class="tb-tx" x="833.2" y="83.5" dominant-baseline="central">telemetry.</text>
+<rect class="tb-to" x="0" y="104.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="135.6" dominant-baseline="central">Latencia</text>
+<text class="tb-tx" x="261.9" y="124.2" dominant-baseline="central">Tiempo que tarda un paquete en viajar entre dos puntos; suele</text>
+<text class="tb-tx" x="261.9" y="147.0" dominant-baseline="central">medirse como RTT cuando se utiliza ping.</text>
+<text class="tb-tx" x="833.2" y="135.6" dominant-baseline="central">ping, MTR y sondas activas.</text>
+<rect class="tb-te" x="0" y="167.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="199.1" dominant-baseline="central">Jitter</text>
+<text class="tb-tx" x="261.9" y="199.1" dominant-baseline="central">Variación del retardo entre paquetes.</text>
+<text class="tb-tx" x="833.2" y="187.8" dominant-baseline="central">iperf3 en modo UDP y herramientas de</text>
+<text class="tb-tx" x="833.2" y="210.5" dominant-baseline="central">medición especializadas.</text>
+<rect class="tb-to" x="0" y="231.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="262.6" dominant-baseline="central">Pérdida de paquetes</text>
+<text class="tb-tx" x="261.9" y="251.2" dominant-baseline="central">Proporción de paquetes enviados que no llegan al destino o no</text>
+<text class="tb-tx" x="261.9" y="274.0" dominant-baseline="central">reciben respuesta.</text>
+<text class="tb-tx" x="833.2" y="262.6" dominant-baseline="central">ping, MTR, iperf3 y telemetría de red.</text>
+<rect class="tb-te" x="0" y="294.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="326.1" dominant-baseline="central">Errores de interfaz</text>
+<text class="tb-tx" x="261.9" y="314.8" dominant-baseline="central">Tramas erróneas, descartes y otros indicadores del estado de un</text>
+<text class="tb-tx" x="261.9" y="337.5" dominant-baseline="central">puerto.</text>
+<text class="tb-tx" x="833.2" y="326.1" dominant-baseline="central">ethtool e ip -s link.</text>
+<rect class="tb-to" x="0" y="358.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="378.2" dominant-baseline="central">Disponibilidad de</text>
+<text class="tb-tx tb-b" x="12.0" y="401.0" dominant-baseline="central">dispositivos</text>
+<text class="tb-tx" x="261.9" y="378.2" dominant-baseline="central">Indica si un dispositivo responde y si los servicios que ofrece están</text>
+<text class="tb-tx" x="261.9" y="401.0" dominant-baseline="central">operativos.</text>
+<text class="tb-tx" x="833.2" y="378.2" dominant-baseline="central">ping, sondas de servicio y plataformas de</text>
+<text class="tb-tx" x="833.2" y="401.0" dominant-baseline="central">monitoreo.</text>
+<rect class="tb-te" x="0" y="421.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="441.8" dominant-baseline="central">Tiempo de respuesta de</text>
+<text class="tb-tx tb-b" x="12.0" y="464.5" dominant-baseline="central">aplicaciones</text>
+<text class="tb-tx" x="261.9" y="453.1" dominant-baseline="central">Rapidez con la que responde un servicio o una aplicación.</text>
+<text class="tb-tx" x="833.2" y="453.1" dominant-baseline="central">curl y pruebas activas.</text>
+<rect class="tb-to" x="0" y="485.2" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="505.2" dominant-baseline="central">Eventos de seguridad</text>
+<text class="tb-tx" x="261.9" y="505.2" dominant-baseline="central">Registros, alertas y eventos generados por la infraestructura.</text>
+<text class="tb-tx" x="833.2" y="505.2" dominant-baseline="central">SIEM y sistemas de gestión de logs.</text>
+<text class="tb-cap" x="600.0" y="552.0" text-anchor="middle">Tabla 13.1. Métricas comunes de monitoreo.</text></svg>
+</div>
+
+<p>Nota: <em>ping</em> mide alcance ICMP y RTT, pero no demuestra por sí solo que una aplicación esté disponible. La disponibilidad debe verificarse mediante pruebas del servicio correspondiente.</p>
+<p>Las métricas más comunes, que se detallan en la Tabla 13.1, incluyen la utilización de ancho de banda, la latencia, el <em>jitter</em>, la pérdida de paquetes, los errores de interfaz, la disponibilidad de dispositivos, el tiempo de respuesta de aplicaciones y los eventos de seguridad.</p>
+<p>Una estrategia efectiva de monitoreo combina herramientas de observación en tiempo real, análisis de tráfico, pruebas activas de rendimiento y plataformas centralizadas de correlación de eventos.</p>
+<h2 id="131-ping-traceroute-y-nslookup">13.1 PING, TRACEROUTE Y NSLOOKUP<a class="headerlink" href="#131-ping-traceroute-y-nslookup" title="Permanent link">¶</a></h2>
+<p><em>p</em>ing, <em>traceroute</em> (o <em>tracert</em>, según el sistema) y <em>nslookup</em> son herramientas habituales de diagnóstico, aunque su disponibilidad y sintaxis pueden variar y algunas requieren instalar paquetes adicionales.</p>
+<p>Permiten comprobar la respuesta de un destino, explorar el camino de los paquetes y consultar la resolución de nombres. Sus resultados deben interpretarse considerando los filtros, las políticas de ICMP y las particularidades de cada implementación.</p>
+<div class="diagram" id="figura-13-02" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1302" viewBox="0 0 1200 432" role="img" aria-labelledby="g1302-title">
+<title id="g1302-title">Monitoreo pasivo y monitoreo activo</title>
+<defs><marker id="g1302m009254" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#009254"></polygon></marker><marker id="g1302n009254" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#009254"></polygon></marker><marker id="g1302m003ecc" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#003ecc"></polygon></marker><marker id="g1302n003ecc" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#003ecc"></polygon></marker></defs>
+<g id="g1302-c" transform="translate(20 20)"><rect x="0" y="0" width="560" height="360" rx="6" fill="#e6f4ee" stroke="#009254" stroke-width="2"></rect>
+<line x1="0" y1="34" x2="560" y2="34" stroke="#009254" stroke-width="1.5"></line>
+<text x="280" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Monitoreo pasivo</text>
+<rect x="600" y="0" width="560" height="360" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="600" y1="34" x2="1160" y2="34" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="880" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Monitoreo activo</text>
+<g transform="translate(70 130) scale(0.7)" data-lib="pc"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#fbe6e6" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g>
+<g transform="translate(280 130) scale(0.9)" data-lib="switch"><rect x="-58" y="-26" width="116" height="52" rx="6" fill="#ffffff" stroke="#009254" stroke-width="3"></rect><rect x="-46.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-33.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-21.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="-8.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="4.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="16.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="29.0" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><rect x="41.5" y="-4" width="9" height="12" fill="#bfe4d4" stroke="#009254" stroke-width="1.5"></rect><circle cx="-44" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-24" cy="-15" r="2.5" fill="#009254"></circle><circle cx="-4" cy="-15" r="2.5" fill="#009254"></circle><circle cx="16" cy="-15" r="2.5" fill="#009254"></circle><circle cx="36" cy="-15" r="2.5" fill="#009254"></circle></g>
+<g transform="translate(490 130) scale(0.7)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<line x1="130" y1="130" x2="220" y2="130" stroke="#364e6c" stroke-width="2.5"></line>
+<line x1="340" y1="130" x2="430" y2="130" stroke="#364e6c" stroke-width="2.5"></line>
+<g transform="translate(280 250) scale(0.9)" data-lib="eye"><path d="M-34 0 C-18 -24 18 -24 34 0 C18 24 -18 24 -34 0 Z" fill="#e6f4ee" stroke="#009254" stroke-width="3"></path><circle cx="0" cy="0" r="9" fill="#009254"></circle></g>
+<polyline points="280,156 280,218" fill="none" stroke="#009254" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#g1302m009254)"></polyline>
+<text x="280" y="300" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">Observa el tráfico real que ya circula</text>
+<text x="280" y="322" font-size="10.9pt" font-weight="400" fill="#065f46" text-anchor="middle">y los eventos existentes</text>
+<g transform="translate(670 130) scale(0.7)" data-lib="terminal"><rect x="-38" y="-28" width="76" height="56" rx="5" fill="#ebedf0" stroke="#364e6c" stroke-width="3"></rect><path d="M-26 -12L-12 0L-26 12" fill="none" stroke="#364e6c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M-4 12h22" stroke="#364e6c" stroke-width="4" stroke-linecap="round"></path></g>
+<g transform="translate(880 130) scale(0.8)" data-lib="router"><circle cx="0" cy="0" r="30" fill="#e6ecfa" stroke="#003ecc" stroke-width="3"></circle><g fill="none" stroke="#003ecc" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-8 0H-24M-17 -6L-24 0L-17 6"></path><path d="M8 0H24M17 -6L24 0L17 6"></path><path d="M0 -8V-24M-6 -17L0 -24L6 -17" transform="rotate(180)"></path><path d="M0 8V24M-6 17L0 24L6 17" transform="rotate(180)"></path></g></g>
+<g transform="translate(1090 130) scale(0.7)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<polyline points="730,118 810,118" fill="none" stroke="#003ecc" stroke-width="2.5" marker-end="url(#g1302m003ecc)"></polyline>
+<polyline points="810,142 730,142" fill="none" stroke="#003ecc" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#g1302m003ecc)"></polyline>
+<polyline points="950,130 1030,130" fill="none" stroke="#003ecc" stroke-width="2.5" marker-end="url(#g1302m003ecc)"></polyline>
+<g transform="translate(880 250) scale(0.9)" data-lib="gauge"><path d="M-30 18 A30 30 0 1 1 30 18" fill="none" stroke="#003ecc" stroke-width="4" stroke-linecap="round"></path><path d="M0 14 L16 -12" stroke="#003ecc" stroke-width="4" stroke-linecap="round"></path><circle cx="0" cy="14" r="5" fill="#003ecc"></circle></g>
+<polyline points="880,156 880,218" fill="none" stroke="#003ecc" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#g1302m003ecc)"></polyline>
+<text x="880" y="300" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Genera tráfico de prueba para evaluar</text>
+<text x="880" y="322" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">el comportamiento de enlaces y dispositivos</text></g><text x="600" y="414" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 13.2. Monitoreo pasivo y monitoreo activo.</text></svg>
+</div>
+
+<h3 id="ping">Ping<a class="headerlink" href="#ping" title="Permanent link">¶</a></h3>
+<p><em>Ping</em> utiliza el protocolo ICMP (<em>Internet Control Message Protocol</em>) para comprobar la alcanzabilidad de un destino y medir el tiempo necesario para intercambiar paquetes entre dos dispositivos.</p>
+<p>Su funcionamiento se basa en el envío de mensajes ICMP <em>Echo Request</em> (tipo 8) y la recepción de respuestas ICMP <em>Echo Reply</em> (tipo 0), como se muestra en la Figura 13.3.</p>
+<h4 id="proceso-de-operacion">Proceso de operación<a class="headerlink" href="#proceso-de-operacion" title="Permanent link">¶</a></h4>
+<ol>
+<li>El origen envía uno o varios mensajes ICMP al destino.</li>
+<li>El destino responde utilizando el mismo identificador y número de secuencia.</li>
+<li>El origen calcula el tiempo transcurrido entre el envío y la recepción.</li>
+<li>Se registran pérdidas de paquetes y tiempos de respuesta.</li>
+</ol>
+<h4 id="principales-metricas-obtenidas">Principales métricas obtenidas<a class="headerlink" href="#principales-metricas-obtenidas" title="Permanent link">¶</a></h4>
+<ul>
+<li>Tiempo mínimo, máximo y promedio (RTT).</li>
+<li>Variación de latencia.</li>
+<li>Porcentaje de pérdida de paquetes.</li>
+<li>Confirmación de alcanzabilidad del destino.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Networking@SecOpsMX:~$ ping 8.8.8.8
+</span></code></pre></div>
+<div class="diagram" id="figura-13-03" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1303" viewBox="0 0 1200 372" role="img" aria-labelledby="g1303-title">
+<title id="g1303-title">Intercambio de mensajes ICMP en ping</title>
+<defs><marker id="g1303m003ecc" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#003ecc"></polygon></marker><marker id="g1303n003ecc" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#003ecc"></polygon></marker><marker id="g1303m009254" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#009254"></polygon></marker><marker id="g1303n009254" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#009254"></polygon></marker><marker id="g1303m7c3aed" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#7c3aed"></polygon></marker><marker id="g1303n7c3aed" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#7c3aed"></polygon></marker></defs>
+<g id="g1303-c" transform="translate(20 20)"><g transform="translate(160 60) scale(0.7)" data-lib="pc"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#fbe6e6" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g>
+<text x="160" y="110" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Origen</text>
+<g transform="translate(1000 60) scale(0.7)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="1000" y="110" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Destino</text>
+<line x1="160" y1="126" x2="160" y2="290" stroke="#364e6c" stroke-width="2" stroke-dasharray="7 5"></line>
+<line x1="1000" y1="126" x2="1000" y2="290" stroke="#364e6c" stroke-width="2" stroke-dasharray="7 5"></line>
+<polyline points="160,170 1000,170" fill="none" stroke="#003ecc" stroke-width="3" marker-end="url(#g1303m003ecc)"></polyline>
+<text x="580" y="154" font-size="10.9pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">ICMP Echo Request (tipo 8) · identificador y número de secuencia</text>
+<polyline points="1000,240 160,240" fill="none" stroke="#009254" stroke-width="3" marker-end="url(#g1303m009254)"></polyline>
+<text x="580" y="224" font-size="10.9pt" font-weight="700" fill="#065f46" text-anchor="middle">ICMP Echo Reply (tipo 0) · mismo identificador y secuencia</text>
+<line x1="110" y1="170" x2="110" y2="240" stroke="#7c3aed" stroke-width="2"></line>
+<polyline points="110,172 110,238" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#g1303m7c3aed)" marker-start="url(#g1303n7c3aed)"></polyline>
+<text x="100" y="200" font-size="11.35pt" font-weight="700" fill="#5b21b6" text-anchor="end">RTT</text></g><text x="600" y="354" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 13.3. Intercambio de mensajes ICMP en ping.</text></svg>
+</div>
+
+<h4 id="consideraciones-importantes">Consideraciones importantes<a class="headerlink" href="#consideraciones-importantes" title="Permanent link">¶</a></h4>
+<ul>
+<li>Algunos dispositivos bloquean ICMP mediante <em>firewalls</em>.</li>
+<li>Un destino puede estar operativo aunque no responda a <em>ping</em>.</li>
+<li>La ausencia de respuesta no siempre implica una falla de conectividad.</li>
+</ul>
+<h3 id="traceroute-tracert-en-windows">Traceroute (tracert en Windows)<a class="headerlink" href="#traceroute-tracert-en-windows" title="Permanent link">¶</a></h3>
+<p><em>Traceroute</em> permite inferir los dispositivos intermedios que responden a las sondas enviadas hacia un destino. Para ello incrementa progresivamente el TTL (<em>Time To Live</em>) en IPv4 o el <em>Hop Limit</em> en IPv6, lo que provoca que cada <em>router</em> que agota ese valor pueda generar un mensaje ICMP de tiempo excedido. La Figura 13.4 muestra el procedimiento.</p>
+<ol>
+<li>Se envía un paquete con TTL igual a 1.</li>
+<li>El primer <em>router</em> reduce el TTL a cero y responde con un mensaje ICMP <em>Time Exceeded</em>.</li>
+<li>El origen registra la dirección IP del <em>router</em>.</li>
+<li>Se incrementa progresivamente el TTL hasta alcanzar el destino final.</li>
+</ol>
+<p>El resultado muestra la secuencia de <em>routers</em> intermedios, el tiempo de respuesta de cada salto y los posibles puntos de congestión o pérdida. Ejemplos:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Networking@SecOpsMX:~$ traceroute 8.8.8.8 # Linux/macOS
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tracert 8.8.8.8 # Windows
+</span></code></pre></div>
+<p><strong>Nota técnica:</strong> en <em>Linux</em>/<em>macOS</em>, <em>traceroute</em> suele enviar sondas UDP a puertos altos por defecto, aunque puede usar ICMP o TCP según la implementación y las opciones; en <em>Windows</em>, <em>tracert</em> emplea ICMP.</p>
+<div class="diagram" id="figura-13-04" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1304" viewBox="0 0 1200 502" role="img" aria-labelledby="g1304-title">
+<title id="g1304-title">Descubrimiento de saltos con traceroute mediante el campo TTL</title>
+<defs><marker id="g1304m003ecc" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#003ecc"></polygon></marker><marker id="g1304n003ecc" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#003ecc"></polygon></marker><marker id="g1304mdd3a00" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#dd3a00"></polygon></marker><marker id="g1304ndd3a00" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#dd3a00"></polygon></marker><marker id="g1304m009254" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#009254"></polygon></marker><marker id="g1304n009254" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#009254"></polygon></marker></defs>
+<g id="g1304-c" transform="translate(20 20)"><g transform="translate(120 36) scale(0.65)" data-lib="pc"><g stroke="#d40000" stroke-width="3" fill="#ffffff"><rect x="-46" y="-42" width="92" height="62" rx="5"></rect><rect x="-38" y="-34" width="76" height="46" fill="#fbe6e6" stroke-width="1.5"></rect><path d="M-8 20v12h16V20M-28 34h56" fill="none" stroke-linecap="round"></path><path d="M-26 -22h38M-26 -10h24" stroke-width="3" stroke-linecap="round" fill="none"></path></g></g>
+<text x="120" y="86" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Origen</text>
+<line x1="120" y1="98" x2="120" y2="420" stroke="#364e6c" stroke-width="2" stroke-dasharray="7 5"></line>
+<g transform="translate(420 36) scale(0.65)" data-lib="router"><circle cx="0" cy="0" r="30" fill="#e6ecfa" stroke="#003ecc" stroke-width="3"></circle><g fill="none" stroke="#003ecc" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-8 0H-24M-17 -6L-24 0L-17 6"></path><path d="M8 0H24M17 -6L24 0L17 6"></path><path d="M0 -8V-24M-6 -17L0 -24L6 -17" transform="rotate(180)"></path><path d="M0 8V24M-6 17L0 24L6 17" transform="rotate(180)"></path></g></g>
+<text x="420" y="86" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Router 1</text>
+<line x1="420" y1="98" x2="420" y2="420" stroke="#364e6c" stroke-width="2" stroke-dasharray="7 5"></line>
+<g transform="translate(720 36) scale(0.65)" data-lib="router"><circle cx="0" cy="0" r="30" fill="#e6ecfa" stroke="#003ecc" stroke-width="3"></circle><g fill="none" stroke="#003ecc" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-8 0H-24M-17 -6L-24 0L-17 6"></path><path d="M8 0H24M17 -6L24 0L17 6"></path><path d="M0 -8V-24M-6 -17L0 -24L6 -17" transform="rotate(180)"></path><path d="M0 8V24M-6 17L0 24L6 17" transform="rotate(180)"></path></g></g>
+<text x="720" y="86" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Router 2</text>
+<line x1="720" y1="98" x2="720" y2="420" stroke="#364e6c" stroke-width="2" stroke-dasharray="7 5"></line>
+<g transform="translate(1020 36) scale(0.65)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="1020" y="86" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Destino</text>
+<line x1="1020" y1="98" x2="1020" y2="420" stroke="#364e6c" stroke-width="2" stroke-dasharray="7 5"></line>
+<polyline points="120,140 420,140" fill="none" stroke="#003ecc" stroke-width="3" marker-end="url(#g1304m003ecc)"></polyline>
+<text x="270" y="128" font-size="10.35pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Sonda con TTL = 1</text>
+<polyline points="420,176 120,176" fill="none" stroke="#dd3a00" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#g1304mdd3a00)"></polyline>
+<text x="270" y="196" font-size="10.35pt" font-weight="700" fill="#7c2d12" text-anchor="middle">Time Exceeded (ICMP)</text>
+<circle cx="50" cy="158" r="15" fill="#1e3a8a"></circle>
+<text x="50" y="163" font-size="11.35pt" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<polyline points="120,240 720,240" fill="none" stroke="#003ecc" stroke-width="3" marker-end="url(#g1304m003ecc)"></polyline>
+<text x="420" y="228" font-size="10.35pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Sonda con TTL = 2</text>
+<polyline points="720,276 120,276" fill="none" stroke="#dd3a00" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#g1304mdd3a00)"></polyline>
+<text x="420" y="296" font-size="10.35pt" font-weight="700" fill="#7c2d12" text-anchor="middle">Time Exceeded (ICMP)</text>
+<circle cx="50" cy="258" r="15" fill="#1e3a8a"></circle>
+<text x="50" y="263" font-size="11.35pt" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<polyline points="120,340 1020,340" fill="none" stroke="#003ecc" stroke-width="3" marker-end="url(#g1304m003ecc)"></polyline>
+<text x="570" y="328" font-size="10.35pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Sonda con TTL = 3</text>
+<polyline points="1020,376 120,376" fill="none" stroke="#009254" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#g1304m009254)"></polyline>
+<text x="570" y="396" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">Respuesta del destino</text>
+<circle cx="50" cy="358" r="15" fill="#1e3a8a"></circle>
+<text x="50" y="363" font-size="11.35pt" font-weight="700" fill="#ffffff" text-anchor="middle">3</text></g><text x="600" y="484" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 13.4. Descubrimiento de saltos con traceroute mediante el campo TTL.</text></svg>
+</div>
+
+<p>Algunas implementaciones envían tres sondas por valor de TTL o <em>Hop Limit</em>, aunque el número y el tipo de sondas pueden configurarse.</p>
+<p>Un salto marcado con * indica que no se recibió respuesta dentro del tiempo de espera; no demuestra por sí solo una falla, porque algunos <em>routers</em> limitan o priorizan la generación de mensajes ICMP.</p>
+<p>Del mismo modo, una latencia elevada en un salto intermedio no prueba congestión en ese punto: debe compararse con las mediciones de los saltos posteriores y del destino final.</p>
+<h4 id="aplicaciones-practicas">Aplicaciones prácticas<a class="headerlink" href="#aplicaciones-practicas" title="Permanent link">¶</a></h4>
+<ul>
+<li>Localizar fallas de conectividad.</li>
+<li>Detectar rutas ineficientes.</li>
+<li>Analizar incrementos de latencia.</li>
+<li>Identificar problemas de enrutamiento.</li>
+</ul>
+<h3 id="nslookup">nslookup<a class="headerlink" href="#nslookup" title="Permanent link">¶</a></h3>
+<p><em>Nslookup</em> es una herramienta de consulta DNS utilizada para verificar la resolución de nombres y diagnosticar problemas relacionados con servidores DNS.</p>
+<p>Permite consultar diferentes tipos de registros directamente desde un servidor DNS específico o utilizando la configuración local del sistema.</p>
+<p>Las consultas habituales son:</p>
+<ul>
+<li><code>nslookup www.ejemplo.com</code>: obtiene registros A (IPv4).</li>
+<li><code>nslookup -type=AAAA www.ejemplo.com</code>: obtiene registros IPv6.</li>
+<li><code>nslookup -type=MX ejemplo.com</code>: obtiene servidores de correo.</li>
+<li><code>nslookup 8.8.8.8</code>: realiza resolución inversa mediante registros PTR.</li>
+</ul>
+<p><strong>Nota</strong>: aunque <em>nslookup</em> sigue disponible, en entornos modernos se recomienda <em>dig</em> para el diagnóstico DNS, porque ofrece una salida más explícita y control sobre los tipos de consulta, los servidores y las opciones.</p>
+<div class="diagram tabla-svg" id="tabla-13-2" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 402" role="img" aria-labelledby="t64-title"><title id="t64-title">Tabla 13.2. Herramientas de monitoreo y diagnóstico.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="63.2" y="20.0" dominant-baseline="central" text-anchor="middle">Herramienta</text>
+<text class="tb-ht" x="441.3" y="20.0" dominant-baseline="central" text-anchor="middle">Función principal</text>
+<text class="tb-ht" x="978.1" y="20.0" dominant-baseline="central" text-anchor="middle">Aplicación</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="60.8" dominant-baseline="central">ping</text>
+<text class="tb-tx" x="138.4" y="60.8" dominant-baseline="central">Comprueba respuesta ICMP y mide RTT.</text>
+<text class="tb-tx" x="768.2" y="60.8" dominant-baseline="central">Verificación básica de conectividad IP.</text>
+<rect class="tb-to" x="0" y="81.5" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="112.9" dominant-baseline="central">MTR</text>
+<text class="tb-tx" x="138.4" y="101.5" dominant-baseline="central">Combina funciones de traceroute y ping para observar saltos, latencia y</text>
+<text class="tb-tx" x="138.4" y="124.2" dominant-baseline="central">pérdida reportada.</text>
+<text class="tb-tx" x="768.2" y="101.5" dominant-baseline="central">Diagnóstico de rutas y posibles problemas de</text>
+<text class="tb-tx" x="768.2" y="124.2" dominant-baseline="central">conectividad.</text>
+<rect class="tb-te" x="0" y="145.0" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="165.0" dominant-baseline="central">Wireshark</text>
+<text class="tb-tx" x="138.4" y="165.0" dominant-baseline="central">Captura y analiza paquetes mediante una interfaz gráfica.</text>
+<text class="tb-tx" x="768.2" y="165.0" dominant-baseline="central">Inspección de protocolos y diagnóstico detallado.</text>
+<rect class="tb-to" x="0" y="185.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="217.1" dominant-baseline="central">tcpdump</text>
+<text class="tb-tx" x="138.4" y="217.1" dominant-baseline="central">Captura paquetes desde la línea de comandos.</text>
+<text class="tb-tx" x="768.2" y="205.8" dominant-baseline="central">Diagnóstico y análisis de tráfico en servidores y</text>
+<text class="tb-tx" x="768.2" y="228.5" dominant-baseline="central">routers Linux.</text>
+<rect class="tb-te" x="0" y="249.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="280.6" dominant-baseline="central">iperf3</text>
+<text class="tb-tx" x="138.4" y="280.6" dominant-baseline="central">Mide throughput entre dos extremos mediante pruebas activas TCP o UDP.</text>
+<text class="tb-tx" x="768.2" y="269.2" dominant-baseline="central">Evaluación de rendimiento de enlaces y caminos de</text>
+<text class="tb-tx" x="768.2" y="292.0" dominant-baseline="central">red.</text>
+<rect class="tb-to" x="0" y="312.8" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="332.8" dominant-baseline="central">SIEM</text>
+<text class="tb-tx" x="138.4" y="332.8" dominant-baseline="central">Centraliza y correlaciona eventos procedentes de distintas fuentes.</text>
+<text class="tb-tx" x="768.2" y="332.8" dominant-baseline="central">Monitoreo de seguridad y análisis de incidentes.</text>
+<text class="tb-cap" x="600.0" y="379.5" text-anchor="middle">Tabla 13.2. Herramientas de monitoreo y diagnóstico.</text></svg>
+</div>
+
+<p>Nota: <em>iperf3</em> mide el rendimiento entre los extremos y bajo las condiciones de la prueba; no mide directamente la capacidad física nominal del enlace ni la utilización global de producción.</p>
+<h3 id="aplicaciones-de-diagnostico">Aplicaciones de diagnóstico<a class="headerlink" href="#aplicaciones-de-diagnostico" title="Permanent link">¶</a></h3>
+<ul>
+<li>Verificar el funcionamiento de servidores DNS.</li>
+<li>Detectar errores de resolución de nombres.</li>
+<li>Validar registros DNS publicados.</li>
+<li>Comprobar la propagación de cambios DNS.</li>
+<li>Diferenciar problemas de DNS frente a problemas de conectividad IP.</li>
+</ul>
+<p><em>ping</em>, <em>traceroute</em> y <em>nslookup</em> siguen siendo herramientas básicas para administradores de red, ingenieros de infraestructura y especialistas en soporte, porque permiten aislar rápido problemas de conectividad, rutas y resolución de nombres antes de recurrir a herramientas de análisis más avanzadas.</p>
+<p>El uso combinado de <em>ping</em>, <em>traceroute</em> y <em>nslookup</em> para aislar problemas de conectividad, rutas y resolución de nombres se ilustra en el <strong>Anexo VI.</strong></p>
+<h2 id="132-mtr">13.2 MTR<a class="headerlink" href="#132-mtr" title="Permanent link">¶</a></h2>
+<p><em>MTR</em> combina las funciones de <em>ping</em> y <em>traceroute</em>, proporcionando estadísticas continuas por cada salto de red.</p>
+<p>Esta herramienta de diagnóstico envía paquetes ICMP, UDP o TCP de forma continua a cada nodo del camino hacia un destino, calculando estadísticas en tiempo real: pérdida, RTT mínimo, máximo, promedio y desviación.</p>
+<p><em>MTR</em> puede usar sondas ICMP, UDP o TCP, según la implementación. Envía las sondas con valores de TTL o <em>Hop Limit</em> progresivos, y las respuestas de los <em>routers</em> intermedios y del destino permiten estimar pérdida y RTT. Las métricas de un salto intermedio deben interpretarse con cautela, porque algunos <em>routers</em> limitan o priorizan las respuestas de control.</p>
+<h3 id="funcionamiento">Funcionamiento<a class="headerlink" href="#funcionamiento" title="Permanent link">¶</a></h3>
+<ul>
+<li>Ejecuta un <em>traceroute</em> inicial.</li>
+<li>Envía paquetes continuamente a cada salto.</li>
+<li>Actualiza las estadísticas dinámicamente.</li>
+</ul>
+<div class="diagram" id="figura-13-05" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1305" viewBox="0 0 1200 412" role="img" aria-labelledby="g1305-title">
+<title id="g1305-title">Interpretación de la pérdida de paquetes por salto</title>
+<defs></defs>
+<g id="g1305-c" transform="translate(20 20)"><rect x="0" y="0" width="560" height="340" rx="6" fill="#fcebe6" stroke="#dd3a00" stroke-width="2"></rect>
+<line x1="0" y1="34" x2="560" y2="34" stroke="#dd3a00" stroke-width="1.5"></line>
+<text x="280" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Pérdida solo en un salto intermedio</text>
+<rect x="600" y="0" width="560" height="340" rx="6" fill="#fbe6e6" stroke="#d40000" stroke-width="2"></rect>
+<line x1="600" y1="34" x2="1160" y2="34" stroke="#d40000" stroke-width="1.5"></line>
+<text x="880" y="23" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Pérdida que llega al destino</text>
+<line x1="40" y1="250" x2="520" y2="250" stroke="#364e6c" stroke-width="2"></line>
+<text x="90" y="242" font-size="10.35pt" font-weight="700" fill="#7c2d12" text-anchor="middle">0 %</text>
+<text x="90" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Salto 1</text>
+<text x="185" y="242" font-size="10.35pt" font-weight="700" fill="#7c2d12" text-anchor="middle">0 %</text>
+<text x="185" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Salto 2</text>
+<rect x="258" y="130" width="44" height="120" rx="3" fill="#f6cebf" stroke="#dd3a00" stroke-width="2"></rect>
+<text x="280" y="122" font-size="10.35pt" font-weight="700" fill="#7c2d12" text-anchor="middle">40 %</text>
+<text x="280" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Salto 3</text>
+<text x="375" y="242" font-size="10.35pt" font-weight="700" fill="#7c2d12" text-anchor="middle">0 %</text>
+<text x="375" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Salto 4</text>
+<text x="470" y="242" font-size="10.35pt" font-weight="700" fill="#7c2d12" text-anchor="middle">0 %</text>
+<text x="470" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Destino</text>
+<text x="280" y="300" font-size="10.9pt" font-weight="400" fill="#7c2d12" text-anchor="middle">Respuesta ICMP limitada por el router;</text>
+<text x="280" y="322" font-size="10.9pt" font-weight="400" fill="#7c2d12" text-anchor="middle">sin impacto real en el tráfico</text>
+<line x1="640" y1="250" x2="1120" y2="250" stroke="#364e6c" stroke-width="2"></line>
+<text x="690" y="242" font-size="10.35pt" font-weight="700" fill="#7f1d1d" text-anchor="middle">0 %</text>
+<text x="690" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Salto 1</text>
+<text x="785" y="242" font-size="10.35pt" font-weight="700" fill="#7f1d1d" text-anchor="middle">0 %</text>
+<text x="785" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Salto 2</text>
+<rect x="858" y="160" width="44" height="90" rx="3" fill="#f4bfbf" stroke="#d40000" stroke-width="2"></rect>
+<text x="880" y="152" font-size="10.35pt" font-weight="700" fill="#7f1d1d" text-anchor="middle">30 %</text>
+<text x="880" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Salto 3</text>
+<rect x="953" y="157" width="44" height="93" rx="3" fill="#f4bfbf" stroke="#d40000" stroke-width="2"></rect>
+<text x="975" y="149" font-size="10.35pt" font-weight="700" fill="#7f1d1d" text-anchor="middle">31 %</text>
+<text x="975" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Salto 4</text>
+<rect x="1048" y="154" width="44" height="96" rx="3" fill="#f4bfbf" stroke="#d40000" stroke-width="2"></rect>
+<text x="1070" y="146" font-size="10.35pt" font-weight="700" fill="#7f1d1d" text-anchor="middle">32 %</text>
+<text x="1070" y="272" font-size="10.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Destino</text>
+<text x="880" y="300" font-size="10.9pt" font-weight="400" fill="#7f1d1d" text-anchor="middle">Congestión o fallo real a partir del salto 3</text></g><text x="600" y="394" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 13.5. Interpretación de la pérdida de paquetes por salto.</text></svg>
+</div>
+
+<h3 id="interpretacion">Interpretación<a class="headerlink" href="#interpretacion" title="Permanent link">¶</a></h3>
+<p>La Tabla 13.3 asocia cada resultado de <em>MTR</em> con su interpretación posible y con la consideración que debe acompañarla; la Figura 13.5 contrasta los dos patrones de pérdida, el que se limita a un salto y el que se propaga a los siguientes.</p>
+<div class="diagram tabla-svg" id="tabla-13-3" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 343" role="img" aria-labelledby="t65-title"><title id="t65-title">Tabla 13.3. Interpretación de los resultados de MTR.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="204.1" y="20.0" dominant-baseline="central" text-anchor="middle">Resultado observado en MTR</text>
+<text class="tb-ht" x="591.1" y="20.0" dominant-baseline="central" text-anchor="middle">Interpretación posible</text>
+<text class="tb-ht" x="987.0" y="20.0" dominant-baseline="central" text-anchor="middle">Consideración</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="60.8" dominant-baseline="central">Pérdida en un salto sin impacto en los saltos</text>
+<text class="tb-tx tb-b" x="12.0" y="83.5" dominant-baseline="central">posteriores ni en el destino</text>
+<text class="tb-tx" x="420.1" y="60.8" dominant-baseline="central">Respuesta ICMP limitada o depriorizada</text>
+<text class="tb-tx" x="420.1" y="83.5" dominant-baseline="central">por el router intermedio.</text>
+<text class="tb-tx" x="786.0" y="72.1" dominant-baseline="central">No demuestra pérdida real de tráfico de tránsito.</text>
+<rect class="tb-to" x="0" y="104.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="124.2" dominant-baseline="central">Pérdida que continúa en los saltos posteriores</text>
+<text class="tb-tx tb-b" x="12.0" y="147.0" dominant-baseline="central">y en el destino</text>
+<text class="tb-tx" x="420.1" y="124.2" dominant-baseline="central">Posible congestión, fallo o pérdida real en</text>
+<text class="tb-tx" x="420.1" y="147.0" dominant-baseline="central">el camino.</text>
+<text class="tb-tx" x="786.0" y="124.2" dominant-baseline="central">Debe contrastarse con pruebas adicionales y</text>
+<text class="tb-tx" x="786.0" y="147.0" dominant-baseline="central">mediciones de extremo a extremo.</text>
+<rect class="tb-te" x="0" y="167.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="187.8" dominant-baseline="central">Latencia elevada en un salto, sin incremento en</text>
+<text class="tb-tx tb-b" x="12.0" y="210.5" dominant-baseline="central">los siguientes</text>
+<text class="tb-tx" x="420.1" y="187.8" dominant-baseline="central">Posible demora en la respuesta ICMP del</text>
+<text class="tb-tx" x="420.1" y="210.5" dominant-baseline="central">propio router.</text>
+<text class="tb-tx" x="786.0" y="199.1" dominant-baseline="central">No demuestra por sí sola un cuello de botella.</text>
+<rect class="tb-to" x="0" y="231.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="251.2" dominant-baseline="central">Latencia que aumenta y se mantiene en los</text>
+<text class="tb-tx tb-b" x="12.0" y="274.0" dominant-baseline="central">saltos posteriores y en el destino</text>
+<text class="tb-tx" x="420.1" y="251.2" dominant-baseline="central">Posible congestión o demora en el tramo</text>
+<text class="tb-tx" x="420.1" y="274.0" dominant-baseline="central">correspondiente.</text>
+<text class="tb-tx" x="786.0" y="251.2" dominant-baseline="central">Debe comprobarse mediante pruebas repetidas y</text>
+<text class="tb-tx" x="786.0" y="274.0" dominant-baseline="central">métricas adicionales.</text>
+<text class="tb-cap" x="600.0" y="320.8" text-anchor="middle">Tabla 13.3. Interpretación de los resultados de MTR.</text></svg>
+</div>
+
+<h3 id="ventaja-principal">Ventaja principal<a class="headerlink" href="#ventaja-principal" title="Permanent link">¶</a></h3>
+<p>Permite un análisis temporal continuo, a diferencia del <em>traceroute</em> estático.</p>
+<h2 id="133-wireshark">13.3 WIRESHARK<a class="headerlink" href="#133-wireshark" title="Permanent link">¶</a></h2>
+<p><em>Wireshark</em> es un analizador de protocolos de red que captura y examina paquetes en tiempo real o desde archivos <em>pcap</em>. Permite una inspección detallada por capas OSI.</p>
+<h3 id="capacidades">Capacidades<a class="headerlink" href="#capacidades" title="Permanent link">¶</a></h3>
+<ul>
+<li>Captura en vivo de tráfico de red.</li>
+<li>Filtros de visualización (por ejemplo, <code>ip.src == 192.168.1.1</code> o <code>tcp.port == 443</code>).</li>
+<li>Decodificación de protocolos.</li>
+<li>Seguimiento de flujos TCP/UDP.</li>
+<li>Estadísticas de tráfico y conversaciones.</li>
+</ul>
+<h3 id="aplicaciones">Aplicaciones<a class="headerlink" href="#aplicaciones" title="Permanent link">¶</a></h3>
+<ul>
+<li>Diagnóstico de retransmisiones TCP, pérdidas y errores.</li>
+<li>Análisis de seguridad (escaneo, DNS anómalo, tráfico sospechoso).</li>
+<li>Depuración de aplicaciones.</li>
+<li>Estudio de protocolos.</li>
+</ul>
+<h3 id="limitaciones">Limitaciones<a class="headerlink" href="#limitaciones" title="Permanent link">¶</a></h3>
+<ul>
+<li>La captura de tráfico requiere privilegios suficientes; el análisis de archivos de captura puede realizarse como usuario normal.</li>
+<li>Puede perder paquetes en redes de alto tráfico.</li>
+<li>Existe riesgo de exposición de datos sensibles sin cifrar.</li>
+</ul>
+<p>La captura y el análisis de tráfico con <em>Wireshark</em>, incluyendo filtros y decodificación por protocolo, se representa en el <strong>Anexo VII.</strong></p>
+<h2 id="134-tcpdump">13.4 TCPDUMP<a class="headerlink" href="#134-tcpdump" title="Permanent link">¶</a></h2>
+<p><em>Tcpdump</em> es una herramienta de captura de paquetes en línea de comandos basada en <em>libpcap</em>.</p>
+<p>Permite una captura eficiente en sistemas sin interfaz gráfica, y los archivos <em>.pcap</em> generados pueden analizarse posteriormente en <em>Wireshark</em>.</p>
+<div class="diagram tabla-svg" id="tabla-13-4" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 333" role="img" aria-labelledby="t66-title"><title id="t66-title">Tabla 13.4. Opciones principales de tcpdump.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="103.0" y="20.0" dominant-baseline="central" text-anchor="middle">Opción</text>
+<text class="tb-ht" x="562.6" y="20.0" dominant-baseline="central" text-anchor="middle">Función</text>
+<text class="tb-ht" x="1059.7" y="20.0" dominant-baseline="central" text-anchor="middle">Ejemplo</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="60.8" dominant-baseline="central">-i</text>
+<text class="tb-tx" x="218.0" y="60.8" dominant-baseline="central">Define el intervalo entre paquetes de captura.</text>
+<text class="tb-tx" x="931.3" y="60.8" dominant-baseline="central">-i eth0</text>
+<rect class="tb-to" x="0" y="81.5" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="101.5" dominant-baseline="central">-n</text>
+<text class="tb-tx" x="218.0" y="101.5" dominant-baseline="central">Evita la resolución de nombres DNS.</text>
+<text class="tb-tx" x="931.3" y="101.5" dominant-baseline="central">-n</text>
+<rect class="tb-te" x="0" y="122.2" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="142.2" dominant-baseline="central">-r</text>
+<text class="tb-tx" x="218.0" y="142.2" dominant-baseline="central">Lee una captura guardada desde un archivo.</text>
+<text class="tb-tx" x="931.3" y="142.2" dominant-baseline="central">-r captura.pcap</text>
+<rect class="tb-to" x="0" y="163.0" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="183.0" dominant-baseline="central">-v, -vv, -vvv</text>
+<text class="tb-tx" x="218.0" y="183.0" dominant-baseline="central">Aumenta el nivel de detalle de la salida.</text>
+<text class="tb-tx" x="931.3" y="183.0" dominant-baseline="central">-vv</text>
+<rect class="tb-te" x="0" y="203.8" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="223.8" dominant-baseline="central">-w</text>
+<text class="tb-tx" x="218.0" y="223.8" dominant-baseline="central">Guarda la captura en un archivo.</text>
+<text class="tb-tx" x="931.3" y="223.8" dominant-baseline="central">-w captura.pcap</text>
+<rect class="tb-to" x="0" y="244.5" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="264.5" dominant-baseline="central">-c</text>
+<text class="tb-tx" x="218.0" y="264.5" dominant-baseline="central">Limita el número de paquetes capturados.</text>
+<text class="tb-tx" x="931.3" y="264.5" dominant-baseline="central">-c 100</text>
+<text class="tb-cap" x="600.0" y="311.2" text-anchor="middle">Tabla 13.4. Opciones principales de tcpdump.</text></svg>
+</div>
+
+<h5 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">¶</a></h5>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Networking@SecOpsMX:~$ tcpdump -i eth0 -c 1000 -w captura.pcap
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Networking@SecOpsMX:~$ tcpdump -i any -n host 8.8.8.8
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Networking@SecOpsMX:~$ tcpdump -i eth0 tcp port 443
+</span></code></pre></div>
+<h3 id="opciones">Opciones<a class="headerlink" href="#opciones" title="Permanent link">¶</a></h3>
+<p>Las opciones de <em>tcpdump</em> determinan qué tráfico se captura y cómo se presenta; la Tabla 13.4 resume las principales.</p>
+<h2 id="135-iperf">13.5 IPERF<a class="headerlink" href="#135-iperf" title="Permanent link">¶</a></h2>
+<p><em>Iperf3</em> es una herramienta de medición activa de rendimiento de red que evalúa el ancho de banda entre dos puntos.</p>
+<p>Opera en modo cliente-servidor, como se representa en la Figura 13.6: el servidor se inicia con <code>iperf3 -s</code> y el cliente se conecta con <code>iperf3 -c</code>.</p>
+<div class="diagram" id="figura-13-06" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="g1306" viewBox="0 0 1200 402" role="img" aria-labelledby="g1306-title">
+<title id="g1306-title">Modelo cliente-servidor de iperf3</title>
+<defs><marker id="g1306m003ecc" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#003ecc"></polygon></marker><marker id="g1306n003ecc" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#003ecc"></polygon></marker><marker id="g1306m009254" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#009254"></polygon></marker><marker id="g1306n009254" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0,0 3.5,9 7" fill="#009254"></polygon></marker></defs>
+<g id="g1306-c" transform="translate(20 20)"><g transform="translate(120 70) scale(0.9)" data-lib="terminal"><rect x="-38" y="-28" width="76" height="56" rx="5" fill="#ebedf0" stroke="#364e6c" stroke-width="3"></rect><path d="M-26 -12L-12 0L-26 12" fill="none" stroke="#364e6c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M-4 12h22" stroke="#364e6c" stroke-width="4" stroke-linecap="round"></path></g>
+<text x="120" y="125" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Cliente</text>
+<text x="120" y="144" font-size="10.35pt" font-weight="400" fill="#1e3a5f" text-anchor="middle">iperf3 -c</text>
+<g transform="translate(1040 70) scale(0.9)" data-lib="server"><rect x="-44" y="-40" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="-27.5" r="4" fill="#d40000"></circle><path d="M-34 -27.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="-11" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="1.5" r="4" fill="#d40000"></circle><path d="M-34 1.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path><rect x="-44" y="18" width="88" height="25" rx="4" fill="#ffffff" stroke="#d40000" stroke-width="3"></rect><circle cx="30" cy="30.5" r="4" fill="#d40000"></circle><path d="M-34 30.5h34" stroke="#d40000" stroke-width="3" stroke-linecap="round"></path></g>
+<text x="1040" y="125" font-size="11.35pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Servidor</text>
+<text x="1040" y="144" font-size="10.35pt" font-weight="400" fill="#1e3a5f" text-anchor="middle">iperf3 -s</text>
+<polyline points="200,62 960,62" fill="none" stroke="#003ecc" stroke-width="4" marker-end="url(#g1306m003ecc)"></polyline>
+<text x="580" y="46" font-size="11.35pt" font-weight="700" fill="#1e3a8a" text-anchor="middle">Flujo de prueba (TCP o UDP)</text>
+<polyline points="960,98 200,98" fill="none" stroke="#009254" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#g1306m009254)"></polyline>
+<text x="580" y="122" font-size="10.35pt" font-weight="700" fill="#065f46" text-anchor="middle">Resultados de la medición</text>
+<rect x="160" y="180" width="400" height="150" rx="6" fill="#e6ecfa" stroke="#003ecc" stroke-width="2"></rect>
+<line x1="160" y1="214" x2="560" y2="214" stroke="#003ecc" stroke-width="1.5"></line>
+<text x="360" y="203" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Métricas con TCP</text>
+<text x="360" y="257.56" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Rendimiento (throughput)</text>
+<text x="360" y="276.56" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">Retransmisiones</text>
+<text x="360" y="295.56" font-size="10.9pt" font-weight="400" fill="#1e3a8a" text-anchor="middle">RTT estimado</text>
+<rect x="600" y="180" width="400" height="150" rx="6" fill="#f2ebfd" stroke="#7c3aed" stroke-width="2"></rect>
+<line x1="600" y1="214" x2="1000" y2="214" stroke="#7c3aed" stroke-width="1.5"></line>
+<text x="800" y="203" font-size="12.5pt" font-weight="700" fill="#1a1a1a" text-anchor="middle">Métricas con UDP</text>
+<text x="800" y="257.56" font-size="10.9pt" font-weight="400" fill="#5b21b6" text-anchor="middle">Rendimiento (throughput)</text>
+<text x="800" y="276.56" font-size="10.9pt" font-weight="400" fill="#5b21b6" text-anchor="middle">Pérdida de paquetes</text>
+<text x="800" y="295.56" font-size="10.9pt" font-weight="400" fill="#5b21b6" text-anchor="middle">Jitter</text></g><text x="600" y="384" text-anchor="middle" font-size="15.58" font-weight="600" fill="#000000" data-caption="fig">Fig. 13.6. Modelo cliente-servidor de iperf3.</text></svg>
+</div>
+
+<h3 id="parametros">Parámetros<a class="headerlink" href="#parametros" title="Permanent link">¶</a></h3>
+<p>Los parámetros de <em>iperf3</em> definen el rol de cada extremo y las condiciones de la prueba (servidor o cliente, protocolo, ancho de banda objetivo, duración y flujos paralelos); la Tabla 13.5 los resume.</p>
+<div class="diagram tabla-svg" id="tabla-13-5" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 415" role="img" aria-labelledby="t67-title"><title id="t67-title">Tabla 13.5. Parámetros principales de iperf3.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="94.4" y="20.0" dominant-baseline="central" text-anchor="middle">Parámetro</text>
+<text class="tb-ht" x="539.5" y="20.0" dominant-baseline="central" text-anchor="middle">Función</text>
+<text class="tb-ht" x="1045.1" y="20.0" dominant-baseline="central" text-anchor="middle">Ejemplo</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="60.8" dominant-baseline="central">-s</text>
+<text class="tb-tx" x="200.7" y="60.8" dominant-baseline="central">Inicia iperf3 en modo servidor.</text>
+<text class="tb-tx" x="902.2" y="60.8" dominant-baseline="central">iperf3 -s</text>
+<rect class="tb-to" x="0" y="81.5" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="101.5" dominant-baseline="central">-c</text>
+<text class="tb-tx" x="200.7" y="101.5" dominant-baseline="central">Inicia una prueba como cliente hacia un servidor.</text>
+<text class="tb-tx" x="902.2" y="101.5" dominant-baseline="central">iperf3 -c 192.168.1.10</text>
+<rect class="tb-te" x="0" y="122.2" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="142.2" dominant-baseline="central">-u</text>
+<text class="tb-tx" x="200.7" y="142.2" dominant-baseline="central">Utiliza UDP en lugar de TCP.</text>
+<text class="tb-tx" x="902.2" y="142.2" dominant-baseline="central">-u</text>
+<rect class="tb-to" x="0" y="163.0" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="183.0" dominant-baseline="central">-b</text>
+<text class="tb-tx" x="200.7" y="183.0" dominant-baseline="central">Define la tasa objetivo de transmisión UDP.</text>
+<text class="tb-tx" x="902.2" y="183.0" dominant-baseline="central">-b 100M</text>
+<rect class="tb-te" x="0" y="203.8" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="223.8" dominant-baseline="central">-t</text>
+<text class="tb-tx" x="200.7" y="223.8" dominant-baseline="central">Define la duración de la prueba en segundos.</text>
+<text class="tb-tx" x="902.2" y="223.8" dominant-baseline="central">-t 30</text>
+<rect class="tb-to" x="0" y="244.5" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="264.5" dominant-baseline="central">-P</text>
+<text class="tb-tx" x="200.7" y="264.5" dominant-baseline="central">Establece el número de flujos paralelos.</text>
+<text class="tb-tx" x="902.2" y="264.5" dominant-baseline="central">-P 4</text>
+<rect class="tb-te" x="0" y="285.2" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="305.2" dominant-baseline="central">-R</text>
+<text class="tb-tx" x="200.7" y="305.2" dominant-baseline="central">Invierte la dirección de la prueba.</text>
+<text class="tb-tx" x="902.2" y="305.2" dominant-baseline="central">-R</text>
+<rect class="tb-to" x="0" y="326.0" width="1200" height="40.8"></rect>
+<text class="tb-tx tb-b" x="12.0" y="346.0" dominant-baseline="central">-J</text>
+<text class="tb-tx" x="200.7" y="346.0" dominant-baseline="central">Entrega la salida en formato JSON.</text>
+<text class="tb-tx" x="902.2" y="346.0" dominant-baseline="central">-J</text>
+<text class="tb-cap" x="600.0" y="392.8" text-anchor="middle">Tabla 13.5. Parámetros principales de iperf3.</text></svg>
+</div>
+
+<h3 id="metricas">Métricas<a class="headerlink" href="#metricas" title="Permanent link">¶</a></h3>
+<ul>
+<li>TCP: <em>throughput</em>, retransmisiones, RTT estimado.</li>
+<li>UDP: pérdida de paquetes, <em>jitter</em>, <em>throughput</em>.</li>
+</ul>
+<h3 id="aplicaciones_1">Aplicaciones<a class="headerlink" href="#aplicaciones_1" title="Permanent link">¶</a></h3>
+<ul>
+<li>Validación de enlaces WAN.</li>
+<li>Pruebas de capacidad real de red.</li>
+<li>Comparación de rutas o tecnologías.</li>
+</ul>
+<h3 id="limitacion">Limitación<a class="headerlink" href="#limitacion" title="Permanent link">¶</a></h3>
+<p>El modo estándar es unidireccional (requiere <code>--bidir</code> para pruebas simultáneas).</p>
+<h2 id="136-siem">13.6 SIEM<a class="headerlink" href="#136-siem" title="Permanent link">¶</a></h2>
+<p>SIEM es una plataforma que centraliza la recolección, normalización, correlación y análisis de eventos de seguridad generados por infraestructura de red, servidores y aplicaciones. Integra funciones de SIM (<em>Security Information Management</em>) y de SEM (<em>Security Event Management</em>).</p>
+<h3 id="funcionalidades">Funcionalidades<a class="headerlink" href="#funcionalidades" title="Permanent link">¶</a></h3>
+<ul>
+<li>Recolección de <em>logs</em> (<em>syslog</em>, SNMP, agentes, APIs).</li>
+<li>Normalización de eventos.</li>
+<li>Correlación de patrones de ataque.</li>
+<li><em>Dashboards</em> y visualización.</li>
+<li>Alertas en tiempo real.</li>
+<li>Almacenamiento histórico para auditoría.</li>
+</ul>
+<h3 id="ejemplos-de-correlacion">Ejemplos de correlación<a class="headerlink" href="#ejemplos-de-correlacion" title="Permanent link">¶</a></h3>
+<p>Un SIEM aporta valor cuando correlaciona eventos que, por separado, serían inocuos; la Tabla 13.6 presenta ejemplos de esos patrones.</p>
+<div class="diagram tabla-svg" id="tabla-13-6" markdown="0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 343" role="img" aria-labelledby="t68-title"><title id="t68-title">Tabla 13.6. Ejemplos de correlación en un SIEM.</title>
+<rect class="tb-th" x="0" y="0.0" width="1200" height="40.8"></rect>
+<text class="tb-ht" x="150.4" y="20.0" dominant-baseline="central" text-anchor="middle">Evento observado</text>
+<text class="tb-ht" x="510.7" y="20.0" dominant-baseline="central" text-anchor="middle">Interpretación posible</text>
+<text class="tb-ht" x="960.3" y="20.0" dominant-baseline="central" text-anchor="middle">Acción o correlación</text>
+<rect class="tb-te" x="0" y="40.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="60.8" dominant-baseline="central">Múltiples intentos fallidos de</text>
+<text class="tb-tx tb-b" x="12.0" y="83.5" dominant-baseline="central">autenticación</text>
+<text class="tb-tx" x="312.9" y="60.8" dominant-baseline="central">Posible ataque de fuerza bruta o uso de</text>
+<text class="tb-tx" x="312.9" y="83.5" dominant-baseline="central">credenciales incorrectas.</text>
+<text class="tb-tx" x="732.5" y="60.8" dominant-baseline="central">Correlacionar origen, usuario, frecuencia y registros del</text>
+<text class="tb-tx" x="732.5" y="83.5" dominant-baseline="central">sistema.</text>
+<rect class="tb-to" x="0" y="104.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="135.6" dominant-baseline="central">Incremento del tráfico ICMP</text>
+<text class="tb-tx" x="312.9" y="124.2" dominant-baseline="central">Posible ataque tipo flood o actividad de</text>
+<text class="tb-tx" x="312.9" y="147.0" dominant-baseline="central">diagnóstico anómala.</text>
+<text class="tb-tx" x="732.5" y="135.6" dominant-baseline="central">Analizar volumen, origen, destino y línea base de tráfico.</text>
+<rect class="tb-te" x="0" y="167.8" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="199.1" dominant-baseline="central">Conexiones a dominios maliciosos</text>
+<text class="tb-tx" x="312.9" y="199.1" dominant-baseline="central">Posible compromiso de un equipo interno.</text>
+<text class="tb-tx" x="732.5" y="187.8" dominant-baseline="central">Correlacionar consultas DNS con listas de amenazas y</text>
+<text class="tb-tx" x="732.5" y="210.5" dominant-baseline="central">actividad del endpoint.</text>
+<rect class="tb-to" x="0" y="231.2" width="1200" height="63.5"></rect>
+<text class="tb-tx tb-b" x="12.0" y="251.2" dominant-baseline="central">Escaneo de puertos desde un</text>
+<text class="tb-tx tb-b" x="12.0" y="274.0" dominant-baseline="central">mismo origen</text>
+<text class="tb-tx" x="312.9" y="262.6" dominant-baseline="central">Posible reconocimiento de servicios.</text>
+<text class="tb-tx" x="732.5" y="251.2" dominant-baseline="central">Correlacionar eventos de firewall, IDS/IPS y registros de</text>
+<text class="tb-tx" x="732.5" y="274.0" dominant-baseline="central">los sistemas destino.</text>
+<text class="tb-cap" x="600.0" y="320.8" text-anchor="middle">Tabla 13.6. Ejemplos de correlación en un SIEM.</text></svg>
+</div>
+
+<h3 id="limitaciones_1">Limitaciones<a class="headerlink" href="#limitaciones_1" title="Permanent link">¶</a></h3>
+<ul>
+<li>Alta complejidad de configuración.</li>
+<li>Costo elevado.</li>
+<li>Requiere personal especializado.</li>
+</ul>
+<p>La arquitectura de un SIEM y su integración con fuentes de red, servidores y aplicaciones se muestra en el <strong>Anexo VIII.</strong></p>
+<p>Nota: los eventos son indicadores que requieren correlación y contexto. Un incremento de ICMP o una conexión a un dominio desconocido no demuestra por sí solo un ataque o compromiso.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../tema_12/" class="btn btn-neutral float-left" title="12 · Arquitecturas modernas de red"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tema_14/" class="btn btn-neutral float-right" title="14 · Herramientas Linux">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../tema_12/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="../tema_14/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/js/extra.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>
